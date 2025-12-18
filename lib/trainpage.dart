@@ -1,0 +1,5211 @@
+import 'dart:convert';
+import 'dart:html' as html;
+
+import 'package:flutter/material.dart';
+import 'package:markdown_widget/markdown_widget.dart';
+import 'package:trainpage/my_bordered_input_field.dart';
+import 'package:trainpage/mybutton.dart';
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+
+class _MyHomePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  String chat = '';
+
+  String mdResponse = "## Refresh portfolio data\n\nAttach to `dashboard0_Dashboard_txt_1` and pull latest performance.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('dashboard0_Dashboard_txt_1')\n\ndef on_success(resp):\n    g.save_item('portfolio_data', resp)\n    g.show_toast('Portfolio refreshed')\n\ndef on_error(err):\n    g.show_toast('Refresh failed')\n\ndef refresh_portfolio(e):\n    g.make_request(\n        method='GET',\n        url='https://api.example.com/portfolio',\n        params={'range': '1d'},\n        headers={'Accept': 'application/json'},\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(refresh_portfolio)\n```";
+
+
+  String mainCode = '';
+  bool shouldEditResponse = false;
+
+  bool shouldEditCode = false;
+
+  List mainData = [
+    {
+      "page": {
+        "description": "",
+        "name": "form0",
+        "canvasWidgetType": "SCREEN",
+        "children": [
+          {
+            "description": "Panel that centers all contents",
+            "name": "panel_form0",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Containing value:Updat...",
+                "name": "txt_for",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "",
+                "name": "rect_input_0",
+                "canvasWidgetType": "TEXT",
+                "children": [
+                  {
+                    "description": "input 0 field's input label",
+                    "name": "input_0_Labeltx",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "input 0 input field container bearing the border attributes of the field",
+                    "name": "input_0_inputco",
+                    "canvasWidgetType": "RECT",
+                    "children": [
+                      {
+                        "description": "input 0 input field of type textInput",
+                        "name": "input_0_input",
+                        "canvasWidgetType": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "description": "",
+                "name": "rect_input_1",
+                "canvasWidgetType": "TEXT",
+                "children": [
+                  {
+                    "description": "input 1 field's input label",
+                    "name": "input_1_Labeltx",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "input 1 input field container bearing the border attributes of the field",
+                    "name": "input_1_inputco",
+                    "canvasWidgetType": "RECT",
+                    "children": [
+                      {
+                        "description": "input 1 input field of type textInput",
+                        "name": "input_1_input",
+                        "canvasWidgetType": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "description": "",
+                "name": "rect_input_2",
+                "canvasWidgetType": "TEXT",
+                "children": [
+                  {
+                    "description": "input 2 field's input label",
+                    "name": "input_2_Labeltx",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "input 2 input field container bearing the border attributes of the field",
+                    "name": "input_2_inputco",
+                    "canvasWidgetType": "RECT",
+                    "children": [
+                      {
+                        "description": "input 2 input field of type textInput",
+                        "name": "input_2_input",
+                        "canvasWidgetType": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "description": "",
+                "name": "rect_input_3",
+                "canvasWidgetType": "TEXT",
+                "children": [
+                  {
+                    "description": "input 3 field's input label",
+                    "name": "input_3_Labeltx",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "input 3 input field container bearing the border attributes of the field",
+                    "name": "input_3_inputco",
+                    "canvasWidgetType": "RECT",
+                    "children": [
+                      {
+                        "description": "input 3 input field of type textInput",
+                        "name": "input_3_input",
+                        "canvasWidgetType": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "description": "proceed button",
+                "name": "btn_proceed",
+                "canvasWidgetType": "RECT",
+                "children": [
+                  {
+                    "description": "proceed btn text",
+                    "name": "btntxt_proceed_",
+                    "canvasWidgetType": "TEXT"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "code": "import ginni as g\nfield_input_0_input = g.GinNode(\"input_0_input\")\nfield_input_1_input = g.GinNode(\"input_1_input\")\nfield_input_2_input = g.GinNode(\"input_2_input\")\nfield_input_3_input = g.GinNode(\"input_3_input\")\ndef handle_btn_proceed_click(e):\n    value_input_0_input = field_input_0_input.get_value()\n    value_input_1_input = field_input_1_input.get_value()\n    value_input_2_input = field_input_2_input.get_value()\n    value_input_3_input = field_input_3_input.get_value()\n    # optionally clean, validate, or save values with g.save_item(key, value)\n    # g.moveto([DASHBOARD_SCREEN_NAME])\nbtn_btn_proceed = g.GinNode(\"btn_proceed\")\nbtn_btn_proceed.set_on_click(handle_btn_proceed_click)\n",
+      "metadata": {
+        "backColor": "rgba(255, 255, 255, 1)",
+        "accentColor": "rgba(255, 152, 0, 1)",
+        "txtColor": "rgba(0, 0, 0, 1)",
+        "bottomNavColor": "rgba(0, 0, 0, 1)"
+      },
+      "creator": {
+        "type": "form",
+        "description": "",
+        "colorGradient": "",
+        "backgroundColor": "rgba(255, 255, 255, 1)",
+        "screenDataWidgets": [
+          {
+            "type": "Panel",
+            "backColor": "rgba(0, 0, 0, 0)",
+            "visibility": true,
+            "content": [
+              {
+                "type": "TextData",
+                "txt": "Update Form",
+                "label": "",
+                "fontSize": 30,
+                "fontWeight": 800,
+                "textAlign": "center",
+                "textColor": "rgba(0, 0, 0, 1)",
+                "height": 60
+              },
+              {
+                "type": "InputFormData",
+                "inputLabel": "input 0",
+                "inputType": "textInput",
+                "txtColor": "rgba(0, 0, 0, 1)",
+                "inputBorderColor": "rgba(27, 60, 141, 1)",
+                "inputBackgroundColor": "rgba(255, 255, 255, 1)",
+                "width": 350
+              },
+              {
+                "type": "InputFormData",
+                "inputLabel": "input 1",
+                "inputType": "textInput",
+                "txtColor": "rgba(0, 0, 0, 1)",
+                "inputBorderColor": "rgba(27, 60, 141, 1)",
+                "inputBackgroundColor": "rgba(255, 255, 255, 1)",
+                "width": 350
+              },
+              {
+                "type": "InputFormData",
+                "inputLabel": "input 2",
+                "inputType": "textInput",
+                "txtColor": "rgba(0, 0, 0, 1)",
+                "inputBorderColor": "rgba(27, 60, 141, 1)",
+                "inputBackgroundColor": "rgba(255, 255, 255, 1)",
+                "width": 350
+              },
+              {
+                "type": "InputFormData",
+                "inputLabel": "input 3",
+                "inputType": "textInput",
+                "txtColor": "rgba(0, 0, 0, 1)",
+                "inputBorderColor": "rgba(27, 60, 141, 1)",
+                "inputBackgroundColor": "rgba(255, 255, 255, 1)",
+                "width": 350
+              },
+              {
+                "type": "ButtonData",
+                "buttonText": "proceed",
+                "width": null,
+                "buttonTextColor": "rgba(255, 255, 255, 1)",
+                "buttonColor": "rgba(27, 60, 141, 1)",
+                "buttonBorderColor": ""
+              }
+            ]
+          }
+        ]
+      },
+      "pages": {
+        "Search": "Allows administrators to locate specific users in the system by executing custom queries.",
+        "list": "Displays a list of projects associated with a selected user, provides functionality to see the specific status and builds of each.",
+        "Description": "Provides detailed insights into the ongoing status of a chosen user's project, allowing for close monitoring.",
+        "login": "",
+        "item-descriptio": "",
+        "list_1": "",
+        "social-media": "",
+        "stream": "",
+        "social-media_1": "",
+        "dashboard": "",
+        "dashboard_1": "",
+        "search": "",
+        "stream_1": "",
+        "profile": "A user profile screen with a bottom nav linking to dashboard, search, notifications, and profile tabs.",
+        "social-media_2": "",
+        "dashboard_2": "",
+        "stream_2": "",
+        "stream_3": "",
+        "stream_4": "",
+        "search_1": "",
+        "list_2": "",
+        "notification": "",
+        "chat": "",
+        "item-description_1": "",
+        "home-page": "",
+        "blog": "",
+        "chat_1": ""
+      },
+      "app_name": "JotSphere",
+      "prompt": "Design a basic form.",
+      "chat": "I've created a form interface for you. It includes the necessary input fields and basic functionality. The design focuses on simplicity and ease of use."
+    },
+    {
+      "page": {
+        "description": "A user profile screen with a bottom nav linking to dashboard, search, notifications, and profile tabs.",
+        "name": "profile0",
+        "canvasWidgetType": "SCREEN",
+        "children": [
+          {
+            "description": "Tool or input bar widget, holding the background color attribute of the bar. Default color: transparent",
+            "name": "profile0_profil",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Tool bar text",
+                "name": "profile0_profile0_txt_1",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "The main welcome area of the page.",
+            "name": "Welcome_User__welcome_1",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "",
+                "name": "Welcome_User__welcomeimg_2",
+                "canvasWidgetType": "RECT"
+              },
+              {
+                "description": "",
+                "name": "Welcome_User__1",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "",
+                "name": "proimg__1",
+                "canvasWidgetType": "CIRCLE"
+              },
+              {
+                "description": "",
+                "name": "protxt__1",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "",
+            "name": "profile0_Update",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "",
+                "name": "set_profile0_Up",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "",
+                "name": "profile0_Update_info_txt_1",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "",
+            "name": "profile0_Notifi",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "",
+                "name": "set_profile0_No",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "",
+                "name": "profile0_Notifications_txt_1",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "",
+            "name": "profile0_Prefer",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "",
+                "name": "set_profile0_Pr",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "",
+                "name": "profile0_Preferences_txt_1",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "",
+            "name": "profile0_Securi",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "",
+                "name": "set_profile0_Se",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "",
+                "name": "profile0_Security_txt_1",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "",
+            "name": "profile0_Suppor",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "",
+                "name": "set_profile0_Su",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "",
+                "name": "profile0_Support_txt_1",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "Bottom navigation for profile0",
+            "name": "profile0_nav",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Image of navigation element Dashboard",
+                "name": "nav_Dashboard_19",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "Text of navigation element Dashboard",
+                "name": "profile0_Dashbo",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Image of navigation element Notifications",
+                "name": "nav_Notifications_19",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "Text of navigation element Notifications",
+                "name": "profile0_Notifications_txt_2",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Image of navigation element Search",
+                "name": "nav_Search_19",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "Text of navigation element Search",
+                "name": "profile0_Search",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          }
+        ]
+      },
+      "code": "import ginni as g\n # Get reference to all navigation elements and implement navigation to related screen\nnav_nav_Dashboard_19 = g.GinNode('nav_Dashboard_19')\nnav_nav_Dashboard_19.set_on_click(lambda e: g.moveto('dashboard'))\n\nnav_nav_Notifications_19 = g.GinNode('nav_Notifications_19')\n\nnav_nav_Search_19 = g.GinNode('nav_Search_19')\nnav_nav_Search_19.set_on_click(lambda e: g.moveto('Search'))\n\n\n# Get reference to all settings navigation icon and navigate page to relevant page/form \nset_set_profile0_Up = g.GinNode('set_profile0_Up')\nset_set_profile0_Up.set_on_click(lambda e: g.moveto('[FORM_SCREEN_NAME]'))\n\nset_set_profile0_No = g.GinNode('set_profile0_No')\nset_set_profile0_No.set_on_click(lambda e: g.moveto('[FORM_SCREEN_NAME]'))\n\nset_set_profile0_Pr = g.GinNode('set_profile0_Pr')\nset_set_profile0_Pr.set_on_click(lambda e: g.moveto('[FORM_SCREEN_NAME]'))\n\nset_set_profile0_Se = g.GinNode('set_profile0_Se')\nset_set_profile0_Se.set_on_click(lambda e: g.moveto('[FORM_SCREEN_NAME]'))\n\nset_set_profile0_Su = g.GinNode('set_profile0_Su')\nset_set_profile0_Su.set_on_click(lambda e: g.moveto('[FORM_SCREEN_NAME]'))\n\n\n# Set profile name text\nprofile_txt = g.GinNode('protxt__1')\nuser_name = 'Profile name' # Alternatively, fetch name from local storage with g.get_item('[SAVED_NAME_KEY]') or call API: await g.make_request('PROFILE_DATA_URL')\nprofile_txt.set_text_context(user_name)\n# Set profile image\nprofile_img = g.GinNode('proimg__1')\n# user_img =  g.get_item('[SAVED_IMAGE_URL_KEY]') Fetch image from local storage with g.get_item('[SAVED_IMAGE_URL_KEY]') or call REST API: await g.make_request('PROFILE_DATA_URL')\n# profile_img.set_img_src(user_img)\n",
+      "metadata": {
+        "backColor": "rgba(255, 255, 255, 1)",
+        "accentColor": "rgba(255, 152, 0, 1)",
+        "txtColor": "rgba(0, 0, 0, 1)",
+        "bottomNavColor": "rgba(0, 0, 0, 1)"
+      },
+      "creator": {
+        "type": "screen",
+        "description": "A user profile screen with a bottom nav linking to dashboard, search, notifications, and profile tabs.",
+        "colorGradient": "",
+        "backgroundColor": "rgba(255, 255, 255, 1)",
+        "screenDataWidgets": [
+          {
+            "type": "ToolbarData",
+            "titleText": "profile0",
+            "titleColor": "rgba(0, 0, 0, 1)",
+            "verticalAnchor": "TOP",
+            "shouldAnchor": false,
+            "actionWidgets": []
+          },
+          {
+            "type": "WelcomeProfileArea",
+            "welcomeURL": "",
+            "profileURL": "real",
+            "welcomeText": "Welcome User ",
+            "profileText": "User name",
+            "textColor": "rgba(255, 255, 255, 1)",
+            "profileTextColor": "rgba(0, 0, 0, 1)",
+            "color": "rgba(27, 60, 141, 1)",
+            "height": 400,
+            "actionButtons": []
+          },
+          {
+            "type": "SettingsOption",
+            "optionName": "Update info",
+            "optionIconURL": "Info",
+            "itemColor": "rgba(27, 60, 141, 1)",
+            "optionBorderColor": "rgba(27, 60, 141, 1)",
+            "width": 300
+          },
+          {
+            "type": "SettingsOption",
+            "optionName": "Notifications",
+            "optionIconURL": "Bell",
+            "itemColor": "rgba(27, 60, 141, 1)",
+            "optionBorderColor": "rgba(27, 60, 141, 1)",
+            "width": 300
+          },
+          {
+            "type": "SettingsOption",
+            "optionName": "Preferences",
+            "optionIconURL": "Settings",
+            "itemColor": "rgba(27, 60, 141, 1)",
+            "optionBorderColor": "rgba(27, 60, 141, 1)",
+            "width": 300
+          },
+          {
+            "type": "SettingsOption",
+            "optionName": "Security",
+            "optionIconURL": "Lock",
+            "itemColor": "rgba(27, 60, 141, 1)",
+            "optionBorderColor": "rgba(27, 60, 141, 1)",
+            "width": 300
+          },
+          {
+            "type": "SettingsOption",
+            "optionName": "Support",
+            "optionIconURL": "Comment",
+            "itemColor": "rgba(27, 60, 141, 1)",
+            "optionBorderColor": "rgba(27, 60, 141, 1)",
+            "width": 300
+          },
+          {
+            "type": "BottomNavigationData",
+            "selectedNav": "Profile",
+            "backgroundColor": "rgba(27, 60, 141, 1)",
+            "normColor": "rgba(238, 238, 238, 1)",
+            "normTextColor": "rgba(238, 238, 238, 1)",
+            "activeColor": "rgba(27, 60, 141, 1)",
+            "borderColor": "rgba(0, 0, 0, 0)",
+            "elevation": 0,
+            "borderRadius": 0,
+            "height": 50,
+            "margin": 4,
+            "navElements": [
+              {
+                "type": "NavigationElement",
+                "navText": "Dashboard",
+                "navIconURL": "Apps"
+              },
+              {
+                "type": "NavigationElement",
+                "navText": "Notifications",
+                "navIconURL": "Bell"
+              },
+              {
+                "type": "NavigationElement",
+                "navText": "Search",
+                "navIconURL": "Search"
+              }
+            ]
+          }
+        ]
+      },
+      "pages": {
+        "Search": "Allows administrators to locate specific users in the system by executing custom queries.",
+        "list": "Displays a list of projects associated with a selected user, provides functionality to see the specific status and builds of each.",
+        "Description": "Provides detailed insights into the ongoing status of a chosen user's project, allowing for close monitoring.",
+        "login": "",
+        "item-descriptio": "",
+        "list_1": "",
+        "social-media": "",
+        "stream": "",
+        "social-media_1": "",
+        "dashboard": "",
+        "dashboard_1": "",
+        "search": "",
+        "stream_1": "",
+        "profile": "A user profile screen with a bottom nav linking to dashboard, search, notifications, and profile tabs.",
+        "social-media_2": "",
+        "dashboard_2": "",
+        "stream_2": "",
+        "stream_3": "",
+        "stream_4": "",
+        "search_1": "",
+        "list_2": "",
+        "notification": "",
+        "chat": "",
+        "item-description_1": "",
+        "home-page": "",
+        "blog": "",
+        "chat_1": ""
+      },
+      "app_name": "DashHive",
+      "prompt": "A user profile screen with a bottom nav linking to dashboard, search, notifications, and profile tabs.",
+      "chat": "Here's a profile screen with user information display and navigation elements as requested. Navigation elements are included for easy user movement between sections."
+    },
+    {
+      "page": {
+        "description": "",
+        "name": "social-media0",
+        "canvasWidgetType": "SCREEN",
+        "children": [
+          {
+            "description": "Tool or input bar widget, holding the background color attribute of the bar. Default color: transparent",
+            "name": "social-media0_s",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Tool bar text",
+                "name": "social-media0_social-media0_txt_1",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "List adapter of the social-media0 screen",
+            "adapterChild": {
+              "description": "",
+              "name": "indicard_190",
+              "canvasWidgetType": "RECT",
+              "children": [
+                {
+                  "description": "Image of the item",
+                  "name": "img_159",
+                  "canvasWidgetType": "CIRCLE"
+                },
+                {
+                  "description": "description.value:@User...",
+                  "name": "title_190",
+                  "canvasWidgetType": "TEXT"
+                }
+              ]
+            },
+            "name": "social-media0_c",
+            "canvasWidgetType": "GRID"
+          },
+          {
+            "description": "Containing value:Reque...",
+            "name": "txt_soc_3",
+            "canvasWidgetType": "TEXT"
+          },
+          {
+            "description": "List adapter of the social-media0 screen",
+            "adapterChild": {
+              "description": "",
+              "name": "indicard_191",
+              "canvasWidgetType": "RECT",
+              "children": [
+                {
+                  "description": "Image of the tile item",
+                  "name": "img_160",
+                  "canvasWidgetType": "IMAGE"
+                },
+                {
+                  "description": "Title text.value:@User...",
+                  "name": "title_191",
+                  "canvasWidgetType": "TEXT"
+                },
+                {
+                  "description": "Subtitle text.value:Detai...",
+                  "name": "subtitle_172",
+                  "canvasWidgetType": "TEXT"
+                }
+              ]
+            },
+            "name": "social-media0_connections_1",
+            "canvasWidgetType": "GRID"
+          },
+          {
+            "description": "Bottom navigation for social-media0",
+            "name": "social-media0_n",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Image of navigation element Dashboard",
+                "name": "nav_Dashboard_20",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "Text of navigation element Dashboard",
+                "name": "social-media0_D",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Image of navigation element Notifications",
+                "name": "nav_Notifications_20",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "Text of navigation element Notifications",
+                "name": "social-media0_N",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Image of navigation element Search",
+                "name": "nav_Search_20",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "Text of navigation element Search",
+                "name": "social-media0_S",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          }
+        ]
+      },
+      "code": "import ginni as g\n\n# Get reference to all navigation elements and implement navigation to related screen\n\nnav_nav_Dashboard_20 = g.GinNode('nav_Dashboard_20')\nnav_nav_Dashboard_20.set_on_click(lambda e: g.moveto('dashboard'))\n\nnav_nav_Notifications_20 = g.GinNode('nav_Notifications_20')\n\nnav_nav_Search_20 = g.GinNode('nav_Search_20')\nnav_nav_Search_20.set_on_click(lambda e: g.moveto('Search'))\n\n\n# Set adapter details for list# Generate dummy elements for the adapter. Fetch live data from storage with g.get_item('[SAVED_DATA_KEY]') or make HTTP request with await g.make_request('LIST_DATA_URL') \ndatalist = [{'img': 'https://placehold.co/600x400/FFAAAA/FFAAAA/png', 'title': 'do amet.', 'subtitle': 'lorem veniam eiusmod.'} for x in range(10)]\n# Populate adapter with data items from adapter template\nmytemplate_id = 'indicard_190'\nadapter_id = 'social-media0_c'\nadapter_items = []\nfor data in datalist:\n    list_item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id) # create new list item\n    list_item.get_child('title_190').set_text_context(data['title']) # set the title text from the data\n    adapter_items.append(list_item)\n\n# Set adapter details for list# Generate dummy elements for the adapter. Fetch live data from storage with g.get_item('[SAVED_DATA_KEY]') or make HTTP request with await g.make_request('LIST_DATA_URL') \ndatalist = [{'img': 'https://placehold.co/600x400/FFAAFF/FFAAFF/png', 'title': 'tempor consequat.', 'subtitle': 'incididunt dolore duis.'} for x in range(10)]\n# Populate adapter with data items from adapter template\nmytemplate_id = 'indicard_191'\nadapter_id = 'social-media0_connections_1'\nadapter_items = []\nfor data in datalist:\n    list_item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id) # create new list item\n    list_item.get_child('title_191').set_text_context(data['title']) # set the title text from the data\n    list_item.get_child('subtitle_172').set_text_context(data['subtitle']) # set the title text from the data\n    list_item.get_child('img_160').set_img_src(data['img']) # set the image URL from the data\n    adapter_items.append(list_item)\n",
+      "metadata": {
+        "backColor": "rgba(255, 255, 255, 1)",
+        "accentColor": "rgba(255, 152, 0, 1)",
+        "txtColor": "rgba(0, 0, 0, 1)",
+        "bottomNavColor": "rgba(0, 0, 0, 1)"
+      },
+      "creator": {
+        "type": "screen",
+        "description": "",
+        "colorGradient": "",
+        "backgroundColor": "rgba(255, 255, 255, 1)",
+        "screenDataWidgets": [
+          {
+            "type": "ToolbarData",
+            "titleText": "social-media0",
+            "titleColor": "rgba(0, 0, 0, 1)",
+            "verticalAnchor": "TOP",
+            "shouldAnchor": false,
+            "actionWidgets": []
+          },
+          {
+            "type": "AdapterListData",
+            "name": "connections",
+            "height": 150,
+            "itemCount": 4,
+            "adapterItemData": {
+              "type": "CardTypeData",
+              "titleText": "@Username",
+              "subTitleText": "Details...",
+              "imgUrl": "real",
+              "backImgUrl": "",
+              "graphType": "",
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "imgColor": "",
+              "textColor": "rgba(0, 0, 0, 1)",
+              "elevation": 2,
+              "cardType": "img",
+              "statType": "",
+              "height": 100,
+              "width": 150
+            },
+            "orientation": "row"
+          },
+          {
+            "type": "TextData",
+            "txt": "Requests",
+            "label": "chats",
+            "fontSize": 20,
+            "fontWeight": 800,
+            "textAlign": "start",
+            "textColor": "rgba(0, 0, 0, 1)",
+            "height": 50
+          },
+          {
+            "type": "AdapterListData",
+            "name": "connections",
+            "height": 800,
+            "itemCount": 6,
+            "adapterItemData": {
+              "type": "CardTypeData",
+              "titleText": "@Username",
+              "subTitleText": "Details...",
+              "imgUrl": "real",
+              "backImgUrl": "",
+              "graphType": "",
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "imgColor": "",
+              "textColor": "rgba(0, 0, 0, 1)",
+              "elevation": 2,
+              "cardType": "tile",
+              "statType": "",
+              "height": 100,
+              "width": 380
+            },
+            "orientation": "column"
+          },
+          {
+            "type": "BottomNavigationData",
+            "selectedNav": "Dashboard",
+            "backgroundColor": "rgba(27, 60, 141, 1)",
+            "normColor": "rgba(238, 238, 238, 1)",
+            "normTextColor": "rgba(238, 238, 238, 1)",
+            "activeColor": "rgba(27, 60, 141, 1)",
+            "borderColor": "rgba(0, 0, 0, 0)",
+            "elevation": 0,
+            "borderRadius": 0,
+            "height": 50,
+            "margin": 4,
+            "navElements": [
+              {
+                "type": "NavigationElement",
+                "navText": "Dashboard",
+                "navIconURL": "Apps"
+              },
+              {
+                "type": "NavigationElement",
+                "navText": "Notifications",
+                "navIconURL": "Bell"
+              },
+              {
+                "type": "NavigationElement",
+                "navText": "Search",
+                "navIconURL": "Search"
+              }
+            ]
+          }
+        ]
+      },
+      "pages": {
+        "Search": "Allows administrators to locate specific users in the system by executing custom queries.",
+        "list": "Displays a list of projects associated with a selected user, provides functionality to see the specific status and builds of each.",
+        "Description": "Provides detailed insights into the ongoing status of a chosen user's project, allowing for close monitoring.",
+        "login": "",
+        "item-descriptio": "",
+        "list_1": "",
+        "social-media": "",
+        "stream": "",
+        "social-media_1": "",
+        "dashboard": "",
+        "dashboard_1": "",
+        "search": "",
+        "stream_1": "",
+        "profile": "A user profile screen with a bottom nav linking to dashboard, search, notifications, and profile tabs.",
+        "social-media_2": "",
+        "dashboard_2": "",
+        "stream_2": "",
+        "stream_3": "",
+        "stream_4": "",
+        "search_1": "",
+        "list_2": "",
+        "notification": "",
+        "chat": "",
+        "item-description_1": "",
+        "home-page": "",
+        "blog": "",
+        "chat_1": ""
+      },
+      "app_name": "WanderNote",
+      "prompt": "Design a dashboard screen for a social media app with friends and chats.",
+      "chat": "I've designed a social media interface with friend lists and messaging features."
+    },
+    {
+      "page": {
+        "description": "",
+        "name": "dashboard0",
+        "canvasWidgetType": "SCREEN",
+        "children": [
+          {
+            "description": "Tool or input bar widget, holding the background color attribute of the bar. Default color: transparent",
+            "name": "dashboard0_Dash",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Tool bar text",
+                "name": "dashboard0_Dashboard_txt_1",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "",
+            "name": "dashboard0_Stats_row_1",
+            "canvasWidgetType": "ROW"
+          },
+          {
+            "description": "",
+            "name": "indicard_195",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Title with value: value:Graph...",
+                "name": "title_195",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "",
+                "name": "stat_3",
+                "canvasWidgetType": "STAT"
+              }
+            ]
+          },
+          {
+            "description": "Containing value:Order...",
+            "name": "txt_das_3",
+            "canvasWidgetType": "TEXT"
+          },
+          {
+            "description": "List adapter of the dashboard0 screen",
+            "adapterChild": {
+              "description": "",
+              "name": "indicard_196",
+              "canvasWidgetType": "RECT",
+              "children": [
+                {
+                  "description": "Title text.value:Trade...",
+                  "name": "title_196",
+                  "canvasWidgetType": "TEXT"
+                },
+                {
+                  "description": "Subtitle text.value:Detai...",
+                  "name": "subtitle_176",
+                  "canvasWidgetType": "TEXT"
+                }
+              ]
+            },
+            "name": "dashboard0_Trad",
+            "canvasWidgetType": "GRID"
+          },
+          {
+            "description": "Bottom navigation for dashboard0",
+            "name": "dashboard0_nav",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Image of navigation element Dashboard",
+                "name": "nav_Dashboard_21",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "Text of navigation element Dashboard",
+                "name": "dashboard0_Dashboard_txt_2",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Image of navigation element Notifications",
+                "name": "nav_Notifications_21",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "Text of navigation element Notifications",
+                "name": "dashboard0_Noti",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Image of navigation element Search",
+                "name": "nav_Search_21",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "Text of navigation element Search",
+                "name": "dashboard0_Sear",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          }
+        ]
+      },
+      "code": "import ginni as g\n \n# Set adapter details for list# Generate dummy elements for the adapter. Fetch live data from storage with g.get_item('[SAVED_DATA_KEY]') or make HTTP request with await g.make_request('LIST_DATA_URL') \ndatalist = [{'img': 'https://placehold.co/600x400/FFAAAA/FFAAAA/png', 'title': 'incididunt magna.', 'subtitle': 'laboris ut aliqua.'} for x in range(10)]\n# Populate adapter with data items from adapter template\nmytemplate_id = 'indicard_196'\nadapter_id = 'dashboard0_Trad'\nadapter_items = []\nfor data in datalist:\n    list_item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n    list_item.get_child('title_196').set_text_context(data['title'])\n    list_item.get_child('subtitle_176').set_text_context(data['subtitle'])\n\n# Change the displayed value of the card's title_192 text.\ntxt_title_192  = g.GinNode('title_192')\n# txt_title_192.set_text_context('New Text Data')\n\n# Change the displayed value of the card's subtitle_173 text.\ntxt_subtitle_173  = g.GinNode('subtitle_173')\n# txt_subtitle_173.set_text_context('New Text Data')\n\n# Change the displayed image of the card's img_161 image widget.\nimage_img_161  = g.GinNode('img_161')\n# image_img_161.set_img_src('[IMAGE_URL]')\n\n# Change the displayed value of the card's title_193 text.\ntxt_title_193  = g.GinNode('title_193')\n# txt_title_193.set_text_context('New Text Data')\n\n# Change the displayed value of the card's subtitle_174 text.\ntxt_subtitle_174  = g.GinNode('subtitle_174')\n# txt_subtitle_174.set_text_context('New Text Data')\n\n# Change the displayed image of the card's img_162 image widget.\nimage_img_162  = g.GinNode('img_162')\n# image_img_162.set_img_src('[IMAGE_URL]')\n\n# Change the displayed value of the card's title_194 text.\ntxt_title_194  = g.GinNode('title_194')\n# txt_title_194.set_text_context('New Text Data')\n\n# Change the displayed value of the card's subtitle_175 text.\ntxt_subtitle_175  = g.GinNode('subtitle_175')\n# txt_subtitle_175.set_text_context('New Text Data')\n\n# Change the displayed image of the card's img_163 image widget.\nimage_img_163  = g.GinNode('img_163')\n# image_img_163.set_img_src('[IMAGE_URL]')\n\n# Change the displayed value of the card's title_195 text.\ntxt_title_195  = g.GinNode('title_195')\n# txt_title_195.set_text_context('New Text Data')\n\n# Change the displayed data of the card's graph widget.\ngraph_stat_3  = g.GinNode('stat_3')\ndataMap = { 'Red': 12, 'Blue': 19, 'Yellow': 3, 'Green': 5 }\n# graph_stat_3.render_chart(dataMap, 'pie', chartName='Set Chart Name')\ngraph_stat_3.render_chart(dataMap, 'bar', chartName='New Chart Name')\n\n# Change the displayed value of the card's title_196 text.\ntxt_title_196  = g.GinNode('title_196')\n# txt_title_196.set_text_context('New Text Data')\n\n# Change the displayed value of the card's subtitle_176 text.\ntxt_subtitle_176  = g.GinNode('subtitle_176')\n# txt_subtitle_176.set_text_context('New Text Data')\n\n# Get reference to all navigation elements and implement navigation to related screen\nnav_nav_Dashboard_21 = g.GinNode('nav_Dashboard_21')\nnav_nav_Dashboard_21.set_on_click(lambda e: g.moveto('dashboard'))\n\nnav_nav_Notifications_21 = g.GinNode('nav_Notifications_21')\n\nnav_nav_Search_21 = g.GinNode('nav_Search_21')\nnav_nav_Search_21.set_on_click(lambda e: g.moveto('Search'))\n\n",
+      "metadata": {
+        "backColor": "rgba(255, 255, 255, 1)",
+        "accentColor": "rgba(255, 152, 0, 1)",
+        "txtColor": "rgba(0, 0, 0, 1)",
+        "bottomNavColor": "rgba(0, 0, 0, 1)"
+      },
+      "creator": {
+        "type": "screen",
+        "description": "",
+        "colorGradient": "",
+        "backgroundColor": "rgba(255, 255, 255, 1)",
+        "screenDataWidgets": [
+          {
+            "type": "ToolbarData",
+            "titleText": "Dashboard",
+            "titleColor": "rgba(0, 0, 0, 1)",
+            "verticalAnchor": "TOP",
+            "shouldAnchor": false,
+            "actionWidgets": []
+          },
+          {
+            "type": "HomeRowData",
+            "rowtitle": "Stats",
+            "txtColor": "rgba(0, 0, 0, 1)",
+            "height": 180,
+            "dataList": [
+              {
+                "type": "CardTypeData",
+                "titleText": "+20%",
+                "subTitleText": "Stat 1 desc...",
+                "imgUrl": "Stats",
+                "backImgUrl": "",
+                "graphType": "",
+                "backgroundColor": "rgba(255, 255, 255, 1)",
+                "imgColor": "",
+                "textColor": "rgba(0, 0, 0, 1)",
+                "elevation": 2,
+                "cardType": "card",
+                "statType": "",
+                "height": 150,
+                "width": 300
+              },
+              {
+                "type": "CardTypeData",
+                "titleText": "+50%",
+                "subTitleText": "Stat 2 desc...",
+                "imgUrl": "Stats",
+                "backImgUrl": "",
+                "graphType": "",
+                "backgroundColor": "rgba(255, 255, 255, 1)",
+                "imgColor": "",
+                "textColor": "rgba(0, 0, 0, 1)",
+                "elevation": 2,
+                "cardType": "card",
+                "statType": "",
+                "height": 150,
+                "width": 300
+              },
+              {
+                "type": "CardTypeData",
+                "titleText": "+70%",
+                "subTitleText": "Stat 3 desc...",
+                "imgUrl": "Stats",
+                "backImgUrl": "",
+                "graphType": "",
+                "backgroundColor": "rgba(255, 255, 255, 1)",
+                "imgColor": "",
+                "textColor": "rgba(0, 0, 0, 1)",
+                "elevation": 2,
+                "cardType": "card",
+                "statType": "",
+                "height": 150,
+                "width": 300
+              }
+            ]
+          },
+          {
+            "type": "CardTypeData",
+            "titleText": "Graph stats",
+            "subTitleText": "Stat 3 desc...",
+            "imgUrl": "",
+            "backImgUrl": "",
+            "graphType": "line",
+            "backgroundColor": "rgba(255, 255, 255, 1)",
+            "imgColor": "",
+            "textColor": "rgba(0, 0, 0, 1)",
+            "elevation": 2,
+            "cardType": "stat",
+            "statType": "",
+            "height": 400,
+            "width": 800
+          },
+          {
+            "type": "TextData",
+            "txt": "Orders",
+            "label": "Orders",
+            "fontSize": 30,
+            "fontWeight": 800,
+            "textAlign": "start",
+            "textColor": "rgba(0, 0, 0, 1)",
+            "height": 50
+          },
+          {
+            "type": "AdapterListData",
+            "name": "Trades",
+            "height": 700,
+            "itemCount": 4,
+            "adapterItemData": {
+              "type": "CardTypeData",
+              "titleText": "Trade symbol",
+              "subTitleText": "Details...",
+              "imgUrl": "",
+              "backImgUrl": "",
+              "graphType": "",
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "imgColor": "",
+              "textColor": "rgba(0, 0, 0, 1)",
+              "elevation": 2,
+              "cardType": "tile",
+              "statType": "",
+              "height": 100,
+              "width": 380
+            },
+            "orientation": "column"
+          },
+          {
+            "type": "BottomNavigationData",
+            "selectedNav": "Dashboard",
+            "backgroundColor": "rgba(27, 60, 141, 1)",
+            "normColor": "rgba(238, 238, 238, 1)",
+            "normTextColor": "rgba(238, 238, 238, 1)",
+            "activeColor": "rgba(27, 60, 141, 1)",
+            "borderColor": "rgba(0, 0, 0, 0)",
+            "elevation": 0,
+            "borderRadius": 0,
+            "height": 50,
+            "margin": 4,
+            "navElements": [
+              {
+                "type": "NavigationElement",
+                "navText": "Dashboard",
+                "navIconURL": "Apps"
+              },
+              {
+                "type": "NavigationElement",
+                "navText": "Notifications",
+                "navIconURL": "Bell"
+              },
+              {
+                "type": "NavigationElement",
+                "navText": "Search",
+                "navIconURL": "Search"
+              }
+            ]
+          }
+        ]
+      },
+      "pages": {
+        "Search": "Allows administrators to locate specific users in the system by executing custom queries.",
+        "list": "Displays a list of projects associated with a selected user, provides functionality to see the specific status and builds of each.",
+        "Description": "Provides detailed insights into the ongoing status of a chosen user's project, allowing for close monitoring.",
+        "login": "",
+        "item-descriptio": "",
+        "list_1": "",
+        "social-media": "",
+        "stream": "",
+        "social-media_1": "",
+        "dashboard": "",
+        "dashboard_1": "",
+        "search": "",
+        "stream_1": "",
+        "profile": "A user profile screen with a bottom nav linking to dashboard, search, notifications, and profile tabs.",
+        "social-media_2": "",
+        "dashboard_2": "",
+        "stream_2": "",
+        "stream_3": "",
+        "stream_4": "",
+        "search_1": "",
+        "list_2": "",
+        "notification": "",
+        "chat": "",
+        "item-description_1": "",
+        "home-page": "",
+        "blog": "",
+        "chat_1": ""
+      },
+      "app_name": "ClipJar",
+      "prompt": "Design a dashboard screen showing key stats and recent orders.",
+      "chat": "Here's a dashboard layout showing key metrics and data as specified."
+    },
+    {
+      "page": {
+        "description": "",
+        "name": "search0",
+        "canvasWidgetType": "SCREEN",
+        "children": [
+          {
+            "description": "Tool or input bar widget, holding the background color attribute of the bar. Default color: transparent",
+            "name": "search0_",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "The input area background of the search or chat field",
+                "name": "search0_input_a",
+                "canvasWidgetType": "RECT",
+                "children": [
+                  {
+                    "description": "The main input of the search field",
+                    "name": "input_5",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "Send icon button of the search field",
+                    "name": "send_5",
+                    "canvasWidgetType": "IMAGE"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "List adapter of the search0 screen",
+            "adapterChild": {
+              "description": "",
+              "name": "indicard_197",
+              "canvasWidgetType": "RECT",
+              "children": [
+                {
+                  "description": "Image of the tile item",
+                  "name": "img_164",
+                  "canvasWidgetType": "IMAGE"
+                },
+                {
+                  "description": "Title text.value:Item",
+                  "name": "title_197",
+                  "canvasWidgetType": "TEXT"
+                },
+                {
+                  "description": "Subtitle text.value:Price...",
+                  "name": "subtitle_177",
+                  "canvasWidgetType": "TEXT"
+                }
+              ]
+            },
+            "name": "search0_Top",
+            "canvasWidgetType": "GRID"
+          },
+          {
+            "description": "Bottom navigation for search0",
+            "name": "search0_nav",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Image of navigation element Dashboard",
+                "name": "nav_Dashboard_22",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "Text of navigation element Dashboard",
+                "name": "search0_Dashboa",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Image of navigation element Notifications",
+                "name": "nav_Notifications_22",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "Text of navigation element Notifications",
+                "name": "search0_Notific",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Image of navigation element Search",
+                "name": "nav_Search_22",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "Text of navigation element Search",
+                "name": "search0_Search_",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          }
+        ]
+      },
+      "code": "import ginni as g\n \n# Set adapter details for list# Generate dummy elements for the adapter. Fetch live data from storage with g.get_item('[SAVED_DATA_KEY]') or make HTTP request with await g.make_request('LIST_DATA_URL') \ndatalist_search0_Top = [{'img': 'https://placehold.co/600x400/AAAAFF/AAAAFF/png', 'title': 'elit lorem.', 'subtitle': 'reprehenderit pariatur labore.'} for x in range(10)]\n# Populate adapter with data items from adapter template\nmytemplate_id = 'indicard_197'\nadapter_id = 'search0_Top'\nadapter_items_search0_Top = []\nfor data in datalist_search0_Top:\n    list_item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n    list_item.get_child('title_197').set_text_context(data['title'])\n    list_item.get_child('subtitle_177').set_text_context(data['subtitle'])\n    list_item.get_child('img_164').set_img_src(data['img'])\n    list_item.set_on_click(lambda e: g.print(f\"Clicked item: {data[\"title\"]}\"))\n    adapter_items_search0_Top.append(list_item)\n\n# Implement search for elements \ndisplayed_data = [] \ninput_field = g.GinNode('input_5')\ndef search_sample_data(data, keyword):\n    keyword = keyword.lower()\n    return [\n        {'title': item['title'], 'subtitle': item['subtitle'], 'img': item['img']}\n        for item in data\n        if keyword in item['title'].lower() or keyword in item['subtitle'].lower()\n    ]\n    \nasync def display_list_data(data_list, widgets_list):\n    # destroy all displayed widgets in the adapter grid/list\n    for widget in widgets_list:\n        widget.remove()\n        \n    # Create and display new widgets in the filtered_list\n    widgets_list = []\n    for data in data_list:\n        list_item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n        list_item.get_child('title_197').set_text_context(data['title'])\n        list_item.get_child('subtitle_177').set_text_context(data['subtitle'])\n        list_item.get_child('img_164').set_img_src(data['img'])\n        # You may set onclick listener for the list items\n        list_item.set_on_click(lambda e: g.print(f\"Clicked item: {data[\"title\"]}\"))\n        widgets_list.append(list_item)\n    return widgets_list\n\nsearch_btn = g.GinNode('send_5')\nasync def start_search(e):\n    text = input_field.get_value() # Get search text value\n    text = input_field.get_value().strip()\n    searched_data = search_sample_data(datalist_search0_Top, text)\n    nonlocal adapter_items_search0_Top\n    adapter_items_search0_Top = await display_list_data(searched_data, adapter_items_search0_Top)\n\nsearch_btn.set_on_click(start_search)\n\n\n# Get reference to all navigation elements and implement navigation to related screen\n\n# Get reference to all navigation elements and implement navigation to related screen\nnav_nav_Dashboard_22 = g.GinNode('nav_Dashboard_22')\nnav_nav_Dashboard_22.set_on_click(lambda e: g.moveto('dashboard'))\n\nnav_nav_Notifications_22 = g.GinNode('nav_Notifications_22')\n\nnav_nav_Search_22 = g.GinNode('nav_Search_22')\nnav_nav_Search_22.set_on_click(lambda e: g.moveto('Search'))\n\n",
+      "metadata": {
+        "backColor": "rgba(255, 255, 255, 1)",
+        "accentColor": "rgba(255, 152, 0, 1)",
+        "txtColor": "rgba(0, 0, 0, 1)",
+        "bottomNavColor": "rgba(0, 0, 0, 1)"
+      },
+      "creator": {
+        "type": "screen",
+        "description": "",
+        "colorGradient": "",
+        "backgroundColor": "rgba(255, 255, 255, 1)",
+        "screenDataWidgets": [
+          {
+            "type": "ToolbarData",
+            "titleText": "",
+            "titleColor": "rgba(0, 0, 0, 1)",
+            "verticalAnchor": "TOP",
+            "shouldAnchor": false,
+            "actionWidgets": [],
+            "searchInputData": {
+              "type": "ChatSearchInputFieldData",
+              "elevation": 0,
+              "width": 350,
+              "height": 45,
+              "borderColor": "rgba(27, 60, 141, 1)",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          },
+          {
+            "type": "AdapterListData",
+            "name": "Top",
+            "height": 900,
+            "itemCount": 6,
+            "adapterItemData": {
+              "type": "CardTypeData",
+              "titleText": "Item",
+              "subTitleText": "Price/description",
+              "imgUrl": "real",
+              "backImgUrl": "",
+              "graphType": "",
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "imgColor": "",
+              "textColor": "rgba(0, 0, 0, 1)",
+              "elevation": 2,
+              "cardType": "tile",
+              "statType": "",
+              "height": 150,
+              "width": 400
+            },
+            "orientation": "column"
+          },
+          {
+            "type": "BottomNavigationData",
+            "selectedNav": "Search",
+            "backgroundColor": "rgba(27, 60, 141, 1)",
+            "normColor": "rgba(238, 238, 238, 1)",
+            "normTextColor": "rgba(238, 238, 238, 1)",
+            "activeColor": "rgba(27, 60, 141, 1)",
+            "borderColor": "rgba(0, 0, 0, 0)",
+            "elevation": 0,
+            "borderRadius": 0,
+            "height": 50,
+            "margin": 4,
+            "navElements": [
+              {
+                "type": "NavigationElement",
+                "navText": "Dashboard",
+                "navIconURL": "Apps"
+              },
+              {
+                "type": "NavigationElement",
+                "navText": "Notifications",
+                "navIconURL": "Bell"
+              },
+              {
+                "type": "NavigationElement",
+                "navText": "Search",
+                "navIconURL": "Search"
+              }
+            ]
+          }
+        ]
+      },
+      "pages": {
+        "Search": "Allows administrators to locate specific users in the system by executing custom queries.",
+        "list": "Displays a list of projects associated with a selected user, provides functionality to see the specific status and builds of each.",
+        "Description": "Provides detailed insights into the ongoing status of a chosen user's project, allowing for close monitoring.",
+        "login": "",
+        "item-descriptio": "",
+        "list_1": "",
+        "social-media": "",
+        "stream": "",
+        "social-media_1": "",
+        "dashboard": "",
+        "dashboard_1": "",
+        "search": "",
+        "stream_1": "",
+        "profile": "A user profile screen with a bottom nav linking to dashboard, search, notifications, and profile tabs.",
+        "social-media_2": "",
+        "dashboard_2": "",
+        "stream_2": "",
+        "stream_3": "",
+        "stream_4": "",
+        "search_1": "",
+        "list_2": "",
+        "notification": "",
+        "chat": "",
+        "item-description_1": "",
+        "home-page": "",
+        "blog": "",
+        "chat_1": ""
+      },
+      "app_name": "GlowTrack",
+      "prompt": "Design a search page with a results list.",
+      "chat": "I've built a search interface with results display and filtering capabilities."
+    },
+    {
+      "page": {
+        "description": "",
+        "name": "list0",
+        "canvasWidgetType": "SCREEN",
+        "children": [
+          {
+            "description": "Tool or input bar widget, holding the background color attribute of the bar. Default color: transparent",
+            "name": "list0_List",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Tool bar text",
+                "name": "list0_List_txt",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "List adapter of the list0 screen",
+            "adapterChild": {
+              "description": "",
+              "name": "indicard_198",
+              "canvasWidgetType": "RECT",
+              "children": [
+                {
+                  "description": "Image of the tile item",
+                  "name": "img_165",
+                  "canvasWidgetType": "IMAGE"
+                },
+                {
+                  "description": "Title text.value:Item",
+                  "name": "title_198",
+                  "canvasWidgetType": "TEXT"
+                },
+                {
+                  "description": "Subtitle text.value:Price...",
+                  "name": "subtitle_178",
+                  "canvasWidgetType": "TEXT"
+                }
+              ]
+            },
+            "name": "list0_Top",
+            "canvasWidgetType": "GRID"
+          },
+          {
+            "description": "Bottom navigation for list0",
+            "name": "list0_nav",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Image of navigation element Dashboard",
+                "name": "nav_Dashboard_23",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "Text of navigation element Dashboard",
+                "name": "list0_Dashboard",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Image of navigation element Notifications",
+                "name": "nav_Notifications_23",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "Text of navigation element Notifications",
+                "name": "list0_Notificat",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Image of navigation element Search",
+                "name": "nav_Search_23",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "Text of navigation element Search",
+                "name": "list0_Search_tx",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          }
+        ]
+      },
+      "code": "import ginni as g\n \n# Set adapter details for list# Generate dummy elements for the adapter. Fetch live data from storage with g.get_item('[SAVED_DATA_KEY]') or make HTTP request with await g.make_request('LIST_DATA_URL') \ndatalist_list0_Top = [{'img': 'https://placehold.co/600x400/BBAAAA/BBAAAA/png', 'title': 'voluptate pariatur.', 'subtitle': 'fugiat in sit.'} for x in range(10)]\n# Populate adapter with data items from adapter template\nmytemplate_id = 'indicard_198'\nadapter_id = 'list0_Top'\nadapter_items_list0_Top = []\nfor data in datalist_list0_Top:\n    list_item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n    list_item.get_child('title_198').set_text_context(data['title'])\n    list_item.get_child('subtitle_178').set_text_context(data['subtitle'])\n    list_item.get_child('img_165').set_img_src(data['img'])\n    list_item.set_on_click(lambda e: g.print(f\"Clicked item: {data[\"title\"]}\"))\n    adapter_items_list0_Top.append(list_item)\n# Get reference to all navigation elements and implement navigation to related screen\n\n# Get reference to all navigation elements and implement navigation to related screen\nnav_nav_Dashboard_23 = g.GinNode('nav_Dashboard_23')\nnav_nav_Dashboard_23.set_on_click(lambda e: g.moveto('dashboard'))\n\nnav_nav_Notifications_23 = g.GinNode('nav_Notifications_23')\n\nnav_nav_Search_23 = g.GinNode('nav_Search_23')\nnav_nav_Search_23.set_on_click(lambda e: g.moveto('Search'))\n\n",
+      "metadata": {
+        "backColor": "rgba(255, 255, 255, 1)",
+        "accentColor": "rgba(255, 152, 0, 1)",
+        "txtColor": "rgba(0, 0, 0, 1)",
+        "bottomNavColor": "rgba(0, 0, 0, 1)"
+      },
+      "creator": {
+        "type": "screen",
+        "description": "",
+        "colorGradient": "",
+        "backgroundColor": "rgba(255, 255, 255, 1)",
+        "screenDataWidgets": [
+          {
+            "type": "ToolbarData",
+            "titleText": "List",
+            "titleColor": "rgba(0, 0, 0, 1)",
+            "verticalAnchor": "TOP",
+            "shouldAnchor": false,
+            "actionWidgets": []
+          },
+          {
+            "type": "AdapterListData",
+            "name": "Top",
+            "height": 900,
+            "itemCount": 6,
+            "adapterItemData": {
+              "type": "CardTypeData",
+              "titleText": "Item",
+              "subTitleText": "Price/description",
+              "imgUrl": "real",
+              "backImgUrl": "",
+              "graphType": "",
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "imgColor": "",
+              "textColor": "rgba(0, 0, 0, 1)",
+              "elevation": 2,
+              "cardType": "tile",
+              "statType": "",
+              "height": 150,
+              "width": 400
+            },
+            "orientation": "column"
+          },
+          {
+            "type": "BottomNavigationData",
+            "selectedNav": "Search",
+            "backgroundColor": "rgba(27, 60, 141, 1)",
+            "normColor": "rgba(238, 238, 238, 1)",
+            "normTextColor": "rgba(238, 238, 238, 1)",
+            "activeColor": "rgba(27, 60, 141, 1)",
+            "borderColor": "rgba(0, 0, 0, 0)",
+            "elevation": 0,
+            "borderRadius": 0,
+            "height": 50,
+            "margin": 4,
+            "navElements": [
+              {
+                "type": "NavigationElement",
+                "navText": "Dashboard",
+                "navIconURL": "Apps"
+              },
+              {
+                "type": "NavigationElement",
+                "navText": "Notifications",
+                "navIconURL": "Bell"
+              },
+              {
+                "type": "NavigationElement",
+                "navText": "Search",
+                "navIconURL": "Search"
+              }
+            ]
+          }
+        ]
+      },
+      "pages": {
+        "Search": "Allows administrators to locate specific users in the system by executing custom queries.",
+        "list": "Displays a list of projects associated with a selected user, provides functionality to see the specific status and builds of each.",
+        "Description": "Provides detailed insights into the ongoing status of a chosen user's project, allowing for close monitoring.",
+        "login": "",
+        "item-descriptio": "",
+        "list_1": "",
+        "social-media": "",
+        "stream": "",
+        "social-media_1": "",
+        "dashboard": "",
+        "dashboard_1": "",
+        "search": "",
+        "stream_1": "",
+        "profile": "A user profile screen with a bottom nav linking to dashboard, search, notifications, and profile tabs.",
+        "social-media_2": "",
+        "dashboard_2": "",
+        "stream_2": "",
+        "stream_3": "",
+        "stream_4": "",
+        "search_1": "",
+        "list_2": "",
+        "notification": "",
+        "chat": "",
+        "item-description_1": "",
+        "home-page": "",
+        "blog": "",
+        "chat_1": ""
+      },
+      "app_name": "BentoWave",
+      "prompt": "Design a page with a vertical list of content items.",
+      "chat": "Here's a page layout with content items arranged vertically for easy browsing."
+    },
+    {
+      "page": {
+        "description": "",
+        "name": "notification0",
+        "canvasWidgetType": "SCREEN",
+        "children": [
+          {
+            "description": "Tool or input bar widget, holding the background color attribute of the bar. Default color: transparent",
+            "name": "notification0_N",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Tool bar text",
+                "name": "notification0_Notifications_txt_1",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "List adapter of the notification0 screen",
+            "adapterChild": {
+              "description": "",
+              "name": "indicard_199",
+              "canvasWidgetType": "RECT",
+              "children": [
+                {
+                  "description": "Title text.value:Title",
+                  "name": "title_199",
+                  "canvasWidgetType": "TEXT"
+                },
+                {
+                  "description": "Subtitle text.value:detai...",
+                  "name": "subtitle_179",
+                  "canvasWidgetType": "TEXT"
+                }
+              ]
+            },
+            "name": "notification0_T",
+            "canvasWidgetType": "GRID"
+          },
+          {
+            "description": "Bottom navigation for notification0",
+            "name": "notification0_n",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Image of navigation element Dashboard",
+                "name": "nav_Dashboard_24",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "Text of navigation element Dashboard",
+                "name": "notification0_D",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Image of navigation element Notifications",
+                "name": "nav_Notifications_24",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "Text of navigation element Notifications",
+                "name": "notification0_Notifications_txt_2",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Image of navigation element Search",
+                "name": "nav_Search_24",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "Text of navigation element Search",
+                "name": "notification0_S",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          }
+        ]
+      },
+      "code": "import ginni as g\n \n# Set adapter details for list\n# Generate dummy elements for the adapter. Fetch live data from storage with g.get_item('[SAVED_DATA_KEY]') or make HTTP request with await g.make_request('LIST_DATA_URL')\ndatalist_notification0_T = [{'img': 'https://placehold.co/600x400/FFAAFF/FFAAFF/png', 'title': 'ut quis.', 'subtitle': 'dolore reprehenderit ipsum.'} for x in range(10)]\n# Populate adapter with data items from adapter template\nmytemplate_id = 'indicard_199'\nadapter_id = 'notification0_T'\nadapter_items_notification0_T = []\nfor data in datalist_notification0_T:\n    list_item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n    list_item.get_child('title_199').set_text_context(data['title'])\n    list_item.get_child('subtitle_179').set_text_context(data['subtitle'])\n    list_item.set_on_click(lambda e: g.print(f\"Clicked item: {data[\"title\"]}\"))\n    adapter_items_notification0_T.append(list_item)\n\n# Get reference to all navigation elements and implement navigation to related screen\n\n# Get reference to all navigation elements and implement navigation to related screen\nnav_nav_Dashboard_24 = g.GinNode('nav_Dashboard_24')\nnav_nav_Dashboard_24.set_on_click(lambda e: g.moveto('dashboard'))\n\nnav_nav_Notifications_24 = g.GinNode('nav_Notifications_24')\n\nnav_nav_Search_24 = g.GinNode('nav_Search_24')\nnav_nav_Search_24.set_on_click(lambda e: g.moveto('Search'))\n\n",
+      "metadata": {
+        "backColor": "rgba(255, 255, 255, 1)",
+        "accentColor": "rgba(255, 152, 0, 1)",
+        "txtColor": "rgba(0, 0, 0, 1)",
+        "bottomNavColor": "rgba(0, 0, 0, 1)"
+      },
+      "creator": {
+        "type": "screen",
+        "description": "",
+        "colorGradient": "",
+        "backgroundColor": "rgba(255, 255, 255, 1)",
+        "screenDataWidgets": [
+          {
+            "type": "ToolbarData",
+            "titleText": "Notifications",
+            "titleColor": "rgba(0, 0, 0, 1)",
+            "verticalAnchor": "TOP",
+            "shouldAnchor": false,
+            "actionWidgets": []
+          },
+          {
+            "type": "AdapterListData",
+            "name": "Top",
+            "height": 900,
+            "itemCount": 6,
+            "adapterItemData": {
+              "type": "CardTypeData",
+              "titleText": "Title",
+              "subTitleText": "detail",
+              "imgUrl": "",
+              "backImgUrl": "",
+              "graphType": "",
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "imgColor": "",
+              "textColor": "rgba(0, 0, 0, 1)",
+              "elevation": 2,
+              "cardType": "tile",
+              "statType": "",
+              "height": 100,
+              "width": 400
+            },
+            "orientation": "column"
+          },
+          {
+            "type": "BottomNavigationData",
+            "selectedNav": "Notifications",
+            "backgroundColor": "rgba(27, 60, 141, 1)",
+            "normColor": "rgba(238, 238, 238, 1)",
+            "normTextColor": "rgba(238, 238, 238, 1)",
+            "activeColor": "rgba(27, 60, 141, 1)",
+            "borderColor": "rgba(0, 0, 0, 0)",
+            "elevation": 0,
+            "borderRadius": 0,
+            "height": 50,
+            "margin": 4,
+            "navElements": [
+              {
+                "type": "NavigationElement",
+                "navText": "Dashboard",
+                "navIconURL": "Apps"
+              },
+              {
+                "type": "NavigationElement",
+                "navText": "Notifications",
+                "navIconURL": "Bell"
+              },
+              {
+                "type": "NavigationElement",
+                "navText": "Search",
+                "navIconURL": "Search"
+              }
+            ]
+          }
+        ]
+      },
+      "pages": {
+        "Search": "Allows administrators to locate specific users in the system by executing custom queries.",
+        "list": "Displays a list of projects associated with a selected user, provides functionality to see the specific status and builds of each.",
+        "Description": "Provides detailed insights into the ongoing status of a chosen user's project, allowing for close monitoring.",
+        "login": "",
+        "item-descriptio": "",
+        "list_1": "",
+        "social-media": "",
+        "stream": "",
+        "social-media_1": "",
+        "dashboard": "",
+        "dashboard_1": "",
+        "search": "",
+        "stream_1": "",
+        "profile": "A user profile screen with a bottom nav linking to dashboard, search, notifications, and profile tabs.",
+        "social-media_2": "",
+        "dashboard_2": "",
+        "stream_2": "",
+        "stream_3": "",
+        "stream_4": "",
+        "search_1": "",
+        "list_2": "",
+        "notification": "",
+        "chat": "",
+        "item-description_1": "",
+        "home-page": "",
+        "blog": "",
+        "chat_1": ""
+      },
+      "app_name": "SyncVault",
+      "prompt": "Design a screen showing a list of notifications.",
+      "chat": "I've created a notification screen with organized alert listings."
+    },
+    {
+      "page": {
+        "description": "",
+        "name": "chat0",
+        "canvasWidgetType": "SCREEN",
+        "children": [
+          {
+            "description": "Tool or input bar widget, holding the background color attribute of the bar. Default color: transparent",
+            "name": "chat0_chat0",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Tool bar text",
+                "name": "chat0_chat0_txt",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "List adapter of the chat0 screen",
+            "adapterChild": {
+              "description": "",
+              "name": "indicard_200",
+              "canvasWidgetType": "RECT",
+              "children": [
+                {
+                  "description": "Text of the tile item. value:Notif...",
+                  "name": "title_200",
+                  "canvasWidgetType": "TEXT"
+                },
+                {
+                  "description": "Subtitle text.",
+                  "name": "subtitle_180",
+                  "canvasWidgetType": "TEXT"
+                }
+              ]
+            },
+            "name": "chat0_chats",
+            "canvasWidgetType": "GRID"
+          },
+          {
+            "description": "Tool or input bar widget, holding the background color attribute of the bar. Default color: transparent",
+            "name": "chat0_",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "The input area background of the search or chat field",
+                "name": "chat0_input_are",
+                "canvasWidgetType": "RECT",
+                "children": [
+                  {
+                    "description": "The main input of the search field",
+                    "name": "input_6",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "Send icon button of the search field",
+                    "name": "send_6",
+                    "canvasWidgetType": "IMAGE"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "code": "import ginni as g\nimport random\nlist_name = 'chat0_chats'\ntemplate_name = 'indicard_200'\n# Implement search for elements \ndisplayed_data = [] \ninput_field = g.GinNode('input_6') \n\n# Implement code to add dummy response from bot\nasync def add_bot_response():\n    bot_responses = [\n        \"Hello! How can I help you today?\",\n        \"Processing your request...\",\n        \"I'm not sure I understand. Could you rephrase that?\",\n        \"Done ✅\",\n        \"Working on it 🛠️\",\n        \"Oops! Something went wrong. Please try again.\",\n        \"Here's what I found 🔍\",\n        \"Great question! Let me look that up.\",\n        \"I'm just a bot, but I'm learning every day 🤖\",\n        \"Thanks for your input!\"\n    ]\n    # Assign a random response to a string variable\n    text = random.choice(bot_responses)\n    chat_item = await g.create_widget_type(template_id=template_name, parent_id=list_name)\n    chat_item.justify('flex-start') # Align Bot response element to the left of the page\n    chat_item.get_child(template_name).set_color('#ffaabb') # Change background color of bot response card element\n    chat_item.scroll_to_me()\n #scroll to position    chat_item.get_child('title_200').set_text_context('Bot') # set title text of chat widget\n    chat_item.get_child('subtitle_180').set_text_context(text) # set message text\n    chat_item.get_child('subtitle_180').set_text_color('#ffffff') # Change text color of chat element\n\n\nsend_btn = g.GinNode('send_6')\nasync def send_chat(e):\n    text = input_field.get_value().strip()\n    input_field.set_value('')\n    chat_item = await g.create_widget_type(template_id=template_name, parent_id=list_name)\n    chat_item.get_child('title_200').set_text_context('User') # set title text of chat widget\n    chat_item.get_child('subtitle_180').set_text_context(text) # set message text\n    chat_item.justify('flex-end')  # Align template to the right of the list for chat effect\n    chat_item.scroll_to_me()  \n    # Call API or append random bot responses to the chat list\n    await add_bot_response()\n\nsend_btn.set_on_click(send_chat)\n",
+      "metadata": {
+        "backColor": "rgba(255, 255, 255, 1)",
+        "accentColor": "rgba(255, 152, 0, 1)",
+        "txtColor": "rgba(0, 0, 0, 1)",
+        "bottomNavColor": "rgba(0, 0, 0, 1)"
+      },
+      "creator": {
+        "type": "screen",
+        "description": "",
+        "colorGradient": "",
+        "backgroundColor": "rgba(255, 255, 255, 1)",
+        "screenDataWidgets": [
+          {
+            "type": "ToolbarData",
+            "titleText": "chat0",
+            "titleColor": "rgba(0, 0, 0, 1)",
+            "verticalAnchor": "TOP",
+            "shouldAnchor": false,
+            "actionWidgets": []
+          },
+          {
+            "type": "AdapterListData",
+            "name": "chats",
+            "height": 900,
+            "itemCount": 0,
+            "adapterItemData": {
+              "type": "CardTypeData",
+              "titleText": "Notification",
+              "subTitleText": "",
+              "imgUrl": "",
+              "backImgUrl": "",
+              "graphType": "",
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "imgColor": "",
+              "textColor": "rgba(0, 0, 0, 1)",
+              "elevation": 2,
+              "cardType": "chat",
+              "statType": "",
+              "height": 250,
+              "width": 350
+            },
+            "orientation": "column"
+          },
+          {
+            "type": "ToolbarData",
+            "titleText": "",
+            "titleColor": "rgba(0, 0, 0, 1)",
+            "verticalAnchor": "BOTTOM",
+            "shouldAnchor": true,
+            "actionWidgets": [],
+            "searchInputData": {
+              "type": "ChatSearchInputFieldData",
+              "elevation": 0,
+              "width": 300,
+              "height": 40,
+              "borderColor": "rgba(27, 60, 141, 1)",
+              "backgroundColor": "rgba(0, 0, 0, 0)"
+            }
+          }
+        ]
+      },
+      "pages": {
+        "Search": "Allows administrators to locate specific users in the system by executing custom queries.",
+        "list": "Displays a list of projects associated with a selected user, provides functionality to see the specific status and builds of each.",
+        "Description": "Provides detailed insights into the ongoing status of a chosen user's project, allowing for close monitoring.",
+        "login": "",
+        "item-descriptio": "",
+        "list_1": "",
+        "social-media": "",
+        "stream": "",
+        "social-media_1": "",
+        "dashboard": "",
+        "dashboard_1": "",
+        "search": "",
+        "stream_1": "",
+        "profile": "A user profile screen with a bottom nav linking to dashboard, search, notifications, and profile tabs.",
+        "social-media_2": "",
+        "dashboard_2": "",
+        "stream_2": "",
+        "stream_3": "",
+        "stream_4": "",
+        "search_1": "",
+        "list_2": "",
+        "notification": "",
+        "chat": "",
+        "item-description_1": "",
+        "home-page": "",
+        "blog": "",
+        "chat_1": ""
+      },
+      "app_name": "Zappy",
+      "prompt": "Design a chat screen for a messaging app.",
+      "chat": "I've set up a chat interface for messaging and communication."
+    },
+    {
+      "page": {
+        "description": "",
+        "name": "item-description0_1",
+        "canvasWidgetType": "SCREEN",
+        "children": [
+          {
+            "description": "Tool or input bar widget, holding the background color attribute of the bar. Default color: transparent",
+            "name": "item-description0_Description_1",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Tool bar text",
+                "name": "item-description0_Description_txt_1",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "",
+            "name": "img_item-description0_1",
+            "canvasWidgetType": "IMAGE"
+          },
+          {
+            "description": "Containing value:Title",
+            "name": "txt_ite_6",
+            "canvasWidgetType": "TEXT"
+          },
+          {
+            "description": "Containing value:conse...",
+            "name": "txt_ite_7",
+            "canvasWidgetType": "TEXT"
+          },
+          {
+            "description": "",
+            "name": "item-description0_crow_1",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "action 1 button",
+                "name": "btn_action_1_3",
+                "canvasWidgetType": "RECT",
+                "children": [
+                  {
+                    "description": "action 1 btn text",
+                    "name": "btntxt_action_1_text_3",
+                    "canvasWidgetType": "TEXT"
+                  }
+                ]
+              },
+              {
+                "description": "action 2 button",
+                "name": "btn_action_2_3",
+                "canvasWidgetType": "RECT",
+                "children": [
+                  {
+                    "description": "action 2 btn text",
+                    "name": "btntxt_action_2_text_3",
+                    "canvasWidgetType": "TEXT"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "Containing value:More ...",
+            "name": "txt_ite_8",
+            "canvasWidgetType": "TEXT"
+          },
+          {
+            "description": "List adapter of the item-description0 screen",
+            "adapterChild": {
+              "description": "",
+              "name": "indicard_201",
+              "canvasWidgetType": "RECT",
+              "children": [
+                {
+                  "description": "Image of the row item",
+                  "name": "img_166",
+                  "canvasWidgetType": "IMAGE"
+                },
+                {
+                  "description": "Title.value:Title...",
+                  "name": "title_201",
+                  "canvasWidgetType": "TEXT"
+                },
+                {
+                  "description": "description.value:Descr...",
+                  "name": "subtitle_181",
+                  "canvasWidgetType": "TEXT"
+                }
+              ]
+            },
+            "name": "item-description0_Trending_1",
+            "canvasWidgetType": "GRID"
+          }
+        ]
+      },
+      "code": "import ginni as g\ntext_item-description0_Description_txt_1 = g.GinNode('item-description0_Description_txt_1') # Get reference to text widget\n# text_item-description0_Description_txt_1.set_text_context('[CONTENT]') # set displayed content item-description0_Description_txt_1 of text widget. Call API or fetch value from local storage with g.get_item('[KEY]')\n\ntext_txt_ite_6 = g.GinNode('txt_ite_6') # Get reference to text widget\n# text_txt_ite_6.set_text_context('[CONTENT]') # set displayed content txt_ite_6 of text widget. Call API or fetch value from local storage with g.get_item('[KEY]')\n\ntext_txt_ite_7 = g.GinNode('txt_ite_7') # Get reference to text widget\n# text_txt_ite_7.set_text_context('[CONTENT]') # set displayed content txt_ite_7 of text widget. Call API or fetch value from local storage with g.get_item('[KEY]')\n\ntext_btntxt_action_1_text_3 = g.GinNode('btntxt_action_1_text_3') # Get reference to text widget\n# text_btntxt_action_1_text_3.set_text_context('[CONTENT]') # set displayed content btntxt_action_1_text_3 of text widget. Call API or fetch value from local storage with g.get_item('[KEY]')\n\ntext_btntxt_action_2_text_3 = g.GinNode('btntxt_action_2_text_3') # Get reference to text widget\n# text_btntxt_action_2_text_3.set_text_context('[CONTENT]') # set displayed content btntxt_action_2_text_3 of text widget. Call API or fetch value from local storage with g.get_item('[KEY]')\n\ntext_txt_ite_8 = g.GinNode('txt_ite_8') # Get reference to text widget\n# text_txt_ite_8.set_text_context('[CONTENT]') # set displayed content txt_ite_8 of text widget. Call API or fetch value from local storage with g.get_item('[KEY]')\n\ntext_title_201 = g.GinNode('title_201') # Get reference to text widget\n# text_title_201.set_text_context('[CONTENT]') # set displayed content title_201 of text widget. Call API or fetch value from local storage with g.get_item('[KEY]')\n\ntext_subtitle_181 = g.GinNode('subtitle_181') # Get reference to text widget\n# text_subtitle_181.set_text_context('[CONTENT]') # set displayed content subtitle_181 of text widget. Call API or fetch value from local storage with g.get_item('[KEY]')\n\nimage_img_item-description0_1 = g.GinNode('img_item-description0_1') # Get reference to IMAGE widget\n# image_img_item-description0_1.set_img_src([IMAGE_URL]) # set URL of image widget. Call API or fetch value from local storage with g.get_item('[KEY]') if saved\n\nimage_img_166 = g.GinNode('img_166') # Get reference to IMAGE widget\n# image_img_166.set_img_src([IMAGE_URL]) # set URL of image widget. Call API or fetch value from local storage with g.get_item('[KEY]') if saved\n\n# Set click listeners for buttons\nbutton_btn_action_1_3 = g.GinNode('btn_action_1_3') # Get reference to button widget\ndef handle_btn_action_1_3_click(event):\n    g.show_toast('clicked btn_action_1_3') # Show button click toast\n    # Do any other thing. Move to page with g.moveto('[PAGE_NAME]') or open link with g.open_link(link)\nbutton_btn_action_1_3.set_on_click(handle_btn_action_1_3_click) # set URL of image widget. Call API or fetch value from local storage with g.get_item('[KEY]') if saved\n\n# Set click listeners for buttons\nbutton_btn_action_2_3 = g.GinNode('btn_action_2_3') # Get reference to button widget\ndef handle_btn_action_2_3_click(event):\n    g.show_toast('clicked btn_action_2_3') # Show button click toast\n    # Do any other thing. Move to page with g.moveto('[PAGE_NAME]') or open link with g.open_link(link)\nbutton_btn_action_2_3.set_on_click(handle_btn_action_2_3_click) # set URL of image widget. Call API or fetch value from local storage with g.get_item('[KEY]') if saved\n\n\n# Set adapter details for list\n# Generate dummy elements for the adapter. Fetch live data from storage with g.get_item('[SAVED_DATA_KEY]') or make HTTP request with await g.make_request('LIST_DATA_URL') \ndatalist = [{'img': 'https://placehold.co/600x400/FFAAAA/FFAAAA/png', 'title': 'exercitation ipsum.', 'subtitle': 'aute et amet.'} for x in range(10)]\n# Populate adapter with data items from adapter template\nmytemplate_id = 'indicard_201'\nadapter_id = 'item-description0_Trending_1'\nadapter_items_item-description0_Trending_1 = []\nfor data in datalist:\n    list_item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n    list_item.get_child('title_201').set_text_context(data['title'])\n    list_item.get_child('subtitle_181').set_text_context(data['subtitle'])\n    list_item.get_child('img_166').set_img_src(data['img'])\n    adapter_items_item-description0_Trending_1.append(list_item)\n\n",
+      "metadata": {
+        "backColor": "rgba(255, 255, 255, 1)",
+        "accentColor": "rgba(255, 152, 0, 1)",
+        "txtColor": "rgba(0, 0, 0, 1)",
+        "bottomNavColor": "rgba(0, 0, 0, 1)"
+      },
+      "creator": {
+        "type": "screen",
+        "description": "",
+        "colorGradient": "",
+        "backgroundColor": "rgba(255, 255, 255, 1)",
+        "screenDataWidgets": [
+          {
+            "type": "ToolbarData",
+            "titleText": "Description",
+            "titleColor": "rgba(0, 0, 0, 1)",
+            "verticalAnchor": "TOP",
+            "shouldAnchor": false,
+            "actionWidgets": []
+          },
+          {
+            "type": "ImgData",
+            "label": "img",
+            "height": 350,
+            "imgURL": "real",
+            "width": "",
+            "color": ""
+          },
+          {
+            "type": "TextData",
+            "txt": "Title",
+            "label": "tt",
+            "fontSize": 30,
+            "fontWeight": 800,
+            "textAlign": "start",
+            "textColor": "rgba(0, 0, 0, 1)",
+            "height": 50
+          },
+          {
+            "type": "TextData",
+            "txt": "amet aute sed velit commodo consectetur quis enim tempor enim eu eu fugiat exercitation ea quis duis amet consequat irure voluptate commodo ullamco amet elit velit ut dolore magna laboris ex ut ad cillum duis nostrud irure aliquip exercitation labore ut elit aliqua laboris dolor adipiscing laboris ut eu exercitation duis aliquip nulla minim et ea commodo in voluptate ad nisi consequat dolor elit ut in ut incididunt nulla pariatur aliquip fugiat dolor magna dolore ut duis eu laboris sit eiusmod in duis eu in amet enim quis ut consectetur et lorem eiusmod laboris ut fugiat incididunt veniam minim in.",
+            "label": "tt",
+            "fontSize": 20,
+            "fontWeight": 800,
+            "textAlign": "start",
+            "textColor": "rgba(0, 0, 0, 1)",
+            "height": 400
+          },
+          {
+            "type": "CenterRowData",
+            "height": 70,
+            "width": 400,
+            "contents": [
+              {
+                "type": "ButtonData",
+                "buttonText": "action 1",
+                "width": 150,
+                "buttonTextColor": "rgba(255, 255, 255, 1)",
+                "buttonColor": "rgba(27, 60, 141, 1)",
+                "buttonBorderColor": ""
+              },
+              {
+                "type": "ButtonData",
+                "buttonText": "action 2",
+                "width": 150,
+                "buttonTextColor": "rgba(255, 255, 255, 1)",
+                "buttonColor": "rgba(0, 0, 0, 1)",
+                "buttonBorderColor": ""
+              }
+            ]
+          },
+          {
+            "type": "TextData",
+            "txt": "More options",
+            "label": "tt",
+            "fontSize": 18,
+            "fontWeight": 800,
+            "textAlign": "start",
+            "textColor": "rgba(0, 0, 0, 1)",
+            "height": 30
+          },
+          {
+            "type": "AdapterListData",
+            "name": "Trending",
+            "height": 300,
+            "itemCount": 3,
+            "adapterItemData": {
+              "type": "CardTypeData",
+              "titleText": "Title 1",
+              "subTitleText": "Description...",
+              "imgUrl": "real",
+              "backImgUrl": "",
+              "graphType": "",
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "imgColor": "",
+              "textColor": "rgba(0, 0, 0, 1)",
+              "elevation": 2,
+              "cardType": "gridItem",
+              "statType": "",
+              "height": 250,
+              "width": 200
+            },
+            "orientation": "row"
+          }
+        ]
+      },
+      "pages": {
+        "Search": "Allows administrators to locate specific users in the system by executing custom queries.",
+        "list": "Displays a list of projects associated with a selected user, provides functionality to see the specific status and builds of each.",
+        "Description": "Provides detailed insights into the ongoing status of a chosen user's project, allowing for close monitoring.",
+        "login": "",
+        "item-descriptio": "",
+        "list_1": "",
+        "social-media": "",
+        "stream": "",
+        "social-media_1": "",
+        "dashboard": "",
+        "dashboard_1": "",
+        "search": "",
+        "stream_1": "",
+        "profile": "A user profile screen with a bottom nav linking to dashboard, search, notifications, and profile tabs.",
+        "social-media_2": "",
+        "dashboard_2": "",
+        "stream_2": "",
+        "stream_3": "",
+        "stream_4": "",
+        "search_1": "",
+        "list_2": "",
+        "notification": "",
+        "chat": "",
+        "item-description_1": "",
+        "home-page": "",
+        "blog": "",
+        "chat_1": ""
+      },
+      "app_name": "AuraBit",
+      "prompt": "Design a page that describes an item with text and images.",
+      "chat": "Here's a detailed item description page with information and media."
+    },
+    {
+      "page": {
+        "description": "",
+        "name": "home-page0",
+        "canvasWidgetType": "SCREEN",
+        "children": [
+          {
+            "description": "Tool or input bar widget, holding the background color attribute of the bar. Default color: transparent",
+            "name": "home-page0_Home",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Tool bar text",
+                "name": "home-page0_Home_txt_1",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Containing value:blog",
+                "name": "txt_nav_6",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Containing value:prici...",
+                "name": "txt_nav_7",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Containing value:conso...",
+                "name": "txt_nav_8",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Containing value:...",
+                "name": "txt_imt_2",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "The main welcome area of the page.",
+            "name": "Welcome_to_ManagementMastery_welcome_1",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "",
+                "name": "Welcome_to_ManagementMastery_welcomeimg_3",
+                "canvasWidgetType": "RECT"
+              },
+              {
+                "description": "It holds the background image of the welcome area.",
+                "name": "Welcome_to_ManagementMastery_welcomeimg_4",
+                "canvasWidgetType": "RECT",
+                "children": [
+                  {
+                    "description": "A dark overlay of the welcome area, making the background image faded and allowing overlay text to be legible and contrasted.",
+                    "name": "Welcome_to_ManagementMastery_3",
+                    "canvasWidgetType": "RECT"
+                  }
+                ]
+              },
+              {
+                "description": "",
+                "name": "Welcome_to_ManagementMastery_4",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "Containing value:Featu...",
+            "name": "txt_hom_4",
+            "canvasWidgetType": "TEXT"
+          },
+          {
+            "description": "",
+            "name": "indicard_202",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Image of the card item",
+                "name": "img_167",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "title.value:Featu...",
+                "name": "title_202",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Subtitle.value:Featu...",
+                "name": "subtitle_182",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "",
+            "name": "indicard_203",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Image of the card item",
+                "name": "img_168",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "title.value:Featu...",
+                "name": "title_203",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Subtitle.value:Featu...",
+                "name": "subtitle_183",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "",
+            "name": "indicard_204",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Image of the card item",
+                "name": "img_169",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "title.value:Featu...",
+                "name": "title_204",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Subtitle.value:Featu...",
+                "name": "subtitle_184",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "",
+            "name": "indicard_205",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Image of the card item",
+                "name": "img_170",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "title.value:Featu...",
+                "name": "title_205",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Subtitle.value:Featu...",
+                "name": "subtitle_185",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "",
+            "name": "indicard_206",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Image of the card item",
+                "name": "img_171",
+                "canvasWidgetType": "IMAGE"
+              },
+              {
+                "description": "title.value:Featu...",
+                "name": "title_206",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Subtitle.value:Featu...",
+                "name": "subtitle_186",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "Containing value:Testi...",
+            "name": "txt_hom_5",
+            "canvasWidgetType": "TEXT"
+          },
+          {
+            "description": "",
+            "name": "home-page0__row",
+            "canvasWidgetType": "ROW"
+          },
+          {
+            "description": "",
+            "name": "home-page0_ftr",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Containing value:Addre...",
+                "name": "txt_hom_6",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Containing value:abg@e...",
+                "name": "txt_hom_7",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "",
+                "name": "home-page0_crow",
+                "canvasWidgetType": "RECT",
+                "children": [
+                  {
+                    "description": "",
+                    "name": "img_home-page0",
+                    "canvasWidgetType": "IMAGE"
+                  },
+                  {
+                    "description": "",
+                    "name": "img_home-page0_1",
+                    "canvasWidgetType": "IMAGE"
+                  },
+                  {
+                    "description": "",
+                    "name": "img_home-page0_2",
+                    "canvasWidgetType": "IMAGE"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "code": "import ginni as g\n# Set navigation functionality for navigation text elements\ndef navigate4txt_nav_6(event): \n    g.show_toast('txt_nav_6 clicked')\n    # g.moveto('[PAGE_NAME]')\nnav_txt_nav_6 = g.GinNode('txt_nav_6')\nnav_txt_nav_6.set_on_click(navigate4txt_nav_6)\n\ndef navigate4txt_nav_7(event): \n    g.show_toast('txt_nav_7 clicked')\n    # g.moveto('[PAGE_NAME]')\nnav_txt_nav_7 = g.GinNode('txt_nav_7')\nnav_txt_nav_7.set_on_click(navigate4txt_nav_7)\n\ndef navigate4txt_nav_8(event): \n    g.show_toast('txt_nav_8 clicked')\n    # g.moveto('[PAGE_NAME]')\nnav_txt_nav_8 = g.GinNode('txt_nav_8')\nnav_txt_nav_8.set_on_click(navigate4txt_nav_8)\n\n\n# Set hamburger menu functionality for dropdown items in mobile view\nimg = g.GinNode('txt_imt_2')\ndrop_txt_nav_6 = img.set_dropdown_element('blog')\ndrop_txt_nav_6.set_on_click(navigate4txt_nav_6)\ndrop_txt_nav_7 = img.set_dropdown_element('pricing')\ndrop_txt_nav_7.set_on_click(navigate4txt_nav_7)\ndrop_txt_nav_8 = img.set_dropdown_element('console')\ndrop_txt_nav_8.set_on_click(navigate4txt_nav_8)\n\n",
+      "metadata": {
+        "backColor": "rgba(255, 255, 255, 1)",
+        "accentColor": "rgba(255, 152, 0, 1)",
+        "txtColor": "rgba(0, 0, 0, 1)",
+        "bottomNavColor": "rgba(0, 0, 0, 1)"
+      },
+      "creator": {
+        "type": "screen",
+        "description": "",
+        "colorGradient": "",
+        "backgroundColor": "rgba(255, 255, 255, 1)",
+        "screenDataWidgets": [
+          {
+            "type": "ToolbarData",
+            "titleText": "Home",
+            "titleColor": "rgba(27, 60, 141, 1)",
+            "verticalAnchor": "TOP",
+            "shouldAnchor": false,
+            "actionWidgets": [
+              {
+                "type": "TextData",
+                "txt": "blog",
+                "label": "blog",
+                "fontSize": 20,
+                "fontWeight": 500,
+                "textAlign": "start",
+                "textColor": "rgba(0, 0, 0, 1)",
+                "width": 100,
+                "height": 30
+              },
+              {
+                "type": "TextData",
+                "txt": "pricing",
+                "label": "pricing",
+                "fontSize": 20,
+                "fontWeight": 500,
+                "textAlign": "start",
+                "textColor": "rgba(0, 0, 0, 1)",
+                "width": 100,
+                "height": 30
+              },
+              {
+                "type": "TextData",
+                "txt": "console",
+                "label": "console",
+                "fontSize": 20,
+                "fontWeight": 500,
+                "textAlign": "start",
+                "textColor": "rgba(0, 0, 0, 1)",
+                "width": 100,
+                "height": 30
+              }
+            ]
+          },
+          {
+            "type": "WelcomeProfileArea",
+            "welcomeURL": "real",
+            "profileURL": "",
+            "welcomeText": "Welcome to ManagementMastery",
+            "profileText": "",
+            "textColor": "rgba(255, 255, 255, 1)",
+            "profileTextColor": "rgba(0, 0, 0, 1)",
+            "color": "rgba(27, 60, 141, 1)",
+            "height": 450,
+            "actionButtons": []
+          },
+          {
+            "type": "TextData",
+            "txt": "Features",
+            "label": "features",
+            "fontSize": 30,
+            "fontWeight": 700,
+            "textAlign": "center",
+            "textColor": "rgba(0, 0, 0, 1)",
+            "height": 60
+          },
+          {
+            "type": "CardTypeData",
+            "titleText": "Feature 0",
+            "subTitleText": "Feature description",
+            "imgUrl": "real",
+            "backImgUrl": "",
+            "graphType": "",
+            "backgroundColor": "rgba(255, 255, 255, 1)",
+            "imgColor": "rgba(33, 150, 243, 1)",
+            "textColor": "rgba(0, 0, 0, 1)",
+            "elevation": 2,
+            "cardType": "feature",
+            "statType": "",
+            "height": 400,
+            "width": 250,
+            "featureSide": "left"
+          },
+          {
+            "type": "CardTypeData",
+            "titleText": "Feature 1",
+            "subTitleText": "Feature description",
+            "imgUrl": "real",
+            "backImgUrl": "",
+            "graphType": "",
+            "backgroundColor": "rgba(255, 255, 255, 1)",
+            "imgColor": "rgba(33, 150, 243, 1)",
+            "textColor": "rgba(0, 0, 0, 1)",
+            "elevation": 2,
+            "cardType": "feature",
+            "statType": "",
+            "height": 400,
+            "width": 250,
+            "featureSide": "right"
+          },
+          {
+            "type": "CardTypeData",
+            "titleText": "Feature 2",
+            "subTitleText": "Feature description",
+            "imgUrl": "real",
+            "backImgUrl": "",
+            "graphType": "",
+            "backgroundColor": "rgba(255, 255, 255, 1)",
+            "imgColor": "rgba(33, 150, 243, 1)",
+            "textColor": "rgba(0, 0, 0, 1)",
+            "elevation": 2,
+            "cardType": "feature",
+            "statType": "",
+            "height": 400,
+            "width": 250,
+            "featureSide": "left"
+          },
+          {
+            "type": "CardTypeData",
+            "titleText": "Feature 3",
+            "subTitleText": "Feature description",
+            "imgUrl": "real",
+            "backImgUrl": "",
+            "graphType": "",
+            "backgroundColor": "rgba(255, 255, 255, 1)",
+            "imgColor": "rgba(33, 150, 243, 1)",
+            "textColor": "rgba(0, 0, 0, 1)",
+            "elevation": 2,
+            "cardType": "feature",
+            "statType": "",
+            "height": 400,
+            "width": 250,
+            "featureSide": "right"
+          },
+          {
+            "type": "CardTypeData",
+            "titleText": "Feature 4",
+            "subTitleText": "Feature description",
+            "imgUrl": "real",
+            "backImgUrl": "",
+            "graphType": "",
+            "backgroundColor": "rgba(255, 255, 255, 1)",
+            "imgColor": "rgba(33, 150, 243, 1)",
+            "textColor": "rgba(0, 0, 0, 1)",
+            "elevation": 2,
+            "cardType": "feature",
+            "statType": "",
+            "height": 400,
+            "width": 250,
+            "featureSide": "left"
+          },
+          {
+            "type": "TextData",
+            "txt": "Testimonials",
+            "label": "testm",
+            "fontSize": 30,
+            "fontWeight": 700,
+            "textAlign": "center",
+            "textColor": "rgba(0, 0, 0, 1)",
+            "height": 60
+          },
+          {
+            "type": "HomeRowData",
+            "rowtitle": "",
+            "txtColor": "rgba(0, 0, 0, 1)",
+            "height": 300,
+            "dataList": [
+              {
+                "type": "CardTypeData",
+                "titleText": "User 0",
+                "subTitleText": "The results speak for themselves. My business has improved significantly since using this service.",
+                "imgUrl": "",
+                "backImgUrl": "",
+                "graphType": "",
+                "backgroundColor": "rgba(255, 255, 255, 1)",
+                "imgColor": "",
+                "textColor": "rgba(0, 0, 0, 1)",
+                "elevation": 2,
+                "cardType": "tile",
+                "statType": "",
+                "height": 200,
+                "width": 400
+              },
+              {
+                "type": "CardTypeData",
+                "titleText": "User 1",
+                "subTitleText": "This saved me so much time and effort. I honestly don’t know how I managed before. Worth every penny!",
+                "imgUrl": "",
+                "backImgUrl": "",
+                "graphType": "",
+                "backgroundColor": "rgba(255, 255, 255, 1)",
+                "imgColor": "",
+                "textColor": "rgba(0, 0, 0, 1)",
+                "elevation": 2,
+                "cardType": "tile",
+                "statType": "",
+                "height": 200,
+                "width": 400
+              },
+              {
+                "type": "CardTypeData",
+                "titleText": "User 2",
+                "subTitleText": "Customer service was top-notch. They answered all my questions quickly and helped guide me through the whole process. Super happy with the result.",
+                "imgUrl": "",
+                "backImgUrl": "",
+                "graphType": "",
+                "backgroundColor": "rgba(255, 255, 255, 1)",
+                "imgColor": "",
+                "textColor": "rgba(0, 0, 0, 1)",
+                "elevation": 2,
+                "cardType": "tile",
+                "statType": "",
+                "height": 200,
+                "width": 400
+              }
+            ]
+          },
+          {
+            "type": "FooterData",
+            "height": 200,
+            "width": 400,
+            "backColor": "rgba(27, 60, 141, 1)",
+            "footerData": [
+              {
+                "type": "TextData",
+                "txt": "Address:  NaKTMnLoi",
+                "label": "addr",
+                "fontSize": 14,
+                "fontWeight": 500,
+                "textAlign": "center",
+                "textColor": "rgba(238, 238, 238, 1)",
+                "height": 30
+              },
+              {
+                "type": "TextData",
+                "txt": "abg@email.com",
+                "label": "mail",
+                "fontSize": 16,
+                "fontWeight": 600,
+                "textAlign": "center",
+                "textColor": "rgba(238, 238, 238, 1)",
+                "height": 30
+              },
+              {
+                "type": "CenterRowData",
+                "height": 50,
+                "width": 400,
+                "contents": [
+                  {
+                    "type": "ImgData",
+                    "label": "social1",
+                    "height": 20,
+                    "imgURL": "Facebook",
+                    "width": 20,
+                    "color": "rgba(238, 238, 238, 1)",
+                    "fit": "contain"
+                  },
+                  {
+                    "type": "ImgData",
+                    "label": "social2",
+                    "height": 20,
+                    "imgURL": "Instagram",
+                    "width": 20,
+                    "color": "rgba(238, 238, 238, 1)",
+                    "fit": "contain"
+                  },
+                  {
+                    "type": "ImgData",
+                    "label": "social3",
+                    "height": 20,
+                    "imgURL": "Linkedin",
+                    "width": 20,
+                    "color": "rgba(238, 238, 238, 1)",
+                    "fit": "contain"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "pages": {
+        "Search": "Allows administrators to locate specific users in the system by executing custom queries.",
+        "list": "Displays a list of projects associated with a selected user, provides functionality to see the specific status and builds of each.",
+        "Description": "Provides detailed insights into the ongoing status of a chosen user's project, allowing for close monitoring.",
+        "login": "",
+        "item-descriptio": "",
+        "list_1": "",
+        "social-media": "",
+        "stream": "",
+        "social-media_1": "",
+        "dashboard": "",
+        "dashboard_1": "",
+        "search": "",
+        "stream_1": "",
+        "profile": "A user profile screen with a bottom nav linking to dashboard, search, notifications, and profile tabs.",
+        "social-media_2": "",
+        "dashboard_2": "",
+        "stream_2": "",
+        "stream_3": "",
+        "stream_4": "",
+        "search_1": "",
+        "list_2": "",
+        "notification": "",
+        "chat": "",
+        "item-description_1": "",
+        "home-page": "",
+        "blog": "",
+        "chat_1": ""
+      },
+      "app_name": "DriftDash",
+      "prompt": "Design a website home page for a company.",
+      "chat": "I've designed a home page layout with key navigation and content sections."
+    },
+    {
+      "page": {
+        "description": "",
+        "name": "pricing0",
+        "canvasWidgetType": "SCREEN",
+        "children": [
+          {
+            "description": "Tool or input bar widget, holding the background color attribute of the bar. Default color: transparent",
+            "name": "pricing0_Pricin",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Tool bar text",
+                "name": "pricing0_Pricing_txt_1",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Containing value:blog",
+                "name": "txt_nav_9",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Containing value:prici...",
+                "name": "txt_nav_10",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Containing value:conso...",
+                "name": "txt_nav_11",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Containing value:...",
+                "name": "txt_imt_3",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "Containing value:Simpl...",
+            "name": "txt_pri",
+            "canvasWidgetType": "TEXT"
+          },
+          {
+            "description": "",
+            "name": "pricing0_col2ro",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "",
+                "name": "pricing0_ftr",
+                "canvasWidgetType": "RECT",
+                "children": [
+                  {
+                    "description": "",
+                    "name": "pricing0_00_USD",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0_00_USD_desc_1",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0_00_USD_fdesc_1",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0____Fea",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0____Feature_2_1",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0____Feature_3_1",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0____Feature_4_1",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0____Feature_5_1",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "Start now button",
+                    "name": "btn_Start_now",
+                    "canvasWidgetType": "RECT",
+                    "children": [
+                      {
+                        "description": "Start now btn text",
+                        "name": "btntxt_Start_no",
+                        "canvasWidgetType": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "description": "",
+                "name": "pricing0_ftr_1",
+                "canvasWidgetType": "RECT",
+                "children": [
+                  {
+                    "description": "",
+                    "name": "pricing0_10_USD",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0_10_USD_desc_1",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0_10_USD_fdesc_1",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0____Feature_1_1",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0____Feature_2_2",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0____Feature_3_2",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0____Feature_4_2",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0____Feature_5_2",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "Start now button",
+                    "name": "btn_Start_now_1",
+                    "canvasWidgetType": "RECT",
+                    "children": [
+                      {
+                        "description": "Start now btn text",
+                        "name": "btntxt_Start_now_text_1",
+                        "canvasWidgetType": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "description": "",
+                "name": "pricing0_ftr_2",
+                "canvasWidgetType": "RECT",
+                "children": [
+                  {
+                    "description": "",
+                    "name": "pricing0_20_USD",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0_20_USD_desc_1",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0_20_USD_fdesc_1",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0____Feature_1_2",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0____Feature_2_3",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0____Feature_3_3",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0____Feature_4_3",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "",
+                    "name": "pricing0____Feature_5_3",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "Start now button",
+                    "name": "btn_Start_now_2",
+                    "canvasWidgetType": "RECT",
+                    "children": [
+                      {
+                        "description": "Start now btn text",
+                        "name": "btntxt_Start_now_text_2",
+                        "canvasWidgetType": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "description": "",
+            "name": "pricing0_Testimonials_row_1",
+            "canvasWidgetType": "ROW"
+          },
+          {
+            "description": "",
+            "name": "pricing0_ftr_3",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Containing value:Addre...",
+                "name": "txt_pri_1",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Containing value:abg@e...",
+                "name": "txt_pri_2",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "",
+                "name": "pricing0_crow",
+                "canvasWidgetType": "RECT",
+                "children": [
+                  {
+                    "description": "",
+                    "name": "img_pricing0",
+                    "canvasWidgetType": "IMAGE"
+                  },
+                  {
+                    "description": "",
+                    "name": "img_pricing0_1",
+                    "canvasWidgetType": "IMAGE"
+                  },
+                  {
+                    "description": "",
+                    "name": "img_pricing0_2",
+                    "canvasWidgetType": "IMAGE"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "code": "import ginni as g\n# Set navigation functionality for navigation text elements\ndef navigate4txt_nav_9(event): \n    g.show_toast('txt_nav_9 clicked')\n    # g.moveto('[PAGE_NAME]')\nnav_txt_nav_9 = g.GinNode('txt_nav_9')\nnav_txt_nav_9.set_on_click(navigate4txt_nav_9)\n\ndef navigate4txt_nav_10(event): \n    g.show_toast('txt_nav_10 clicked')\n    # g.moveto('[PAGE_NAME]')\nnav_txt_nav_10 = g.GinNode('txt_nav_10')\nnav_txt_nav_10.set_on_click(navigate4txt_nav_10)\n\ndef navigate4txt_nav_11(event): \n    g.show_toast('txt_nav_11 clicked')\n    # g.moveto('[PAGE_NAME]')\nnav_txt_nav_11 = g.GinNode('txt_nav_11')\nnav_txt_nav_11.set_on_click(navigate4txt_nav_11)\n\n\n# Set hamburger menu functionality for dropdown items in mobile view\nimg = g.GinNode('txt_imt_3')\ndrop_txt_nav_9 = img.set_dropdown_element('blog')\ndrop_txt_nav_9.set_on_click(navigate4txt_nav_9)\ndrop_txt_nav_10 = img.set_dropdown_element('pricing')\ndrop_txt_nav_10.set_on_click(navigate4txt_nav_10)\ndrop_txt_nav_11 = img.set_dropdown_element('console')\ndrop_txt_nav_11.set_on_click(navigate4txt_nav_11)\n\n",
+      "metadata": {
+        "backColor": "rgba(255, 255, 255, 1)",
+        "accentColor": "rgba(255, 152, 0, 1)",
+        "txtColor": "rgba(0, 0, 0, 1)",
+        "bottomNavColor": "rgba(0, 0, 0, 1)"
+      },
+      "creator": {
+        "type": "screen",
+        "description": "",
+        "colorGradient": "",
+        "backgroundColor": "rgba(255, 255, 255, 1)",
+        "screenDataWidgets": [
+          {
+            "type": "ToolbarData",
+            "titleText": "Pricing",
+            "titleColor": "rgba(27, 60, 141, 1)",
+            "verticalAnchor": "TOP",
+            "shouldAnchor": false,
+            "actionWidgets": [
+              {
+                "type": "TextData",
+                "txt": "blog",
+                "label": "blog",
+                "fontSize": 20,
+                "fontWeight": 500,
+                "textAlign": "start",
+                "textColor": "rgba(0, 0, 0, 1)",
+                "width": 100,
+                "height": 30
+              },
+              {
+                "type": "TextData",
+                "txt": "pricing",
+                "label": "pricing",
+                "fontSize": 20,
+                "fontWeight": 500,
+                "textAlign": "start",
+                "textColor": "rgba(27, 60, 141, 1)",
+                "width": 100,
+                "height": 30
+              },
+              {
+                "type": "TextData",
+                "txt": "console",
+                "label": "console",
+                "fontSize": 20,
+                "fontWeight": 500,
+                "textAlign": "start",
+                "textColor": "rgba(0, 0, 0, 1)",
+                "width": 100,
+                "height": 30
+              }
+            ]
+          },
+          {
+            "type": "TextData",
+            "txt": "Simple & Unbeatable pricing",
+            "label": "price",
+            "fontSize": 20,
+            "fontWeight": 800,
+            "textAlign": "center",
+            "textColor": "rgba(27, 60, 141, 1)",
+            "height": 100
+          },
+          {
+            "type": "ColToRowData",
+            "contents": [
+              {
+                "type": "PricingCard",
+                "priceTxt": "00 USD",
+                "priceDesc": "Freemium",
+                "features": [
+                  "✔️ Feature 1",
+                  "✔️ Feature 2",
+                  "✔️ Feature 3",
+                  "✔️ Feature 4",
+                  "✔️ Feature 5"
+                ],
+                "buttonData": {
+                  "type": "ButtonData",
+                  "buttonText": "Start now",
+                  "width": null,
+                  "buttonTextColor": "rgba(255, 255, 255, 1)",
+                  "buttonColor": "rgba(27, 60, 141, 1)",
+                  "buttonBorderColor": ""
+                },
+                "height": 480,
+                "width": 300,
+                "txtColor": "rgba(0, 0, 0, 1)",
+                "priceColor": "rgba(103, 58, 183, 1)",
+                "backColor": "rgba(255, 255, 255, 1)"
+              },
+              {
+                "type": "PricingCard",
+                "priceTxt": "10 USD",
+                "priceDesc": "Standard",
+                "features": [
+                  "✔️ Feature 1",
+                  "✔️ Feature 2",
+                  "✔️ Feature 3",
+                  "✔️ Feature 4",
+                  "✔️ Feature 5"
+                ],
+                "buttonData": {
+                  "type": "ButtonData",
+                  "buttonText": "Start now",
+                  "width": null,
+                  "buttonTextColor": "rgba(255, 255, 255, 1)",
+                  "buttonColor": "rgba(27, 60, 141, 1)",
+                  "buttonBorderColor": ""
+                },
+                "height": 480,
+                "width": 300,
+                "txtColor": "rgba(0, 0, 0, 1)",
+                "priceColor": "rgba(103, 58, 183, 1)",
+                "backColor": "rgba(255, 255, 255, 1)"
+              },
+              {
+                "type": "PricingCard",
+                "priceTxt": "20 USD",
+                "priceDesc": "Premium",
+                "features": [
+                  "✔️ Feature 1",
+                  "✔️ Feature 2",
+                  "✔️ Feature 3",
+                  "✔️ Feature 4",
+                  "✔️ Feature 5"
+                ],
+                "buttonData": {
+                  "type": "ButtonData",
+                  "buttonText": "Start now",
+                  "width": null,
+                  "buttonTextColor": "rgba(255, 255, 255, 1)",
+                  "buttonColor": "rgba(27, 60, 141, 1)",
+                  "buttonBorderColor": ""
+                },
+                "height": 480,
+                "width": 300,
+                "txtColor": "rgba(0, 0, 0, 1)",
+                "priceColor": "rgba(103, 58, 183, 1)",
+                "backColor": "rgba(255, 255, 255, 1)"
+              }
+            ]
+          },
+          {
+            "type": "HomeRowData",
+            "rowtitle": "Testimonials",
+            "txtColor": "rgba(0, 0, 0, 1)",
+            "height": 300,
+            "dataList": [
+              {
+                "type": "CardTypeData",
+                "titleText": "User 1",
+                "subTitleText": "I was blown away by the quality and attention to detail. Everything exceeded my expectations. I’ll definitely be back!",
+                "imgUrl": "",
+                "backImgUrl": "",
+                "graphType": "",
+                "backgroundColor": "rgba(255, 255, 255, 1)",
+                "imgColor": "",
+                "textColor": "rgba(0, 0, 0, 1)",
+                "elevation": 2,
+                "cardType": "tile",
+                "statType": "",
+                "height": 220,
+                "width": 400
+              },
+              {
+                "type": "CardTypeData",
+                "titleText": "User 2",
+                "subTitleText": "Fast delivery, great support, and the final product was even better than I imagined. Five stars!",
+                "imgUrl": "",
+                "backImgUrl": "",
+                "graphType": "",
+                "backgroundColor": "rgba(255, 255, 255, 1)",
+                "imgColor": "",
+                "textColor": "rgba(0, 0, 0, 1)",
+                "elevation": 2,
+                "cardType": "tile",
+                "statType": "",
+                "height": 220,
+                "width": 400
+              },
+              {
+                "type": "CardTypeData",
+                "titleText": "User 3",
+                "subTitleText": "Customer service was top-notch. They answered all my questions quickly and helped guide me through the whole process. Super happy with the result.",
+                "imgUrl": "",
+                "backImgUrl": "",
+                "graphType": "",
+                "backgroundColor": "rgba(255, 255, 255, 1)",
+                "imgColor": "",
+                "textColor": "rgba(0, 0, 0, 1)",
+                "elevation": 2,
+                "cardType": "tile",
+                "statType": "",
+                "height": 220,
+                "width": 400
+              }
+            ]
+          },
+          {
+            "type": "FooterData",
+            "height": 100,
+            "width": 400,
+            "backColor": "rgba(27, 60, 141, 1)",
+            "footerData": [
+              {
+                "type": "TextData",
+                "txt": "Address: Ij2uqM56tE",
+                "label": "addr",
+                "fontSize": 14,
+                "fontWeight": 500,
+                "textAlign": "center",
+                "textColor": "rgba(255, 255, 255, 1)",
+                "height": 30
+              },
+              {
+                "type": "TextData",
+                "txt": "abg@email.com",
+                "label": "mail",
+                "fontSize": 16,
+                "fontWeight": 600,
+                "textAlign": "center",
+                "textColor": "rgba(255, 255, 255, 1)",
+                "height": 30
+              },
+              {
+                "type": "CenterRowData",
+                "height": 50,
+                "width": 400,
+                "contents": [
+                  {
+                    "type": "ImgData",
+                    "label": "social1",
+                    "height": 20,
+                    "imgURL": "Facebook",
+                    "width": 20,
+                    "color": "rgba(27, 60, 141, 1)",
+                    "fit": "contain"
+                  },
+                  {
+                    "type": "ImgData",
+                    "label": "social2",
+                    "height": 20,
+                    "imgURL": "Instagram",
+                    "width": 20,
+                    "color": "rgba(27, 60, 141, 1)",
+                    "fit": "contain"
+                  },
+                  {
+                    "type": "ImgData",
+                    "label": "social3",
+                    "height": 20,
+                    "imgURL": "Linkedin",
+                    "width": 20,
+                    "color": "rgba(27, 60, 141, 1)",
+                    "fit": "contain"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "pages": {
+        "Search": "Allows administrators to locate specific users in the system by executing custom queries.",
+        "list": "Displays a list of projects associated with a selected user, provides functionality to see the specific status and builds of each.",
+        "Description": "Provides detailed insights into the ongoing status of a chosen user's project, allowing for close monitoring.",
+        "login": "",
+        "item-descriptio": "",
+        "list_1": "",
+        "social-media": "",
+        "stream": "",
+        "social-media_1": "",
+        "dashboard": "",
+        "dashboard_1": "",
+        "search": "",
+        "stream_1": "",
+        "profile": "A user profile screen with a bottom nav linking to dashboard, search, notifications, and profile tabs.",
+        "social-media_2": "",
+        "dashboard_2": "",
+        "stream_2": "",
+        "stream_3": "",
+        "stream_4": "",
+        "search_1": "",
+        "list_2": "",
+        "notification": "",
+        "chat": "",
+        "item-description_1": "",
+        "home-page": "",
+        "blog": "",
+        "chat_1": ""
+      },
+      "app_name": "Nestleap",
+      "prompt": "Design a pricing page with multiple plan options.",
+      "chat": "Here's a pricing page with plan options and feature comparisons."
+    },
+    {
+      "page": {
+        "description": "",
+        "name": "blog0",
+        "canvasWidgetType": "SCREEN",
+        "children": [
+          {
+            "description": "Tool or input bar widget, holding the background color attribute of the bar. Default color: transparent",
+            "name": "blog0_Blog",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Tool bar text",
+                "name": "blog0_Blog_txt",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Containing value:blog",
+                "name": "txt_nav_12",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Containing value:prici...",
+                "name": "txt_nav_13",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Containing value:conso...",
+                "name": "txt_nav_14",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Containing value:...",
+                "name": "txt_imt_4",
+                "canvasWidgetType": "TEXT"
+              }
+            ]
+          },
+          {
+            "description": "List adapter of the blog0 screen",
+            "adapterChild": {
+              "description": "",
+              "name": "indicard_213",
+              "canvasWidgetType": "RECT",
+              "children": [
+                {
+                  "description": "Image of the row item",
+                  "name": "img_172",
+                  "canvasWidgetType": "IMAGE"
+                },
+                {
+                  "description": "Title.value:Blog ...",
+                  "name": "title_213",
+                  "canvasWidgetType": "TEXT"
+                },
+                {
+                  "description": "description.value:By @D...",
+                  "name": "subtitle_193",
+                  "canvasWidgetType": "TEXT"
+                }
+              ]
+            },
+            "name": "blog0_blog",
+            "canvasWidgetType": "GRID"
+          },
+          {
+            "description": "",
+            "name": "blog0_ftr",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Containing value:Addre...",
+                "name": "txt_blo_2",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "Containing value:abg@e...",
+                "name": "txt_blo_3",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "",
+                "name": "blog0_crow",
+                "canvasWidgetType": "RECT",
+                "children": [
+                  {
+                    "description": "",
+                    "name": "img_blog0",
+                    "canvasWidgetType": "IMAGE"
+                  },
+                  {
+                    "description": "",
+                    "name": "img_blog0_1",
+                    "canvasWidgetType": "IMAGE"
+                  },
+                  {
+                    "description": "",
+                    "name": "img_blog0_2",
+                    "canvasWidgetType": "IMAGE"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "code": "import ginni as g\n \n# Set adapter details for list\n# Generate dummy elements for the adapter. Fetch live data from storage with g.get_item('[SAVED_DATA_KEY]') or make HTTP request with await g.make_request('LIST_DATA_URL') \ndatalist_blog0_blog = [{'img': 'https://placehold.co/600x400/FFAAAA/FFAAAA/png', 'title': 'aliqua adipiscing.', 'subtitle': 'voluptate duis magna.'} for x in range(10)]\n# Populate adapter with data items from adapter template\nmytemplate_id = 'indicard_213'\nadapter_id = 'blog0_blog'\nadapter_items_blog0_blog = []\nfor data in datalist_blog0_blog:\n    list_item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n    list_item.get_child('title_213').set_text_context(data['title'])\n    list_item.get_child('subtitle_193').set_text_context(data['subtitle'])\n    list_item.get_child('img_172').set_img_src(data['img'])\n    list_item.set_on_click(lambda e: g.print(f\"Clicked item: {data[\"title\"]}\"))\n    adapter_items_blog0_blog.append(list_item)\n\n# Set navigation functionality for navigation text elements\ndef navigate4txt_nav_12(event): \n    g.show_toast('txt_nav_12 clicked')\n    # g.moveto('[PAGE_NAME]')\nnav_txt_nav_12 = g.GinNode('txt_nav_12')\nnav_txt_nav_12.set_on_click(navigate4txt_nav_12)\n\ndef navigate4txt_nav_13(event): \n    g.show_toast('txt_nav_13 clicked')\n    # g.moveto('[PAGE_NAME]')\nnav_txt_nav_13 = g.GinNode('txt_nav_13')\nnav_txt_nav_13.set_on_click(navigate4txt_nav_13)\n\ndef navigate4txt_nav_14(event): \n    g.show_toast('txt_nav_14 clicked')\n    # g.moveto('[PAGE_NAME]')\nnav_txt_nav_14 = g.GinNode('txt_nav_14')\nnav_txt_nav_14.set_on_click(navigate4txt_nav_14)\n\n\n# Set hamburger menu functionality for dropdown items in mobile view\nimg = g.GinNode('txt_imt_4')\ndrop_txt_nav_12 = img.set_dropdown_element('blog')\ndrop_txt_nav_12.set_on_click(navigate4txt_nav_12)\ndrop_txt_nav_13 = img.set_dropdown_element('pricing')\ndrop_txt_nav_13.set_on_click(navigate4txt_nav_13)\ndrop_txt_nav_14 = img.set_dropdown_element('console')\ndrop_txt_nav_14.set_on_click(navigate4txt_nav_14)\n\n",
+      "metadata": {
+        "backColor": "rgba(255, 255, 255, 1)",
+        "accentColor": "rgba(255, 152, 0, 1)",
+        "txtColor": "rgba(0, 0, 0, 1)",
+        "bottomNavColor": "rgba(0, 0, 0, 1)"
+      },
+      "creator": {
+        "type": "screen",
+        "description": "",
+        "colorGradient": "",
+        "backgroundColor": "rgba(255, 255, 255, 1)",
+        "screenDataWidgets": [
+          {
+            "type": "ToolbarData",
+            "titleText": "Blog",
+            "titleColor": "rgba(27, 60, 141, 1)",
+            "verticalAnchor": "TOP",
+            "shouldAnchor": false,
+            "actionWidgets": [
+              {
+                "type": "TextData",
+                "txt": "blog",
+                "label": "blog",
+                "fontSize": 20,
+                "fontWeight": 500,
+                "textAlign": "start",
+                "textColor": "rgba(27, 60, 141, 1)",
+                "width": 100,
+                "height": 30
+              },
+              {
+                "type": "TextData",
+                "txt": "pricing",
+                "label": "pricing",
+                "fontSize": 20,
+                "fontWeight": 500,
+                "textAlign": "start",
+                "textColor": "rgba(0, 0, 0, 1)",
+                "width": 100,
+                "height": 30
+              },
+              {
+                "type": "TextData",
+                "txt": "console",
+                "label": "console",
+                "fontSize": 20,
+                "fontWeight": 500,
+                "textAlign": "start",
+                "textColor": "rgba(0, 0, 0, 1)",
+                "width": 100,
+                "height": 30
+              }
+            ]
+          },
+          {
+            "type": "AdapterListData",
+            "name": "blog",
+            "height": 700,
+            "itemCount": 5,
+            "adapterItemData": {
+              "type": "CardTypeData",
+              "titleText": "Blog title",
+              "subTitleText": "By @Dev",
+              "imgUrl": "real",
+              "backImgUrl": "",
+              "graphType": "",
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "imgColor": "",
+              "textColor": "rgba(0, 0, 0, 1)",
+              "elevation": 2,
+              "cardType": "gridItem",
+              "statType": "",
+              "height": 250,
+              "width": 180
+            },
+            "orientation": "grid"
+          },
+          {
+            "type": "FooterData",
+            "height": 100,
+            "width": 400,
+            "backColor": "rgba(27, 60, 141, 1)",
+            "footerData": [
+              {
+                "type": "TextData",
+                "txt": "Address: Fnw5fBDPPc",
+                "label": "addr",
+                "fontSize": 14,
+                "fontWeight": 500,
+                "textAlign": "center",
+                "textColor": "rgba(255, 255, 255, 1)",
+                "height": 30
+              },
+              {
+                "type": "TextData",
+                "txt": "abg@email.com",
+                "label": "mail",
+                "fontSize": 16,
+                "fontWeight": 600,
+                "textAlign": "center",
+                "textColor": "rgba(255, 255, 255, 1)",
+                "height": 30
+              },
+              {
+                "type": "CenterRowData",
+                "height": 50,
+                "width": 400,
+                "contents": [
+                  {
+                    "type": "ImgData",
+                    "label": "social1",
+                    "height": 20,
+                    "imgURL": "Facebook",
+                    "width": 20,
+                    "color": "rgba(27, 60, 141, 1)",
+                    "fit": "contain"
+                  },
+                  {
+                    "type": "ImgData",
+                    "label": "social2",
+                    "height": 20,
+                    "imgURL": "Instagram",
+                    "width": 20,
+                    "color": "rgba(27, 60, 141, 1)",
+                    "fit": "contain"
+                  },
+                  {
+                    "type": "ImgData",
+                    "label": "social3",
+                    "height": 20,
+                    "imgURL": "Linkedin",
+                    "width": 20,
+                    "color": "rgba(27, 60, 141, 1)",
+                    "fit": "contain"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "pages": {
+        "Search": "Allows administrators to locate specific users in the system by executing custom queries.",
+        "list": "Displays a list of projects associated with a selected user, provides functionality to see the specific status and builds of each.",
+        "Description": "Provides detailed insights into the ongoing status of a chosen user's project, allowing for close monitoring.",
+        "login": "",
+        "item-descriptio": "",
+        "list_1": "",
+        "social-media": "",
+        "stream": "",
+        "social-media_1": "",
+        "dashboard": "",
+        "dashboard_1": "",
+        "search": "",
+        "stream_1": "",
+        "profile": "A user profile screen with a bottom nav linking to dashboard, search, notifications, and profile tabs.",
+        "social-media_2": "",
+        "dashboard_2": "",
+        "stream_2": "",
+        "stream_3": "",
+        "stream_4": "",
+        "search_1": "",
+        "list_2": "",
+        "notification": "",
+        "chat": "",
+        "item-description_1": "",
+        "home-page": "",
+        "blog": "",
+        "chat_1": ""
+      },
+      "app_name": "PixSplit",
+      "prompt": "Design a blog page that lists recent posts.",
+      "chat": "I've created a blog layout for content publishing and reading."
+    },
+    {
+      "page": {
+        "description": "",
+        "name": "login0",
+        "canvasWidgetType": "SCREEN",
+        "children": [
+          {
+            "description": "Panel that centers all contents",
+            "name": "panel_login0",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Containing value:Login",
+                "name": "txt_log_1",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "",
+                "name": "rect_Email",
+                "canvasWidgetType": "TEXT",
+                "children": [
+                  {
+                    "description": "Email field's input label",
+                    "name": "Email_Labeltxt",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "Email input field container bearing the border attributes of the field",
+                    "name": "Email_inputcont",
+                    "canvasWidgetType": "RECT",
+                    "children": [
+                      {
+                        "description": "Email input field of type textInput",
+                        "name": "Email_input",
+                        "canvasWidgetType": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "description": "",
+                "name": "rect_Password",
+                "canvasWidgetType": "TEXT",
+                "children": [
+                  {
+                    "description": "Password field's input label",
+                    "name": "Password_Labelt",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "Password input field container bearing the border attributes of the field",
+                    "name": "Password_inputc",
+                    "canvasWidgetType": "RECT",
+                    "children": [
+                      {
+                        "description": "Password input field of type textInput",
+                        "name": "Password_input",
+                        "canvasWidgetType": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "description": "login button",
+                "name": "btn_login",
+                "canvasWidgetType": "RECT",
+                "children": [
+                  {
+                    "description": "login btn text",
+                    "name": "btntxt_login_te",
+                    "canvasWidgetType": "TEXT"
+                  }
+                ]
+              },
+              {
+                "description": "sign up button",
+                "name": "btn_sign_up",
+                "canvasWidgetType": "RECT",
+                "children": [
+                  {
+                    "description": "sign up btn text",
+                    "name": "btntxt_sign_up_",
+                    "canvasWidgetType": "TEXT"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "code": "import ginni as g\n# import ginni as ginni\nfield_Email_input = g.GinNode(\"Email_input\")\nfield_Password_input = g.GinNode(\"Password_input\")\ndef handle_btn_login_click(e):\n    value_Email_input = field_Email_input.get_value()\n    value_Password_input = field_Password_input.get_value()\n    # optionally clean, validate, or save values with g.save_item(key, value)\n    # g.moveto([DASHBOARD_SCREEN_NAME])\n    pass\nbtn_btn_login = g.GinNode(\"btn_login\")\nbtn_btn_login.set_on_click(handle_btn_login_click)\ndef handle_btn_sign_up_click(e):\n    value_Email_input = field_Email_input.get_value()\n    value_Password_input = field_Password_input.get_value()\n    # optionally clean, validate, or save values with g.save_item(key, value)\n    # g.moveto([DASHBOARD_SCREEN_NAME])\n    pass\nbtn_btn_sign_up = g.GinNode(\"btn_sign_up\")\nbtn_btn_sign_up.set_on_click(handle_btn_sign_up_click)\n",
+      "metadata": {
+        "backColor": "rgba(255, 255, 255, 1)",
+        "accentColor": "rgba(255, 152, 0, 1)",
+        "txtColor": "rgba(0, 0, 0, 1)",
+        "bottomNavColor": "rgba(0, 0, 0, 1)"
+      },
+      "creator": {
+        "type": "form",
+        "description": "",
+        "colorGradient": "",
+        "backgroundColor": "rgba(255, 255, 255, 1)",
+        "screenDataWidgets": [
+          {
+            "type": "Panel",
+            "backColor": "rgba(0, 0, 0, 0)",
+            "visibility": true,
+            "content": [
+              {
+                "type": "TextData",
+                "txt": "Login",
+                "label": "login",
+                "fontSize": 30,
+                "fontWeight": 800,
+                "textAlign": "center",
+                "textColor": "rgba(0, 0, 0, 1)",
+                "height": 60
+              },
+              {
+                "type": "InputFormData",
+                "inputLabel": "Email",
+                "inputType": "textInput",
+                "txtColor": "rgba(0, 0, 0, 1)",
+                "inputBorderColor": "rgba(27, 60, 141, 1)",
+                "inputBackgroundColor": "rgba(255, 255, 255, 1)",
+                "width": 350
+              },
+              {
+                "type": "InputFormData",
+                "inputLabel": "Password",
+                "inputType": "textInput",
+                "txtColor": "rgba(0, 0, 0, 1)",
+                "inputBorderColor": "rgba(27, 60, 141, 1)",
+                "inputBackgroundColor": "rgba(255, 255, 255, 1)",
+                "width": 350
+              },
+              {
+                "type": "ButtonData",
+                "buttonText": "login",
+                "width": null,
+                "buttonTextColor": "rgba(255, 255, 255, 1)",
+                "buttonColor": "rgba(27, 60, 141, 1)",
+                "buttonBorderColor": ""
+              },
+              {
+                "type": "ButtonData",
+                "buttonText": "sign up",
+                "width": null,
+                "buttonTextColor": "rgba(27, 60, 141, 1)",
+                "buttonColor": "rgba(0, 0, 0, 0)",
+                "buttonBorderColor": ""
+              }
+            ]
+          }
+        ]
+      },
+      "pages": {
+        "Search": "Allows administrators to locate specific users in the system by executing custom queries.",
+        "list": "Displays a list of projects associated with a selected user, provides functionality to see the specific status and builds of each.",
+        "Description": "Provides detailed insights into the ongoing status of a chosen user's project, allowing for close monitoring.",
+        "login": "",
+        "item-descriptio": "",
+        "list_1": "",
+        "social-media": "",
+        "stream": "",
+        "social-media_1": "",
+        "dashboard": "",
+        "dashboard_1": "",
+        "search": "",
+        "stream_1": "",
+        "profile": "A user profile screen with a bottom nav linking to dashboard, search, notifications, and profile tabs.",
+        "social-media_2": "",
+        "dashboard_2": "",
+        "stream_2": "",
+        "stream_3": "",
+        "stream_4": "",
+        "search_1": "",
+        "list_2": "",
+        "notification": "",
+        "chat": "",
+        "item-description_1": "",
+        "home-page": "",
+        "blog": "",
+        "chat_1": ""
+      },
+      "app_name": "PulseNest",
+      "prompt": "Design a login page for a web application.",
+      "chat": "Here's a login screen with the required authentication fields."
+    },
+    {
+      "page": {
+        "description": "",
+        "name": "signup0",
+        "canvasWidgetType": "SCREEN",
+        "children": [
+          {
+            "description": "Panel that centers all contents",
+            "name": "panel_signup0",
+            "canvasWidgetType": "RECT",
+            "children": [
+              {
+                "description": "Containing value:Signu...",
+                "name": "txt_sig",
+                "canvasWidgetType": "TEXT"
+              },
+              {
+                "description": "",
+                "name": "rect_Name",
+                "canvasWidgetType": "TEXT",
+                "children": [
+                  {
+                    "description": "Name field's input label",
+                    "name": "Name_Labeltxt",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "Name input field container bearing the border attributes of the field",
+                    "name": "Name_inputconta",
+                    "canvasWidgetType": "RECT",
+                    "children": [
+                      {
+                        "description": "Name input field of type textInput",
+                        "name": "Name_input",
+                        "canvasWidgetType": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "description": "",
+                "name": "rect_Email_1",
+                "canvasWidgetType": "TEXT",
+                "children": [
+                  {
+                    "description": "Email field's input label",
+                    "name": "Email_Labeltxt_1",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "Email input field container bearing the border attributes of the field",
+                    "name": "Email_inputcontainer_1",
+                    "canvasWidgetType": "RECT",
+                    "children": [
+                      {
+                        "description": "Email input field of type textInput",
+                        "name": "Email_input_1",
+                        "canvasWidgetType": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "description": "",
+                "name": "rect_Date_of_bi",
+                "canvasWidgetType": "TEXT",
+                "children": [
+                  {
+                    "description": "Date of birth field's input label",
+                    "name": "Date_of_birth_L",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "Date of birth input field container bearing the border attributes of the field",
+                    "name": "Date_of_birth_i",
+                    "canvasWidgetType": "RECT",
+                    "children": [
+                      {
+                        "description": "Date of birth input field of type date",
+                        "name": "Date_of_birth_input_1",
+                        "canvasWidgetType": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "description": "",
+                "name": "rect_Password_1",
+                "canvasWidgetType": "TEXT",
+                "children": [
+                  {
+                    "description": "Password field's input label",
+                    "name": "Password_Labeltxt_1",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "Password input field container bearing the border attributes of the field",
+                    "name": "Password_inputcontainer_1",
+                    "canvasWidgetType": "RECT",
+                    "children": [
+                      {
+                        "description": "Password input field of type textInput",
+                        "name": "Password_input_1",
+                        "canvasWidgetType": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "description": "",
+                "name": "rect_Confirm_pa",
+                "canvasWidgetType": "TEXT",
+                "children": [
+                  {
+                    "description": "Confirm password field's input label",
+                    "name": "Confirm_passwor",
+                    "canvasWidgetType": "TEXT"
+                  },
+                  {
+                    "description": "Confirm password input field container bearing the border attributes of the field",
+                    "name": "Confirm_password_inputcontainer_1",
+                    "canvasWidgetType": "RECT",
+                    "children": [
+                      {
+                        "description": "Confirm password input field of type textInput",
+                        "name": "Confirm_password_input_1",
+                        "canvasWidgetType": "TEXT"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "description": "sign up button",
+                "name": "btn_sign_up_1",
+                "canvasWidgetType": "RECT",
+                "children": [
+                  {
+                    "description": "sign up btn text",
+                    "name": "btntxt_sign_up_text_1",
+                    "canvasWidgetType": "TEXT"
+                  }
+                ]
+              },
+              {
+                "description": "login button",
+                "name": "btn_login_1",
+                "canvasWidgetType": "RECT",
+                "children": [
+                  {
+                    "description": "login btn text",
+                    "name": "btntxt_login_text_1",
+                    "canvasWidgetType": "TEXT"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "code": "import ginni as g\n#import ginni as g\nfield_Name_input = g.GinNode(\"Name_input\")\nfield_Email_input_1 = g.GinNode(\"Email_input_1\")\nfield_Date_of_birth_input_1 = g.GinNode(\"Date_of_birth_input_1\")\nfield_Password_input_1 = g.GinNode(\"Password_input_1\")\nfield_Confirm_password_input_1 = g.GinNode(\"Confirm_password_input_1\")\n\ndef handle_btn_sign_up_1_click(e):\n    value_Name_input = field_Name_input.get_value()\n    value_Email_input_1 = field_Email_input_1.get_value()\n    value_Date_of_birth_input_1 = field_Date_of_birth_input_1.get_value()\n    value_Password_input_1 = field_Password_input_1.get_value()\n    value_Confirm_password_input_1 = field_Confirm_password_input_1.get_value()\n    # optionally clean, validate, or save values with g.save_item(key, value). Also, make http request with await g.make_request\n    # g.moveto([DASHBOARD_SCREEN_NAME])\nbtn_btn_sign_up_1 = g.GinNode(\"btn_sign_up_1\")\nbtn_btn_sign_up_1.set_on_click(handle_btn_sign_up_1_click)\ndef handle_btn_login_1_click(e):\n    value_Name_input = field_Name_input.get_value()\n    value_Email_input_1 = field_Email_input_1.get_value()\n    value_Date_of_birth_input_1 = field_Date_of_birth_input_1.get_value()\n    value_Password_input_1 = field_Password_input_1.get_value()\n    value_Confirm_password_input_1 = field_Confirm_password_input_1.get_value()\n    # optionally clean, validate, or save values with g.save_item(key, value). Also, make http request with await g.make_request\n    # g.moveto([DASHBOARD_SCREEN_NAME])\nbtn_btn_login_1 = g.GinNode(\"btn_login_1\")\nbtn_btn_login_1.set_on_click(handle_btn_login_1_click)\n",
+      "metadata": {
+        "backColor": "rgba(255, 255, 255, 1)",
+        "accentColor": "rgba(255, 152, 0, 1)",
+        "txtColor": "rgba(0, 0, 0, 1)",
+        "bottomNavColor": "rgba(0, 0, 0, 1)"
+      },
+      "creator": {
+        "type": "form",
+        "description": "",
+        "colorGradient": "",
+        "backgroundColor": "rgba(255, 255, 255, 1)",
+        "screenDataWidgets": [
+          {
+            "type": "Panel",
+            "backColor": "rgba(0, 0, 0, 0)",
+            "visibility": true,
+            "content": [
+              {
+                "type": "TextData",
+                "txt": "Signup",
+                "label": "",
+                "fontSize": 30,
+                "fontWeight": 800,
+                "textAlign": "center",
+                "textColor": "rgba(0, 0, 0, 1)",
+                "height": 60
+              },
+              {
+                "type": "InputFormData",
+                "inputLabel": "Name",
+                "inputType": "textInput",
+                "txtColor": "rgba(0, 0, 0, 1)",
+                "inputBorderColor": "rgba(27, 60, 141, 1)",
+                "inputBackgroundColor": "rgba(255, 255, 255, 1)",
+                "width": 350
+              },
+              {
+                "type": "InputFormData",
+                "inputLabel": "Email",
+                "inputType": "textInput",
+                "txtColor": "rgba(0, 0, 0, 1)",
+                "inputBorderColor": "rgba(27, 60, 141, 1)",
+                "inputBackgroundColor": "rgba(255, 255, 255, 1)",
+                "width": 350
+              },
+              {
+                "type": "InputFormData",
+                "inputLabel": "Date of birth",
+                "inputType": "date",
+                "txtColor": "rgba(0, 0, 0, 1)",
+                "inputBorderColor": "rgba(27, 60, 141, 1)",
+                "inputBackgroundColor": "rgba(255, 255, 255, 1)",
+                "width": 350
+              },
+              {
+                "type": "InputFormData",
+                "inputLabel": "Password",
+                "inputType": "textInput",
+                "txtColor": "rgba(0, 0, 0, 1)",
+                "inputBorderColor": "rgba(27, 60, 141, 1)",
+                "inputBackgroundColor": "rgba(255, 255, 255, 1)",
+                "width": 350
+              },
+              {
+                "type": "InputFormData",
+                "inputLabel": "Confirm password",
+                "inputType": "textInput",
+                "txtColor": "rgba(0, 0, 0, 1)",
+                "inputBorderColor": "rgba(27, 60, 141, 1)",
+                "inputBackgroundColor": "rgba(255, 255, 255, 1)",
+                "width": 350
+              },
+              {
+                "type": "ButtonData",
+                "buttonText": "sign up",
+                "width": null,
+                "buttonTextColor": "rgba(255, 255, 255, 1)",
+                "buttonColor": "rgba(27, 60, 141, 1)",
+                "buttonBorderColor": ""
+              },
+              {
+                "type": "ButtonData",
+                "buttonText": "login",
+                "width": null,
+                "buttonTextColor": "rgba(27, 60, 141, 1)",
+                "buttonColor": "rgba(0, 0, 0, 0)",
+                "buttonBorderColor": ""
+              }
+            ]
+          }
+        ]
+      },
+      "pages": {
+        "Search": "Allows administrators to locate specific users in the system by executing custom queries.",
+        "list": "Displays a list of projects associated with a selected user, provides functionality to see the specific status and builds of each.",
+        "Description": "Provides detailed insights into the ongoing status of a chosen user's project, allowing for close monitoring.",
+        "login": "",
+        "item-descriptio": "",
+        "list_1": "",
+        "social-media": "",
+        "stream": "",
+        "social-media_1": "",
+        "dashboard": "",
+        "dashboard_1": "",
+        "search": "",
+        "stream_1": "",
+        "profile": "A user profile screen with a bottom nav linking to dashboard, search, notifications, and profile tabs.",
+        "social-media_2": "",
+        "dashboard_2": "",
+        "stream_2": "",
+        "stream_3": "",
+        "stream_4": "",
+        "search_1": "",
+        "list_2": "",
+        "notification": "",
+        "chat": "",
+        "item-description_1": "",
+        "home-page": "",
+        "blog": "",
+        "chat_1": ""
+      },
+      "app_name": "PixelForge",
+      "prompt": "Design a signup page with name, email, and password fields.",
+      "chat": "I've created a registration form with the necessary signup fields."
+    }
+  ];
+
+  List trainData = [
+    {
+    "page": "home-page0",
+    "query": "fetch a welcome message from the server",
+    "response": "## Fetch welcome message\n\nAttach to `txt_imt_2` and fetch a welcome text.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_2')\n\ndef on_success(resp):\n    g.save_item('welcome_resp', resp)\n    g.show_toast('Welcome loaded')\n\ndef on_error(err):\n    g.show_toast('Failed to load welcome')\n\ndef fetch_welcome(e):\n    g.make_request(\n        method='GET',\n        url='https://api.example.com/welcome',\n        params={'lang': 'en'},\n        headers={'Accept': 'application/json'},\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(fetch_welcome)\n```"
+  },
+    {
+      "page": "pricing0",
+      "query": "get current pricing tiers and discounts",
+      "response": "## Load pricing tiers\n\nUse `txt_imt_3` to retrieve pricing and discounts.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_3')\n\ndef on_success(resp):\n    g.save_item('pricing_resp', resp)\n    g.show_toast('Pricing loaded')\n\ndef on_error(err):\n    g.show_toast('Failed to load pricing')\n\ndef load_pricing(e):\n    g.make_request(\n        method='GET',\n        url='https://api.example.com/pricing',\n        headers={'Accept': 'application/json'},\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(load_pricing)\n```"
+    },
+    {
+      "page": "blog0",
+      "query": "publish the current draft as a post",
+      "response": "## Publish blog draft\n\nAttach to `txt_imt_4` to publish a draft.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_4')\n\ndef on_success(resp):\n    g.save_item('publish_result', resp)\n    g.show_toast('Draft published')\n\ndef on_error(err):\n    g.show_toast('Publish failed')\n\ndef publish_draft(e):\n    payload = {'title': 'My post', 'status': 'publish'}\n    g.make_request(\n        method='POST',\n        url='https://api.example.com/posts',\n        headers={'Content-Type': 'application/json'},\n        data=payload,\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(publish_draft)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "refresh portfolio performance data",
+      "response": "## Refresh portfolio data\n\nAttach to `dashboard0_Dashboard_txt_1` and pull latest performance.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('dashboard0_Dashboard_txt_1')\n\ndef on_success(resp):\n    g.save_item('portfolio_data', resp)\n    g.show_toast('Portfolio refreshed')\n\ndef on_error(err):\n    g.show_toast('Refresh failed')\n\ndef refresh_portfolio(e):\n    g.make_request(\n        method='GET',\n        url='https://api.example.com/portfolio',\n        params={'range': '1d'},\n        headers={'Accept': 'application/json'},\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(refresh_portfolio)\n```"
+    },
+    {
+      "page": "search0",
+      "query": "run a query for trending tickers",
+      "response": "## Load trending tickers\n\nUse `search0_Dashboa` to query trending symbols.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('search0_Dashboa')\n\ndef on_success(resp):\n    g.save_item('trending_tickers', resp)\n    g.show_toast('Trending loaded')\n\ndef on_error(err):\n    g.show_toast('Query failed')\n\ndef load_trending(e):\n    g.make_request(\n        method='GET',\n        url='https://api.example.com/trending',\n        headers={'Accept': 'application/json'},\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(load_trending)\n```"
+    },
+    {
+      "page": "list0",
+      "query": "bulk update selected items' tags",
+      "response": "## Bulk update tags\n\nAttach to `list0_List_txt` to update tags for selected items.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('list0_List_txt')\n\ndef on_success(resp):\n    g.save_item('bulk_update_result', resp)\n    g.show_toast('Tags updated')\n\ndef on_error(err):\n    g.show_toast('Update failed')\n\ndef bulk_update(e):\n    payload = {'ids': [1,2,3], 'tags': ['important']}\n    g.make_request(\n        method='POST',\n        url='https://api.example.com/items/tags',\n        headers={'Content-Type': 'application/json'},\n        data=payload,\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(bulk_update)\n```"
+    },
+    {
+      "page": "notification0",
+      "query": "mark the latest message as read",
+      "response": "## Mark as read\n\nUse `notification0_Notifications_txt_1` to acknowledge a message.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('notification0_Notifications_txt_1')\n\ndef on_success(resp):\n    g.save_item('mark_read_result', resp)\n    g.show_toast('Marked as read')\n\ndef on_error(err):\n    g.show_toast('Action failed')\n\ndef mark_read(e):\n    g.make_request(\n        method='POST',\n        url='https://api.example.com/notifications/mark-read',\n        headers={'Content-Type': 'application/json'},\n        data={'id': 'latest'},\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(mark_read)\n```"
+    },
+    {
+      "page": "chat0",
+      "query": "load conversation history",
+      "response": "## Load chat history\n\nAttach to `chat0_chat0_txt` and fetch recent messages.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('chat0_chat0_txt')\n\ndef on_success(resp):\n    g.save_item('chat_history', resp)\n    g.show_toast('History loaded')\n\ndef on_error(err):\n    g.show_toast('Could not load history')\n\ndef load_history(e):\n    g.make_request(\n        method='GET',\n        url='https://api.example.com/chat/history',\n        params={'limit': 20},\n        headers={'Accept': 'application/json'},\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(load_history)\n```"
+    },
+    {
+      "page": "form0",
+      "query": "validate the form remotely",
+      "response": "## Remote form validation\n\nUse `txt_for` to validate the form data on the server.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_for')\n\ndef on_success(resp):\n    g.save_item('validation_result', resp)\n    g.show_toast('Validation complete')\n\ndef on_error(err):\n    g.show_toast('Validation failed')\n\ndef validate_form(e):\n    payload = {'name': 'John', 'email': 'john@example.com'}\n    g.make_request(\n        method='POST',\n        url='https://api.example.com/forms/validate',\n        headers={'Content-Type': 'application/json'},\n        data=payload,\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(validate_form)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "fetch account details",
+      "response": "## Load account details\n\nAttach to `profile0_profile0_txt_1` and load account info.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('profile0_profile0_txt_1')\n\ndef on_success(resp):\n    g.save_item('account_details', resp)\n    g.show_toast('Account loaded')\n\ndef on_error(err):\n    g.show_toast('Failed to load account')\n\ndef load_account(e):\n    g.make_request(\n        method='GET',\n        url='https://api.example.com/account',\n        headers={'Accept': 'application/json'},\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(load_account)\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "like the current post",
+      "response": "## Like post\n\nUse `social-media0_social-media0_txt_1` to send a like action.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('social-media0_social-media0_txt_1')\n\ndef on_success(resp):\n    g.save_item('like_result', resp)\n    g.show_toast('Post liked')\n\ndef on_error(err):\n    g.show_toast('Like failed')\n\ndef like_post(e):\n    g.make_request(\n        method='POST',\n        url='https://api.example.com/posts/like',\n        headers={'Content-Type': 'application/json'},\n        data={'id': 'post_123'},\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(like_post)\n```"
+    },
+    {
+      "page": "item-description0_1",
+      "query": "fetch recommended products",
+      "response": "## Load recommendations\n\nAttach to `item-description0_Description_txt_1` and get recommendations.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('item-description0_Description_txt_1')\n\ndef on_success(resp):\n    g.save_item('recommendations', resp)\n    g.show_toast('Recommendations ready')\n\ndef on_error(err):\n    g.show_toast('Could not load recommendations')\n\ndef load_recos(e):\n    g.make_request(\n        method='GET',\n        url='https://api.example.com/recommendations',\n        params={'sku': 'SKU-123'},\n        headers={'Accept': 'application/json'},\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(load_recos)\n```"
+    },
+    {
+      "page": "home-page0",
+      "query": "subscribe this email to the newsletter",
+      "response": "## Subscribe to newsletter\n\nAttach to `txt_imt_2` and submit a subscription.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_2')\n\ndef on_success(resp):\n    g.save_item('newsletter_sub', resp)\n    g.show_toast('Subscribed')\n\ndef on_error(err):\n    g.show_toast('Subscription failed')\n\ndef subscribe(e):\n    payload = {'email': 'user@example.com'}\n    g.make_request(\n        method='POST',\n        url='https://api.example.com/newsletter/subscribe',\n        headers={'Content-Type': 'application/json'},\n        data=payload,\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(subscribe)\n```"
+    },
+    {
+      "page": "pricing0",
+      "query": "apply a promo code",
+      "response": "## Apply promo code\n\nUse `txt_imt_3` to validate and apply a code.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_3')\n\ndef on_success(resp):\n    g.save_item('promo_apply', resp)\n    g.show_toast('Promo applied')\n\ndef on_error(err):\n    g.show_toast('Invalid or expired code')\n\ndef apply_promo(e):\n    payload = {'code': 'SAVE10'}\n    g.make_request(\n        method='POST',\n        url='https://api.example.com/promo/apply',\n        headers={'Content-Type': 'application/json'},\n        data=payload,\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(apply_promo)\n```"
+    },
+    {
+      "page": "blog0",
+      "query": "fetch related posts",
+      "response": "## Load related posts\n\nAttach to `txt_imt_4` and pull related content.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_4')\n\ndef on_success(resp):\n    g.save_item('related_posts', resp)\n    g.show_toast('Related loaded')\n\ndef on_error(err):\n    g.show_toast('Failed to load related')\n\ndef load_related(e):\n    g.make_request(\n        method='GET',\n        url='https://api.example.com/posts/related',\n        params={'id': 'post_123'},\n        headers={'Accept': 'application/json'},\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(load_related)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "create a new watchlist remotely",
+      "response": "## Create watchlist\n\nAttach to `dashboard0_Dashboard_txt_1` and create a watchlist.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('dashboard0_Dashboard_txt_1')\n\ndef on_success(resp):\n    g.save_item('new_watchlist', resp)\n    g.show_toast('Watchlist created')\n\ndef on_error(err):\n    g.show_toast('Create failed')\n\ndef create_watchlist(e):\n    payload = {'name': 'Daily Focus', 'symbols': ['AAPL','MSFT']}\n    g.make_request(\n        method='POST',\n        url='https://api.example.com/watchlists',\n        headers={'Content-Type': 'application/json'},\n        data=payload,\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(create_watchlist)\n```"
+    },
+    {
+      "page": "search0",
+      "query": "get autocomplete suggestions",
+      "response": "## Load autocomplete suggestions\n\nUse `search0_Dashboa` to fetch suggestions.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('search0_Dashboa')\n\ndef on_success(resp):\n    g.save_item('autocomplete', resp)\n    g.show_toast('Suggestions ready')\n\ndef on_error(err):\n    g.show_toast('No suggestions')\n\ndef load_suggestions(e):\n    g.make_request(\n        method='GET',\n        url='https://api.example.com/suggest',\n        params={'q': 'ap'},\n        headers={'Accept': 'application/json'},\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(load_suggestions)\n```"
+    },
+    {
+      "page": "list0",
+      "query": "archive selected items on the server",
+      "response": "## Archive items\n\nAttach to `list0_List_txt` and request archive action.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('list0_List_txt')\n\ndef on_success(resp):\n    g.save_item('archive_result', resp)\n    g.show_toast('Items archived')\n\ndef on_error(err):\n    g.show_toast('Archive failed')\n\ndef archive_items(e):\n    payload = {'ids': [7,8]}\n    g.make_request(\n        method='POST',\n        url='https://api.example.com/items/archive',\n        headers={'Content-Type': 'application/json'},\n        data=payload,\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(archive_items)\n```"
+    },
+    {
+      "page": "notification0",
+      "query": "load notification settings",
+      "response": "## Load notification settings\n\nUse `notification0_Notifications_txt_1` to get current settings.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('notification0_Notifications_txt_1')\n\ndef on_success(resp):\n    g.save_item('notification_settings', resp)\n    g.show_toast('Settings loaded')\n\ndef on_error(err):\n    g.show_toast('Could not load settings')\n\ndef load_settings(e):\n    g.make_request(\n        method='GET',\n        url='https://api.example.com/notifications/settings',\n        headers={'Accept': 'application/json'},\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(load_settings)\n```"
+    },
+    {
+      "page": "chat0",
+      "query": "send a typing indicator to the server",
+      "response": "## Send typing indicator\n\nAttach to `chat0_chat0_txt` to signal typing state.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('chat0_chat0_txt')\n\ndef on_success(resp):\n    g.save_item('typing_signal', resp)\n    g.show_toast('Typing sent')\n\ndef on_error(err):\n    g.show_toast('Signal failed')\n\ndef send_typing(e):\n    g.make_request(\n        method='POST',\n        url='https://api.example.com/chat/typing',\n        headers={'Content-Type': 'application/json'},\n        data={'room': 'general', 'typing': True},\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(send_typing)\n```"
+    },
+    {
+      "page": "form0",
+      "query": "submit the form to the backend",
+      "response": "## Submit form\n\nUse `txt_for` to send form data.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_for')\n\ndef on_success(resp):\n    g.save_item('form_submit', resp)\n    g.show_toast('Form submitted')\n\ndef on_error(err):\n    g.show_toast('Submit failed')\n\ndef submit_form(e):\n    payload = {'name': 'Jane', 'email': 'jane@example.com'}\n    g.make_request(\n        method='POST',\n        url='https://api.example.com/forms/submit',\n        headers={'Content-Type': 'application/json'},\n        data=payload,\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(submit_form)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "update account preferences",
+      "response": "## Update preferences\n\nAttach to `profile0_profile0_txt_1` and save preferences.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('profile0_profile0_txt_1')\n\ndef on_success(resp):\n    g.save_item('prefs_update', resp)\n    g.show_toast('Preferences updated')\n\ndef on_error(err):\n    g.show_toast('Update failed')\n\ndef update_prefs(e):\n    payload = {'theme': 'dark', 'emails': false}\n    g.make_request(\n        method='POST',\n        url='https://api.example.com/account/preferences',\n        headers={'Content-Type': 'application/json'},\n        data=payload,\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(update_prefs)\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "load comments for this post",
+      "response": "## Load comments\n\nUse `social-media0_social-media0_txt_1` to fetch comments.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('social-media0_social-media0_txt_1')\n\ndef on_success(resp):\n    g.save_item('post_comments', resp)\n    g.show_toast('Comments loaded')\n\ndef on_error(err):\n    g.show_toast('Failed to load comments')\n\ndef load_comments(e):\n    g.make_request(\n        method='GET',\n        url='https://api.example.com/posts/comments',\n        params={'id': 'post_123'},\n        headers={'Accept': 'application/json'},\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(load_comments)\n```"
+    },
+    {
+      "page": "item-description0_1",
+      "query": "submit a product rating",
+      "response": "## Submit rating\n\nAttach to `item-description0_Description_txt_1` and send a rating.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('item-description0_Description_txt_1')\n\ndef on_success(resp):\n    g.save_item('rating_submit', resp)\n    g.show_toast('Rating submitted')\n\ndef on_error(err):\n    g.show_toast('Submission failed')\n\ndef submit_rating(e):\n    payload = {'sku': 'SKU-123', 'rating': 5}\n    g.make_request(\n        method='POST',\n        url='https://api.example.com/ratings',\n        headers={'Content-Type': 'application/json'},\n        data=payload,\n        on_success=on_success,\n        on_error=on_error\n    )\n\ntrigger.set_on_click(submit_rating)\n```"
+    },
+    {
+      "page": "form0",
+      "query": "How do I hide the proceed button until all form inputs are filled on the form0 screen?",
+      "response": "### Explanation\nOn the `form0` screen, the proceed button should remain hidden until all input fields contain values.\n\n```python\nbtn = g.GinNode(\"btn_proceed\")\ninput0 = g.GinNode(\"input_0_input\").get_value()\ninput1 = g.GinNode(\"input_1_input\").get_value()\ninput2 = g.GinNode(\"input_2_input\").get_value()\ninput3 = g.GinNode(\"input_3_input\").get_value()\n\nif input0 and input1 and input2 and input3:\n    btn.set_visibility(True)\nelse:\n    btn.set_visibility(False)\n```"
+    },
+    {
+      "page": "form0",
+      "query": "How do I hide the entire form panel after clicking the proceed button?",
+      "response": "### Explanation\nOnce the user clicks the proceed button, the main form panel should be hidden to prevent further input.\n\n```python\npanel = g.GinNode(\"panel_form0\")\npanel.set_visibility(False)\n```"
+    },
+    {
+      "page": "form0",
+      "query": "How do I show a loading overlay and hide the proceed button while processing the form?",
+      "response": "### Explanation\nDuring form submission, the proceed button should be hidden and a blocking overlay shown.\n\n```python\ng.show_overlay()\nbtn = g.GinNode(\"btn_proceed\")\nbtn.set_visibility(False)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "How do I hide the welcome section on the profile0 screen when opening settings?",
+      "response": "### Explanation\nWhen navigating to settings on the profile screen, the welcome section should be hidden to reduce clutter.\n\n```python\nwelcome = g.GinNode(\"Welcome_User__welcome_1\")\nwelcome.set_visibility(False)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "How do I show only the update info option and hide other profile settings?",
+      "response": "### Explanation\nTo focus the user on updating their profile, all other settings options should be hidden.\n\n```python\ng.GinNode(\"profile0_Notifi\").set_visibility(False)\ng.GinNode(\"profile0_Prefer\").set_visibility(False)\ng.GinNode(\"profile0_Securi\").set_visibility(False)\ng.GinNode(\"profile0_Suppor\").set_visibility(False)\ng.GinNode(\"profile0_Update\").set_visibility(True)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "How do I hide the bottom navigation bar on the profile0 screen?",
+      "response": "### Explanation\nIn certain flows like editing profile data, the bottom navigation should be hidden.\n\n```python\nnav = g.GinNode(\"profile0_nav\")\nnav.set_visibility(False)\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "How do I hide the requests list on the social-media0 screen?",
+      "response": "### Explanation\nIf there are no incoming requests, the requests list should be hidden.\n\n```python\nrequests = g.GinNode(\"social-media0_connections_1\")\nrequests.set_visibility(False)\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "How do I hide the connections grid and only show the header text on social-media0?",
+      "response": "### Explanation\nThis helps create a minimal view showing only the section title.\n\n```python\ng.GinNode(\"social-media0_c\").set_visibility(False)\ng.GinNode(\"txt_soc_3\").set_visibility(True)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "How do I hide the dashboard statistics card while data is loading?",
+      "response": "### Explanation\nUntil statistics are fetched, the stat card should be hidden.\n\n```python\nstat_card = g.GinNode(\"indicard_195\")\nstat_card.set_visibility(False)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "How do I hide the trade list on the dashboard0 screen when there are no trades?",
+      "response": "### Explanation\nIf the trade dataset is empty, the trade list should not be visible.\n\n```python\ntrade_list = g.GinNode(\"dashboard0_Trad\")\ntrade_list.set_visibility(False)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "How do I hide the dashboard bottom navigation while showing an overlay?",
+      "response": "### Explanation\nWhen a blocking overlay is displayed, navigation should be disabled.\n\n```python\ng.show_overlay()\ng.GinNode(\"dashboard0_nav\").set_visibility(False)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "How do I show the profile image only after user data is loaded?",
+      "response": "### Explanation\nThe profile image should remain hidden until user data is available.\n\n```python\nimg = g.GinNode(\"proimg__1\")\nimg.set_visibility(True)\n```"
+    },
+    {
+      "page": "home-page0",
+      "query": "add a profile picture from the device",
+      "response": "## Pick profile picture\n\nAttach to `txt_imt_2` and let users pick a photo.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_2')\n\ndef pick_profile_photo(e):\n    def handle(files):\n        g.save_item('selected_media', files)\n        g.show_toast(f'Selected {len(files)} file(s)')\n    g.select_media(\n        type='image',\n        multiple=False,\n        on_select=handle\n    )\n\ntrigger.set_on_click(pick_profile_photo)\n```"
+    },
+    {
+      "page": "pricing0",
+      "query": "attach a receipt image to your plan purchase",
+      "response": "## Attach receipt image\n\nUse `txt_imt_3` to let users select a receipt photo.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_3')\n\ndef attach_receipt(e):\n    def handle(files):\n        g.save_item('receipt_media', files)\n        g.show_toast(f'Attached {len(files)} file(s)')\n    g.select_media(\n        type='image',\n        multiple=False,\n        on_select=handle\n    )\n\ntrigger.set_on_click(attach_receipt)\n```"
+    },
+    {
+      "page": "blog0",
+      "query": "add a cover image to the draft",
+      "response": "## Pick cover image\n\nLet users choose a blog cover via `txt_imt_4`.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_4')\n\ndef pick_cover(e):\n    def handle(files):\n        g.save_item('cover_media', files)\n        g.show_toast('Cover image selected')\n    g.select_media(\n        type='image',\n        multiple=False,\n        on_select=handle\n    )\n\ntrigger.set_on_click(pick_cover)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "quickly upload a dashboard snapshot",
+      "response": "## Upload snapshot\n\nAttach to `dashboard0_Dashboard_txt_1` for a quick snapshot picker.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('dashboard0_Dashboard_txt_1')\n\ndef upload_snapshot(e):\n    def handle(files):\n        g.save_item('snapshot_media', files)\n        g.show_toast('Snapshot uploaded')\n    g.select_media(\n        type='image',\n        multiple=False,\n        on_select=handle\n    )\n\ntrigger.set_on_click(upload_snapshot)\n```"
+    },
+    {
+      "page": "search0",
+      "query": "insert an image into the note",
+      "response": "## Insert image into note\n\nUse `search0_Dashboa` to pick an image for a note.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('search0_Dashboa')\n\ndef insert_note_image(e):\n    def handle(files):\n        g.save_item('note_media', files)\n        g.show_toast('Image inserted into note')\n    g.select_media(\n        type='image',\n        multiple=False,\n        on_select=handle\n    )\n\ntrigger.set_on_click(insert_note_image)\n```"
+    },
+    {
+      "page": "list0",
+      "query": "attach photos to selected list items",
+      "response": "## Attach photos to items\n\nAttach to `list0_List_txt` and allow multi-select.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('list0_List_txt')\n\ndef attach_item_photos(e):\n    def handle(files):\n        g.save_item('list_item_media', files)\n        g.show_toast(f'Attached {len(files)} photo(s) to items')\n    g.select_media(\n        type='image',\n        multiple=True,\n        on_select=handle\n    )\n\ntrigger.set_on_click(attach_item_photos)\n```"
+    },
+    {
+      "page": "notification0",
+      "query": "include a screenshot with the report",
+      "response": "## Add report screenshot\n\nUse `notification0_Notifications_txt_1` to pick a screenshot image.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('notification0_Notifications_txt_1')\n\ndef add_report_screenshot(e):\n    def handle(files):\n        g.save_item('report_media', files)\n        g.show_toast('Screenshot attached')\n    g.select_media(\n        type='image',\n        multiple=False,\n        on_select=handle\n    )\n\ntrigger.set_on_click(add_report_screenshot)\n```"
+    },
+    {
+      "page": "chat0",
+      "query": "send a short video clip",
+      "response": "## Send video clip\n\nAttach to `chat0_chat0_txt` and let users pick a video.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('chat0_chat0_txt')\n\ndef send_video_clip(e):\n    def handle(files):\n        g.save_item('chat_video', files)\n        g.show_toast('Video selected')\n    g.select_media(\n        type='video',\n        multiple=False,\n        on_select=handle\n    )\n\ntrigger.set_on_click(send_video_clip)\n```"
+    },
+    {
+      "page": "form0",
+      "query": "upload front and back ID photos",
+      "response": "## Upload ID photos\n\nUse `txt_for` to allow picking two photos (multi-select).\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_for')\n\ndef upload_id_photos(e):\n    def handle(files):\n        g.save_item('id_photos', files)\n        g.show_toast(f'{len(files)} ID photo(s) selected')\n    g.select_media(\n        type='image',\n        multiple=True,\n        on_select=handle\n    )\n\ntrigger.set_on_click(upload_id_photos)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "set a profile cover video",
+      "response": "## Pick cover video\n\nUse `profile0_profile0_txt_1` to select a single video.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('profile0_profile0_txt_1')\n\ndef pick_cover_video(e):\n    def handle(files):\n        g.save_item('cover_video', files)\n        g.show_toast('Cover video selected')\n    g.select_media(\n        type='video',\n        multiple=False,\n        on_select=handle\n    )\n\ntrigger.set_on_click(pick_cover_video)\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "create a post with photos or videos",
+      "response": "## Pick media for post\n\nAttach to `social-media0_social-media0_txt_1` and allow multiple.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('social-media0_social-media0_txt_1')\n\ndef pick_post_media(e):\n    def handle(files):\n        g.save_item('post_media', files)\n        g.show_toast(f'Added {len(files)} media file(s)')\n    g.select_media(\n        type='any',\n        multiple=True,\n        on_select=handle\n    )\n\ntrigger.set_on_click(pick_post_media)\n```"
+    },
+    {
+      "page": "item-description0_1",
+      "query": "attach a product photo",
+      "response": "## Attach product photo\n\nUse `item-description0_Description_txt_1` for a single photo picker.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('item-description0_Description_txt_1')\n\ndef attach_product_photo(e):\n    def handle(files):\n        g.save_item('product_media', files)\n        g.show_toast('Product photo attached')\n    g.select_media(\n        type='image',\n        multiple=False,\n        on_select=handle\n    )\n\ntrigger.set_on_click(attach_product_photo)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "add a proof image to the report",
+      "response": "## Add proof image\n\nAttach to `dashboard0_Dashboard_txt_1` and pick an image.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('dashboard0_Dashboard_txt_1')\n\ndef add_proof_image(e):\n    def handle(files):\n        g.save_item('report_proof', files)\n        g.show_toast('Proof image added')\n    g.select_media(\n        type='image',\n        multiple=False,\n        on_select=handle\n    )\n\ntrigger.set_on_click(add_proof_image)\n```"
+    },
+    {
+      "page": "search0",
+      "query": "attach an image to the saved search",
+      "response": "## Attach image to saved search\n\nUse `search0_Dashboa` to add an image to a saved search note.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('search0_Dashboa')\n\ndef attach_saved_search_image(e):\n    def handle(files):\n        g.save_item('saved_search_media', files)\n        g.show_toast('Image attached to saved search')\n    g.select_media(\n        type='image',\n        multiple=False,\n        on_select=handle\n    )\n\ntrigger.set_on_click(attach_saved_search_image)\n```"
+    },
+    {
+      "page": "list0",
+      "query": "add thumbnails to selected list items",
+      "response": "## Add thumbnails to items\n\nAttach to `list0_List_txt` and allow multiple selections.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('list0_List_txt')\n\ndef add_item_thumbnails(e):\n    def handle(files):\n        g.save_item('list_thumbnails', files)\n        g.show_toast(f'Added {len(files)} thumbnail(s)')\n    g.select_media(\n        type='image',\n        multiple=True,\n        on_select=handle\n    )\n\ntrigger.set_on_click(add_item_thumbnails)\n```"
+    },
+    {
+      "page": "notification0",
+      "query": "attach a clarifying video to the message",
+      "response": "## Attach clarifying video\n\nUse `notification0_Notifications_txt_1` to pick a video.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('notification0_Notifications_txt_1')\n\ndef attach_clarifying_video(e):\n    def handle(files):\n        g.save_item('clarify_video', files)\n        g.show_toast('Video attached')\n    g.select_media(\n        type='video',\n        multiple=False,\n        on_select=handle\n    )\n\ntrigger.set_on_click(attach_clarifying_video)\n```"
+    },
+    {
+      "page": "chat0",
+      "query": "update the group avatar from gallery",
+      "response": "## Update group avatar\n\nAttach to `chat0_chat0_txt` and pick a single image.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('chat0_chat0_txt')\n\ndef update_group_avatar(e):\n    def handle(files):\n        g.save_item('group_avatar', files)\n        g.show_toast('Group avatar updated')\n    g.select_media(\n        type='image',\n        multiple=False,\n        on_select=handle\n    )\n\ntrigger.set_on_click(update_group_avatar)\n```"
+    },
+    {
+      "page": "form0",
+      "query": "attach a short intro video to the form",
+      "response": "## Attach intro video\n\nUse `txt_for` to pick a single video file.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_for')\n\ndef attach_intro_video(e):\n    def handle(files):\n        g.save_item('intro_video', files)\n        g.show_toast('Intro video attached')\n    g.select_media(\n        type='video',\n        multiple=False,\n        on_select=handle\n    )\n\ntrigger.set_on_click(attach_intro_video)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "add multiple gallery photos",
+      "response": "## Add gallery photos\n\nAttach to `profile0_profile0_txt_1` and allow multiple selections.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('profile0_profile0_txt_1')\n\ndef add_gallery_photos(e):\n    def handle(files):\n        g.save_item('gallery_photos', files)\n        g.show_toast(f'Added {len(files)} gallery photo(s)')\n    g.select_media(\n        type='image',\n        multiple=True,\n        on_select=handle\n    )\n\ntrigger.set_on_click(add_gallery_photos)\n```"
+    },
+    {
+      "page": "blog0",
+      "query": "insert multiple images into the draft body",
+      "response": "## Insert draft images\n\nUse `txt_imt_4` to add multiple images to the draft.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_4')\n\ndef insert_draft_images(e):\n    def handle(files):\n        g.save_item('draft_images', files)\n        g.show_toast(f'Inserted {len(files)} image(s)')\n    g.select_media(\n        type='image',\n        multiple=True,\n        on_select=handle\n    )\n\ntrigger.set_on_click(insert_draft_images)\n```"
+    },
+    {
+      "page": "home-page0",
+      "query": "share a short clip",
+      "response": "## Share short clip\n\nAttach to `txt_imt_2` and let users pick a single video.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_2')\n\ndef share_short_clip(e):\n    def handle(files):\n        g.save_item('short_clip', files)\n        g.show_toast('Clip selected')\n    g.select_media(\n        type='video',\n        multiple=False,\n        on_select=handle\n    )\n\ntrigger.set_on_click(share_short_clip)\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "attach media to a comment",
+      "response": "## Attach media to comment\n\nUse `social-media0_social-media0_txt_1` and allow any media type.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('social-media0_social-media0_txt_1')\n\ndef attach_comment_media(e):\n    def handle(files):\n        g.save_item('comment_media', files)\n        g.show_toast(f'Attached {len(files)} file(s) to comment')\n    g.select_media(\n        type='any',\n        multiple=True,\n        on_select=handle\n    )\n\ntrigger.set_on_click(attach_comment_media)\n```"
+    },
+    {
+      "page": "item-description0_1",
+      "query": "add additional product gallery images",
+      "response": "## Add product gallery images\n\nUse `item-description0_Description_txt_1` to pick multiple photos.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('item-description0_Description_txt_1')\n\ndef add_product_gallery(e):\n    def handle(files):\n        g.save_item('product_gallery', files)\n        g.show_toast(f'Added {len(files)} gallery image(s)')\n    g.select_media(\n        type='image',\n        multiple=True,\n        on_select=handle\n    )\n\ntrigger.set_on_click(add_product_gallery)\n```"
+    },
+    {
+      "page": "home-page0",
+      "query": "record a quick voice note",
+      "response": "## Voice note toggle\n\nAttach to `txt_imt_2` to start/stop an audio note.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_2')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('last_audio_note', file)\n    g.show_toast('Audio note saved')\n\ndef toggle_voice_note(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Recording stopped')\n    else:\n        g.start_recording(type='audio', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Recording started')\n\ntrigger.set_on_click(toggle_voice_note)\n```"
+    },
+    {
+      "page": "home-page0",
+      "query": "capture a short selfie video",
+      "response": "## Selfie video\n\nUse `txt_imt_2` to toggle recording a short video.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_2')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('last_selfie_video', file)\n    g.show_toast('Video saved')\n\ndef toggle_video(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Stopped video recording')\n    else:\n        g.start_recording(type='video', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Started video recording')\n\ntrigger.set_on_click(toggle_video)\n```"
+    },
+    {
+      "page": "pricing0",
+      "query": "leave an audio message about pricing",
+      "response": "## Pricing audio feedback\n\nAttach to `txt_imt_3` for quick audio feedback.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_3')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('pricing_audio_feedback', file)\n    g.show_toast('Feedback saved')\n\ndef toggle_feedback(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Feedback recording stopped')\n    else:\n        g.start_recording(type='audio', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Recording feedback...')\n\ntrigger.set_on_click(toggle_feedback)\n```"
+    },
+    {
+      "page": "blog0",
+      "query": "narrate a quick voice intro",
+      "response": "## Blog voice intro\n\nUse `txt_imt_4` to capture a voice intro.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_4')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('blog_voice_intro', file)\n    g.show_toast('Intro saved')\n\ndef toggle_intro(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Intro recording stopped')\n    else:\n        g.start_recording(type='audio', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Recording intro...')\n\ntrigger.set_on_click(toggle_intro)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "capture a quick status update as audio",
+      "response": "## Status update (audio)\n\nAttach to `dashboard0_Dashboard_txt_1` for an audio status note.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('dashboard0_Dashboard_txt_1')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('dashboard_status_audio', file)\n    g.show_toast('Status note saved')\n\ndef toggle_status_audio(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Stopped')\n    else:\n        g.start_recording(type='audio', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Recording...')\n\ntrigger.set_on_click(toggle_status_audio)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "record a quick demo video",
+      "response": "## Quick demo video\n\nAttach to `dashboard0_Dashboard_txt_1` to capture a demo clip.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('dashboard0_Dashboard_txt_1')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('dashboard_demo_video', file)\n    g.show_toast('Demo video saved')\n\ndef toggle_demo(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Demo recording stopped')\n    else:\n        g.start_recording(type='video', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Demo recording started')\n\ntrigger.set_on_click(toggle_demo)\n```"
+    },
+    {
+      "page": "search0",
+      "query": "add an audio note about search findings",
+      "response": "## Audio note on search\n\nUse `search0_Dashboa` to capture a brief audio note.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('search0_Dashboa')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('search_audio_note', file)\n    g.show_toast('Note saved')\n\ndef toggle_search_note(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Stopped')\n    else:\n        g.start_recording(type='audio', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Recording note...')\n\ntrigger.set_on_click(toggle_search_note)\n```"
+    },
+    {
+      "page": "list0",
+      "query": "record a voice memo about selected items",
+      "response": "## List items voice memo\n\nAttach to `list0_List_txt` to record a memo.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('list0_List_txt')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('list_voice_memo', file)\n    g.show_toast('Memo saved')\n\ndef toggle_list_memo(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Memo recording stopped')\n    else:\n        g.start_recording(type='audio', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Recording memo...')\n\ntrigger.set_on_click(toggle_list_memo)\n```"
+    },
+    {
+      "page": "notification0",
+      "query": "attach a quick audio clarification",
+      "response": "## Notification audio clarification\n\nUse `notification0_Notifications_txt_1` to record a quick clarification.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('notification0_Notifications_txt_1')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('notification_audio', file)\n    g.show_toast('Clarification saved')\n\ndef toggle_note_audio(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Stopped')\n    else:\n        g.start_recording(type='audio', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Recording...')\n\ntrigger.set_on_click(toggle_note_audio)\n```"
+    },
+    {
+      "page": "chat0",
+      "query": "send a voice message",
+      "response": "## Voice message\n\nAttach to `chat0_chat0_txt` to toggle a voice message.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('chat0_chat0_txt')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('chat_voice_message', file)\n    g.show_toast('Voice message ready')\n\ndef toggle_voice_msg(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Stopped')\n    else:\n        g.start_recording(type='audio', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Recording voice message...')\n\ntrigger.set_on_click(toggle_voice_msg)\n```"
+    },
+    {
+      "page": "chat0",
+      "query": "record and send a quick video reply",
+      "response": "## Quick video reply\n\nAttach to `chat0_chat0_txt` to toggle a video reply.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('chat0_chat0_txt')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('chat_video_reply', file)\n    g.show_toast('Video reply ready')\n\ndef toggle_video_reply(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Stopped')\n    else:\n        g.start_recording(type='video', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Recording video reply...')\n\ntrigger.set_on_click(toggle_video_reply)\n```"
+    },
+    {
+      "page": "form0",
+      "query": "attach an audio description to this form",
+      "response": "## Audio description\n\nUse `txt_for` to record a short description.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_for')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('form_audio_description', file)\n    g.show_toast('Description saved')\n\ndef toggle_form_audio(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Stopped')\n    else:\n        g.start_recording(type='audio', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Recording description...')\n\ntrigger.set_on_click(toggle_form_audio)\n```"
+    },
+    {
+      "page": "form0",
+      "query": "record a video walkthrough for the form",
+      "response": "## Video walkthrough\n\nUse `txt_for` to capture a short walkthrough video.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_for')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('form_video_walkthrough', file)\n    g.show_toast('Walkthrough saved')\n\ndef toggle_form_video(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Stopped')\n    else:\n        g.start_recording(type='video', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Recording walkthrough...')\n\ntrigger.set_on_click(toggle_form_video)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "leave a short audio bio",
+      "response": "## Audio bio\n\nAttach to `profile0_profile0_txt_1` to toggle an audio bio.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('profile0_profile0_txt_1')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('profile_audio_bio', file)\n    g.show_toast('Audio bio saved')\n\ndef toggle_audio_bio(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Stopped')\n    else:\n        g.start_recording(type='audio', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Recording audio bio...')\n\ntrigger.set_on_click(toggle_audio_bio)\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "create a quick video story",
+      "response": "## Quick video story\n\nAttach to `social-media0_social-media0_txt_1` to capture a short clip.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('social-media0_social-media0_txt_1')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('story_video', file)\n    g.show_toast('Story saved')\n\ndef toggle_story(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Stopped')\n    else:\n        g.start_recording(type='video', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Recording story...')\n\ntrigger.set_on_click(toggle_story)\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "add a voice-over to a post",
+      "response": "## Voice-over for post\n\nAttach to `social-media0_social-media0_txt_1` to record a VO.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('social-media0_social-media0_txt_1')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('post_voice_over', file)\n    g.show_toast('Voice-over saved')\n\ndef toggle_post_vo(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Stopped')\n    else:\n        g.start_recording(type='audio', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Recording voice-over...')\n\ntrigger.set_on_click(toggle_post_vo)\n```"
+    },
+    {
+      "page": "item-description0_1",
+      "query": "record a video review",
+      "response": "## Video product review\n\nUse `item-description0_Description_txt_1` to toggle a quick review.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('item-description0_Description_txt_1')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('product_video_review', file)\n    g.show_toast('Review saved')\n\ndef toggle_review(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Stopped')\n    else:\n        g.start_recording(type='video', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Recording review...')\n\ntrigger.set_on_click(toggle_review)\n```"
+    },
+    {
+      "page": "pricing0",
+      "query": "capture a short video question for support",
+      "response": "## Video question\n\nAttach to `txt_imt_3` to toggle a short question clip.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_3')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('pricing_video_question', file)\n    g.show_toast('Question saved')\n\ndef toggle_video_question(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Stopped')\n    else:\n        g.start_recording(type='video', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Recording question...')\n\ntrigger.set_on_click(toggle_video_question)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "record a greeting for your profile",
+      "response": "## Profile greeting\n\nUse `profile0_profile0_txt_1` to toggle a short greeting.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('profile0_profile0_txt_1')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('profile_greeting_audio', file)\n    g.show_toast('Greeting saved')\n\ndef toggle_profile_greeting(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Stopped')\n    else:\n        g.start_recording(type='audio', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Recording greeting...')\n\ntrigger.set_on_click(toggle_profile_greeting)\n```"
+    },
+    {
+      "page": "notification0",
+      "query": "attach a video response to the notification",
+      "response": "## Notification video response\n\nUse `notification0_Notifications_txt_1` to toggle a short video reply.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('notification0_Notifications_txt_1')\nstate = {'rec': False}\n\ndef on_done(file):\n    g.save_item('notification_video_reply', file)\n    g.show_toast('Video reply saved')\n\ndef toggle_note_video(e):\n    if state['rec']:\n        g.stop_recording()\n        state['rec'] = False\n        g.show_toast('Stopped')\n    else:\n        g.start_recording(type='video', on_complete=on_done)\n        state['rec'] = True\n        g.show_toast('Recording video reply...')\n\ntrigger.set_on_click(toggle_note_video)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "refresh dashboard data and show updated status",
+      "response": "## Dashboard refresh with overlay\n\nUse `dashboard0_Dashboard_txt_1` as trigger; fetch data with overlay.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('dashboard0_Dashboard_txt_1')\n\nasync def refresh(e):\n    g.show_overlay()\n    try:\n        resp = await g.make_request('https://api.example.com/dashboard', header=None, body=None, method='GET')\n        g.GinNode('txt_das_3').set_text_context('Updated')\n        g.show_toast('Dashboard updated')\n    finally:\n        g.close_overlay()\n\ntrigger.set_on_click(refresh)\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "refresh social feed and notify when complete",
+      "response": "## Social feed refresh\n\nAttach to `social-media0_social-media0_txt_1` and wrap network call with overlay.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('social-media0_social-media0_txt_1')\n\nasync def refresh_feed(e):\n    g.show_overlay()\n    try:\n        await g.make_request('https://api.example.com/feed', header=None, body=None, method='GET')\n        g.show_toast('Feed refreshed')\n    finally:\n        g.close_overlay()\n\ntrigger.set_on_click(refresh_feed)\n```"
+    },
+    {
+      "page": "search0",
+      "query": "run a search and update results",
+      "response": "## Search with overlay\n\nUse `search0_Dashboa` trigger; show overlay while filtering and updating `input_5`.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('search0_Dashboa')\ninput_box = g.GinNode('input_5')\n\nasync def run_search(e):\n    g.show_overlay()\n    try:\n        q = (input_box.get_value() or '').strip().lower()\n        # Simulate fetch\n        await g.make_request('https://api.example.com/search?q=' + q, header=None, body=None, method='GET')\n        g.show_toast('Search complete')\n    finally:\n        g.close_overlay()\n\ntrigger.set_on_click(run_search)\n```"
+    },
+    {
+      "page": "list0",
+      "query": "rebuild list items after applying sort",
+      "response": "## List sort with overlay\n\nAttach to `list0_List_txt`; show overlay during expensive rebuild.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('list0_List_txt')\n\nasync def sort_list(e):\n    g.show_overlay()\n    try:\n        key = g.get_item('list_sort') or 'title'\n        await g.make_request('https://api.example.com/list?sort=' + key, header=None, body=None, method='GET')\n        g.show_toast('List sorted: ' + key)\n    finally:\n        g.close_overlay()\n\ntrigger.set_on_click(sort_list)\n```"
+    },
+    {
+      "page": "notification0",
+      "query": "mark all notifications as read",
+      "response": "## Mark read with overlay\n\nUse `notification0_Notifications_txt_1` to batch mark read with overlay.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('notification0_Notifications_txt_1')\n\nasync def mark_all_read(e):\n    g.show_overlay()\n    try:\n        await g.make_request('https://api.example.com/notifications/mark-all', header=None, body=None, method='POST')\n        g.show_toast('All marked read')\n    finally:\n        g.close_overlay()\n\ntrigger.set_on_click(mark_all_read)\n```"
+    },
+    {
+      "page": "chat0",
+      "query": "send a message and confirm delivery",
+      "response": "## Chat send with overlay\n\nAttach to `chat0_chat0_txt`; wrap send action with overlay.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('chat0_chat0_txt')\n\nasync def send_message(e):\n    g.show_overlay()\n    try:\n        await g.make_request('https://api.example.com/chat/send', header=None, body={'text': 'Hello'}, method='POST')\n        g.show_toast('Message sent')\n    finally:\n        g.close_overlay()\n\ntrigger.set_on_click(send_message)\n```"
+    },
+    {
+      "page": "form0",
+      "query": "submit the form and show success",
+      "response": "## Form submit with overlay\n\nUse `txt_for` as trigger; show overlay during submission.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_for')\n\nasync def submit_form(e):\n    g.show_overlay()\n    try:\n        await g.make_request('https://api.example.com/form', header=None, body={'ok': True}, method='POST')\n        g.show_toast('Form submitted')\n    finally:\n        g.close_overlay()\n\ntrigger.set_on_click(submit_form)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "save profile settings and confirm",
+      "response": "## Save settings with overlay\n\nAttach to `profile0_profile0_txt_1`; wrap save with overlay.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('profile0_profile0_txt_1')\n\nasync def save_settings(e):\n    g.show_overlay()\n    try:\n        g.save_item('profile_name', 'User')\n        await g.make_request('https://api.example.com/profile', header=None, body={'name': 'User'}, method='POST')\n        g.show_toast('Settings saved')\n    finally:\n        g.close_overlay()\n\ntrigger.set_on_click(save_settings)\n```"
+    },
+    {
+      "page": "item-description0_1",
+      "query": "load similar items and update the UI",
+      "response": "## Load similar items\n\nUse `item-description0_Description_txt_1`; show overlay while fetching.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('item-description0_Description_txt_1')\n\nasync def load_similar(e):\n    g.show_overlay()\n    try:\n        await g.make_request('https://api.example.com/items/similar?id=123', header=None, body=None, method='GET')\n        g.show_toast('Loaded similar')\n    finally:\n        g.close_overlay()\n\ntrigger.set_on_click(load_similar)\n```"
+    },
+    {
+      "page": "blog0",
+      "query": "load latest blog posts and notify",
+      "response": "## Load blog posts\n\nAttach to `txt_imt_4`; show overlay when fetching content.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_4')\n\nasync def load_posts(e):\n    g.show_overlay()\n    try:\n        await g.make_request('https://api.example.com/blog', header=None, body=None, method='GET')\n        g.show_toast('Blog loaded')\n    finally:\n        g.close_overlay()\n\ntrigger.set_on_click(load_posts)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "how do I hide the profile image until the user data finishes loading?",
+      "response": "## Hide profile image until data loads\n\nOn the `profile0` page, the profile image should remain hidden until the user data is fully loaded to avoid showing empty or broken images.\n\n```python\nprofile_img = g.GinNode('proimg__1')\n\n# Hide image initially\nprofile_img.set_visibility(False)\n\n# After user data loads\nimg_url = g.get_item('profile_image_url')\nif img_url:\n    profile_img.set_img_src(img_url)\n    profile_img.set_visibility(True)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "how do I show a default avatar when the profile image is missing?",
+      "response": "## Show default avatar\n\nIf the user does not have a profile image on the `profile0` page, a fallback avatar should be displayed.\n\n```python\nprofile_img = g.GinNode('proimg__1')\n\nimg_url = g.get_item('profile_image_url')\nif img_url:\n    profile_img.set_img_src(img_url)\nelse:\n    profile_img.set_img_src('https://placehold.co/200x200/avatar.png')\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "how do I hide the update profile icon image when leaving the profile page?",
+      "response": "## Hide update icon on navigation\n\nBefore navigating away from the `profile0` page, the update icon image should be hidden.\n\n```python\nupdate_icon = g.GinNode('set_profile0_Up')\nupdate_icon.set_visibility(False)\n\ng.moveto('form0')\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "how do I hide connection images until the social data finishes loading?",
+      "response": "## Hide connection images while loading\n\nOn the `social-media0` page, connection images should only appear after data is ready.\n\n```python\nitem = await g.create_widget_type('indicard_191', 'social-media0_connections_1')\nimg = item.get_child('img_160')\n\nimg.set_visibility(False)\n\n# After data loads\nimg.set_img_src(data['img'])\nimg.set_visibility(True)\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "how do I replace missing social images with a placeholder?",
+      "response": "## Replace missing images with placeholder\n\nIf a social connection image is missing on the `social-media0` page, a placeholder image should be used.\n\n```python\nimg = item.get_child('img_159')\n\nif data.get('img'):\n    img.set_img_src(data['img'])\nelse:\n    img.set_img_src('https://placehold.co/100x100/no-image.png')\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "how do I hide dashboard card images while switching screens?",
+      "response": "## Hide dashboard images on navigation\n\nTo prevent UI flicker on the `dashboard0` page, image widgets should be hidden before navigation.\n\n```python\nfor img_id in ['img_161', 'img_162', 'img_163']:\n    g.GinNode(img_id).set_visibility(False)\n\ng.moveto('search0')\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "how do I hide dashboard images while statistics are loading?",
+      "response": "## Hide images during data loading\n\nWhile statistics are loading on the `dashboard0` page, image widgets should remain hidden.\n\n```python\nimg = g.GinNode('img_161')\nimg.set_visibility(False)\n\ng.show_overlay()\n# fetch data\ng.close_overlay()\n\nimg.set_visibility(True)\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "how do I toggle the visibility of a connection image when a user taps it?",
+      "response": "## Toggle image visibility on interaction\n\nUsers can toggle the visibility of a connection image on the `social-media0` page by tapping the item.\n\n```python\nimg = item.get_child('img_165')\nvisible = True\n\ndef toggle(e):\n    nonlocal visible\n    visible = not visible\n    img.set_visibility(visible)\n\nitem.set_on_click(toggle)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "how do I update the profile image source after the user uploads a new photo?",
+      "response": "## Update profile image source\n\nOn the `profile0` page, the profile image widget `proimg__1` should be updated after the user uploads a new image.\n\n```python\nprofile_img = g.GinNode('proimg__1')\n\n# After upload completes\nnew_img_url = uploaded_media.url\nprofile_img.set_img_src(new_img_url)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "how do I read the current profile image URL and reuse it elsewhere?",
+      "response": "## Get current profile image source\n\nYou can retrieve the current image URL from the profile image widget `proimg__1` and reuse it for storage or sharing.\n\n```python\nprofile_img = g.GinNode('proimg__1')\n\ncurrent_url = profile_img.get_img_src()\ng.save_item('profile_image_url', current_url)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "how do I restore the last saved profile image when the screen reloads?",
+      "response": "## Restore profile image from storage\n\nWhen the `profile0` page loads, you can retrieve the previously saved image URL and reapply it to the image widget.\n\n```python\nprofile_img = g.GinNode('proimg__1')\n\nsaved_url = g.get_item('profile_image_url')\nif saved_url:\n    profile_img.set_img_src(saved_url)\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "how do I assign image URLs to social connection cards dynamically?",
+      "response": "## Set image source for social cards\n\nOn the `social-media0` page, connection cards include image widgets such as `img_160` that should be updated dynamically.\n\n```python\nitem = await g.create_widget_type('indicard_191', 'social-media0_connections_1')\nimg = item.get_child('img_160')\n\nimg.set_img_src(data['img'])\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "how do I detect and replace empty image sources in social cards?",
+      "response": "## Replace missing image sources\n\nYou can check the current image source of a card image and replace it if it is empty.\n\n```python\nimg = item.get_child('img_159')\n\ncurrent_src = img.get_img_src()\nif not current_src:\n    img.set_img_src('https://placehold.co/100x100/no-image.png')\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "how do I cache dashboard image URLs for faster reloads?",
+      "response": "## Cache dashboard image sources\n\nOn the `dashboard0` page, image widgets such as `img_161` can have their URLs cached locally.\n\n```python\nimg = g.GinNode('img_161')\n\nurl = img.get_img_src()\ng.save_item('dashboard_img_161', url)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "how do I restore dashboard images from cached URLs?",
+      "response": "## Restore dashboard images from cache\n\nCached image URLs can be reapplied when the dashboard screen is revisited.\n\n```python\nimg = g.GinNode('img_161')\n\ncached_url = g.get_item('dashboard_img_161')\nif cached_url:\n    img.set_img_src(cached_url)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "how do I swap dashboard images when the user switches tabs?",
+      "response": "## Swap dashboard image sources\n\nWhen a user switches tabs, the dashboard image source can be updated dynamically.\n\n```python\nimg = g.GinNode('img_162')\n\nimg.set_img_src('https://example.com/tab2-image.png')\n```"
+    },
+    {
+      "page": "form0",
+      "query": "how do I handle image source logic on a page that has no image widgets?",
+      "response": "## No image widgets on this page\n\nThe `form0` page does not contain image widgets, so `get_img_src` and `set_img_src` are not applicable here. Instead, image logic should be handled on pages like `profile0` or `dashboard0`.\n\n```python\n# Example: navigate to profile page where image widgets exist\ng.moveto('profile0')\n```"
+    },
+    {
+      "page": "code",
+      "query": "how do I reuse an image URL from another page inside code logic?",
+      "response": "## Reuse image URL inside code logic\n\nAlthough the `code` page has no image widgets, it can still retrieve stored image URLs and process them programmatically.\n\n```python\nimg_url = g.get_item('profile_image_url')\n\n# Use img_url for upload, sharing, or API calls\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "how do I hide the profile image until the user data finishes loading?",
+      "response": "## Hide profile image until data loads\n\nThe `profile0` page contains the image widget `proimg__1`. It should remain hidden until user data has been loaded.\n\n```python\nprofile_img = g.GinNode('proimg__1')\nprofile_img.set_visibility(False)\n\nimg_url = g.get_item('profile_image_url')\nif img_url:\n    profile_img.set_img_src(img_url)\n    profile_img.set_visibility(True)\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "how do I hide social connection images until the data is ready?",
+      "response": "## Hide social images during loading\n\nOn the `social-media0` page, image widgets inside connection cards should only be visible after data is assigned.\n\n```python\nitem = await g.create_widget_type('indicard_191', 'social-media0_connections_1')\nimg = item.get_child('img_160')\n\nimg.set_visibility(False)\nimg.set_img_src(data['img'])\nimg.set_visibility(True)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "how do I hide dashboard images while switching to another screen?",
+      "response": "## Hide dashboard images before navigation\n\nThe `dashboard0` page contains multiple image widgets that should be hidden before navigation to prevent flicker.\n\n```python\nfor img_id in ['img_161', 'img_162', 'img_163']:\n    g.GinNode(img_id).set_visibility(False)\n\ng.moveto('search0')\n```"
+    },
+    {
+      "page": "form0",
+      "query": "how do I handle visibility changes on the form page even though it has no images?",
+      "response": "## No image widgets on this page\n\nThe `form0` page does **not** contain image widgets. Visibility control should instead focus on form elements such as buttons, panels, and overlays.\n\n```python\nbtn = g.GinNode('btn_proceed')\npanel = g.GinNode('panel_form0')\n\nbtn.set_visibility(False)\ng.show_overlay()\n\n# After validation\npanel.set_visibility(False)\ng.close_overlay()\n```"
+    },
+    {
+      "page": "form0",
+      "query": "how do I prevent user interaction while processing form submission?",
+      "response": "## No images involved\n\nThere are no image widgets on the `form0` page. User interaction can be controlled using overlays and button visibility.\n\n```python\ng.show_overlay()\n\ng.GinNode('btn_proceed').set_visibility(False)\n\n# After submission completes\ng.close_overlay()\n```"
+    },
+    {
+      "page": "code",
+      "query": "how do I manage visibility on the code screen even though there are no images?",
+      "response": "## No image widgets on this page\n\nThe `code` page does not include image widgets. Visibility changes should be applied to the editor, output panel, or error panel instead.\n\n```python\neditor = g.GinNode('editor')\noutput = g.GinNode('output_panel')\nerror = g.GinNode('error_panel')\n\neditor.set_visibility(False)\noutput.set_visibility(True)\nerror.set_visibility(False)\n```"
+    },
+    {
+      "page": "page",
+      "query": "how do I show a loading state on the page screen when no images are present?",
+      "response": "## No image widgets on this page\n\nThe `page` screen does not define image widgets. Loading states should be communicated using overlays and text visibility.\n\n```python\ng.show_overlay()\n\ntxt = g.GinNode('header_title')\ntxt.set_text_context('Loading...')\n\n# After loading\ng.close_overlay()\ntxt.set_text_context('Ready')\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "how do I update dashboard content visibility when data refreshes?",
+      "response": "## Mixed visibility update\n\nWhile images exist on the `dashboard0` page, content refresh should also control non-image widgets such as cards and lists.\n\n```python\ng.show_overlay()\n\ng.GinNode('dashboard0_Trad').set_visibility(False)\n\n# After data refresh\ng.GinNode('dashboard0_Trad').set_visibility(True)\ng.close_overlay()\n```"
+    },
+    {
+      "page": "home-page0",
+      "query": "how do I add a mobile hamburger dropdown with blog/pricing/console items?",
+      "response": "## Mobile dropdown menu (hamburger)\n\nAttach dropdown items to the hamburger text node `txt_imt_2` using `set_dropdown_element`, then wire each to existing handlers.\n\n```python\nimport ginni as g\n\n# Existing nav handlers (typically defined above)\n# def navigate4txt_nav_6(event): ...\n# def navigate4txt_nav_7(event): ...\n# def navigate4txt_nav_8(event): ...\n\nhamburger = g.GinNode('txt_imt_2')\nopt_blog = hamburger.set_dropdown_element('blog')\nopt_pricing = hamburger.set_dropdown_element('pricing')\nopt_console = hamburger.set_dropdown_element('console')\n\nopt_blog.set_on_click(navigate4txt_nav_6)\nopt_pricing.set_on_click(navigate4txt_nav_7)\nopt_console.set_on_click(navigate4txt_nav_8)\n```"
+    },
+    {
+      "page": "pricing0",
+      "query": "how do I populate dropdown items from a Python list and attach handlers?",
+      "response": "## Build dropdown from a list\n\nGenerate dropdown items programmatically for `txt_imt_3` and attach click handlers per item.\n\n```python\nimport ginni as g\n\nitems = [\n    ('blog', lambda e: g.moveto('blog0')),\n    ('pricing', lambda e: g.moveto('pricing0')),\n    ('console', lambda e: g.show_toast('Open console'))\n]\n\ntrigger = g.GinNode('txt_imt_3')\nmenu_nodes = []\nfor label, handler in items:\n    node = trigger.set_dropdown_element(label)\n    node.set_on_click(handler)\n    menu_nodes.append(node)\n```"
+    },
+    {
+      "page": "blog0",
+      "query": "how do I open external links from dropdown items (e.g., docs, GitHub)?",
+      "response": "## Open external links from dropdown\n\nAttach dropdown items to `txt_imt_4` and use `g.open_link` to launch URLs.\n\n```python\nimport ginni as g\n\nmenu = g.GinNode('txt_imt_4')\nopt_docs = menu.set_dropdown_element('docs')\nopt_repo = menu.set_dropdown_element('github')\n\nopt_docs.set_on_click(lambda e: g.open_link('https://example.com/docs'))\nopt_repo.set_on_click(lambda e: g.open_link('https://github.com/your/repo'))\n```"
+    },
+    {
+      "page": "home-page0",
+      "query": "how do I update dropdown labels dynamically after creation?",
+      "response": "## Update dropdown labels at runtime\n\n`set_dropdown_element` returns a node you can later modify. Keep references and call `set_text_context`.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_2')\nopt_blog = trigger.set_dropdown_element('blog')\nopt_pricing = trigger.set_dropdown_element('pricing')\n\n# Later, rename\nopt_blog.set_text_context('news')\nopt_pricing.set_text_context('plans')\n```"
+    },
+    {
+      "page": "pricing0",
+      "query": "how do I hide or disable a dropdown item based on user role?",
+      "response": "## Conditionally hide dropdown entries\n\nToggle visibility on the returned dropdown node. For example, hide \"console\" on non-admins.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_3')\nopt_console = trigger.set_dropdown_element('console')\n\nuser_is_admin = False\nif not user_is_admin:\n    opt_console.set_visibility(False)\n```"
+    },
+    {
+      "page": "blog0",
+      "query": "how do I rewire dropdown click handlers without recreating the item?",
+      "response": "## Replace dropdown click handlers\n\nCall `set_on_click` again on the same dropdown node to override the previous handler.\n\n```python\nimport ginni as g\n\nmenu = g.GinNode('txt_imt_4')\nopt_docs = menu.set_dropdown_element('docs')\n\n# Initial behavior\nopt_docs.set_on_click(lambda e: g.open_link('https://example.com/docs'))\n\n# Later override\nopt_docs.set_on_click(lambda e: g.show_toast('Docs coming soon'))\n```"
+    },
+    {
+      "page": "home-page0",
+      "query": "how do I show a loading overlay while handling a dropdown action?",
+      "response": "## Use overlay during dropdown action\n\nWrap a long-running dropdown handler with `g.show_overlay()` and `g.close_overlay()`.\n\n```python\nimport ginni as g\n\nmenu = g.GinNode('txt_imt_2')\nopt_sync = menu.set_dropdown_element('sync data')\n\nasync def do_sync(event):\n    g.show_overlay()\n    try:\n        await g.make_request('https://api.example.com/sync', header=None, body=None, method='POST')\n        g.show_toast('Sync complete')\n    finally:\n        g.close_overlay()\n\nopt_sync.set_on_click(do_sync)\n```"
+    },
+    {
+      "page": "pricing0",
+      "query": "how do I rebuild a dropdown menu from a fresh list of items?",
+      "response": "## Rebuild dropdown items\n\nHide old entries you kept references to before adding new ones.\n\n```python\nimport ginni as g\n\nroot = g.GinNode('txt_imt_3')\n# Hide previously created options (if stored)\nfor old in globals().get('pricing_menu_items', []):\n    old.set_visibility(False)\n\n# Build fresh set\nnew_items = [('overview', lambda e: g.moveto('home-page0')), ('contact', lambda e: g.show_toast('Contact us'))]\npricing_menu_items = []\nfor label, handler in new_items:\n    node = root.set_dropdown_element(label)\n    node.set_on_click(handler)\n    pricing_menu_items.append(node)\n```"
+    },
+
+    {"page": "dashboard0", "query": "add a toolbar dropdown to filter the dashboard content", "response": "## Dashboard filter dropdown\n\nAttach a dropdown to toolbar text `dashboard0_Dashboard_txt_1` and reflect the selection in `txt_das_3`.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('dashboard0_Dashboard_txt_1')\nopt_all = trigger.set_dropdown_element('All')\nopt_equities = trigger.set_dropdown_element('Equities')\nopt_crypto = trigger.set_dropdown_element('Crypto')\n\ndef set_filter(label):\n    def _h(e):\n        g.GinNode('txt_das_3').set_text_context(f'Filter: {label}')\n        g.show_toast(f'Showing {label}')\n    return _h\n\nopt_all.set_on_click(set_filter('All'))\nopt_equities.set_on_click(set_filter('Equities'))\nopt_crypto.set_on_click(set_filter('Crypto'))\n```"},
+
+    {"page": "search0", "query": "add a dropdown of quick queries that fills the search box", "response": "## Quick search presets dropdown\n\nUse bottom-nav label `search0_Dashboa` as trigger; on select, set `input_5`.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('search0_Dashboa')\ninput_box = g.GinNode('input_5')\n\ndef preset(value, label):\n    def _h(e):\n        input_box.set_value(value)\n        g.show_toast(f'preset: {label}')\n    return _h\n\nq_trading = trigger.set_dropdown_element('trading')\nq_news = trigger.set_dropdown_element('news')\nq_alerts = trigger.set_dropdown_element('alerts')\n\nq_trading.set_on_click(preset('trading', 'trading'))\nq_news.set_on_click(preset('news', 'news'))\nq_alerts.set_on_click(preset('alerts', 'alerts'))\n```"},
+
+    {"page": "list0", "query": "add sort options via a dropdown on the list title", "response": "## List sorting dropdown\n\nAttach to `list0_List_txt` and save selection for later.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('list0_List_txt')\n\ndef do_sort(key):\n    def _h(e):\n        g.save_item('list_sort', key)\n        g.show_toast(f'Sort by {key}')\n    return _h\n\nopt_title = trigger.set_dropdown_element('Sort: Title')\nopt_price = trigger.set_dropdown_element('Sort: Price')\n\nopt_title.set_on_click(do_sort('title'))\nopt_price.set_on_click(do_sort('price'))\n```"},
+
+    {"page": "notification0", "query": "add actions like mark all read from a dropdown", "response": "## Notification actions dropdown\n\nBind actions to `notification0_Notifications_txt_1`.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('notification0_Notifications_txt_1')\nopt_mark = trigger.set_dropdown_element('Mark all read')\nopt_mute = trigger.set_dropdown_element('Mute 1h')\nopt_prefs = trigger.set_dropdown_element('Settings')\n\nopt_mark.set_on_click(lambda e: g.show_toast('All marked read'))\nopt_mute.set_on_click(lambda e: g.show_toast('Muted for 1 hour'))\nopt_prefs.set_on_click(lambda e: g.show_toast('Open settings'))\n```"},
+
+    {"page": "chat0", "query": "put conversation actions (new chat, help) into a dropdown", "response": "## Chat actions dropdown\n\nAttach to `chat0_chat0_txt` for utilities.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('chat0_chat0_txt')\n\ndef start_new_chat(e):\n    g.save_item('current_chat', 'new')\n    g.show_toast('Started a new chat')\n\nopt_new = trigger.set_dropdown_element('New chat')\nopt_help = trigger.set_dropdown_element('Help')\n\nopt_new.set_on_click(start_new_chat)\nopt_help.set_on_click(lambda e: g.open_link('https://example.com/help'))\n```"},
+
+    {"page": "form0", "query": "add a dropdown to reset or submit the form", "response": "## Form utilities dropdown\n\nUse `txt_for` as the trigger for common actions.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_for')\nopt_reset = trigger.set_dropdown_element('Reset form')\nopt_submit = trigger.set_dropdown_element('Submit')\n\nopt_reset.set_on_click(lambda e: g.show_toast('Form reset'))\nopt_submit.set_on_click(lambda e: g.show_toast('Submitting...'))\n```"},
+
+    {"page": "profile0", "query": "add a dropdown on profile page for logout and settings", "response": "## Profile menu dropdown\n\nAttach to `profile0_profile0_txt_1` and implement logout.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('profile0_profile0_txt_1')\nopt_settings = trigger.set_dropdown_element('Settings')\nopt_logout = trigger.set_dropdown_element('Logout')\n\nopt_settings.set_on_click(lambda e: g.show_toast('Open settings'))\n\ndef do_logout(e):\n    g.save_item('auth_token', '')\n    g.moveto('login0')\n\nopt_logout.set_on_click(do_logout)\n```"},
+
+    {"page": "social-media0", "query": "add a refresh feed option in a dropdown", "response": "## Refresh feed dropdown\n\nAttach to `social-media0_social-media0_txt_1`; wrap network call with overlay.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('social-media0_social-media0_txt_1')\nopt_refresh = trigger.set_dropdown_element('Refresh feed')\n\nasync def refresh_feed(e):\n    g.show_overlay()\n    try:\n        await g.make_request('https://api.example.com/feed', header=None, body=None, method='GET')\n        g.show_toast('Feed refreshed')\n    finally:\n        g.close_overlay()\n\nopt_refresh.set_on_click(refresh_feed)\n```"},
+
+    {"page": "item-description0_1", "query": "add share options to the item description page via dropdown", "response": "## Share dropdown\n\nAttach to `item-description0_Description_txt_1` and add simple share actions.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('item-description0_Description_txt_1')\nopt_share = trigger.set_dropdown_element('Share via email')\nopt_open = trigger.set_dropdown_element('Open in web')\n\nopt_share.set_on_click(lambda e: g.open_link('mailto:?subject=Check%20this%20item&body=https://example.com/item/123'))\nopt_open.set_on_click(lambda e: g.open_link('https://example.com/item/123'))\n```"},
+    {
+      "page": "home-page0",
+      "query": "show a feature summary in a slide-up panel",
+      "response": "## Feature summary drawup\n\nUse `txt_imt_2` as trigger to open a slide-up with quick links.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_2')\n\ndef open_summary(e):\n    g.open_drawup(\n        image='https://via.placeholder.com/600x300/4CAF50/FFFFFF?text=Welcome',\n        title='Welcome',\n        details='Explore key areas quickly.',\n        buttons=['Blog', 'Pricing', 'Console'],\n        back_color='#f8f9fa',\n        text_color='#333'\n    )\n\ntrigger.set_on_click(open_summary)\n```"
+    },
+    {
+      "page": "pricing0",
+      "query": "present pricing tiers with quick actions",
+      "response": "## Pricing tiers drawup\n\nAttach to `txt_imt_3` and provide actions.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_3')\n\ndef open_pricing(e):\n    g.open_drawup(\n        image='https://via.placeholder.com/600x300/2196F3/FFFFFF?text=Pricing',\n        title='Plans & Pricing',\n        details='Choose a plan that fits your needs.',\n        buttons=['Buy', 'Contact sales'],\n        back_color='#ffffff',\n        text_color='#222'\n    )\n\ntrigger.set_on_click(open_pricing)\n```"
+    },
+    {
+      "page": "blog0",
+      "query": "invite users to subscribe with image click action",
+      "response": "## Blog subscribe drawup\n\nOpen a newsletter prompt on `txt_imt_4`; image click opens blog.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_4')\n\ndef open_subscribe(e):\n    g.open_drawup(\n        image='https://via.placeholder.com/600x300/FF5722/FFFFFF?text=Blog',\n        title='Subscribe to our blog',\n        details='Get updates and tips straight to your inbox.',\n        buttons=['Subscribe', 'Later'],\n        onimg_click=lambda: g.open_link('https://example.com/blog')\n    )\n\ntrigger.set_on_click(open_subscribe)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "show portfolio snapshot with custom colors",
+      "response": "## Portfolio snapshot drawup\n\nAttach to `dashboard0_Dashboard_txt_1` and use dark styling.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('dashboard0_Dashboard_txt_1')\n\ndef open_portfolio(e):\n    g.open_drawup(\n        image='https://via.placeholder.com/600x300/000000/FFFFFF?text=Portfolio',\n        title='Portfolio Snapshot',\n        details='Equities 60%, Crypto 40% — Today: +1.1%',\n        buttons=['View details', 'Dismiss'],\n        back_color='#101214',\n        text_color='#ECEFF1'\n    )\n\ntrigger.set_on_click(open_portfolio)\n```"
+    },
+    {
+      "page": "search0",
+      "query": "offer saved searches with quick actions",
+      "response": "## Saved searches drawup\n\nUse `search0_Dashboa` to open saved search options.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('search0_Dashboa')\n\ndef open_saved(e):\n    g.open_drawup(\n        title='Saved Searches',\n        details='Trading, News, Earnings',\n        buttons=['Run', 'Manage']\n    )\n\ntrigger.set_on_click(open_saved)\n```"
+    },
+    {
+      "page": "list0",
+      "query": "show bulk actions for selected items",
+      "response": "## Bulk actions drawup\n\nAttach to `list0_List_txt` and present bulk actions.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('list0_List_txt')\n\ndef open_bulk(e):\n    g.open_drawup(\n        title='Bulk actions',\n        details='Apply actions to selected items.',\n        buttons=['Select all', 'Delete', 'Export']\n    )\n\ntrigger.set_on_click(open_bulk)\n```"
+    },
+    {
+      "page": "notification0",
+      "query": "let users adjust notification preferences",
+      "response": "## Notification preferences drawup\n\nUse `notification0_Notifications_txt_1` as a trigger.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('notification0_Notifications_txt_1')\n\ndef open_prefs(e):\n    g.open_drawup(\n        title='Notifications',\n        details='Set your notification preferences.',\n        buttons=['Mute 1h', 'Settings']\n    )\n\ntrigger.set_on_click(open_prefs)\n```"
+    },
+    {
+      "page": "chat0",
+      "query": "expose chat shortcuts with image click toast",
+      "response": "## Chat shortcuts drawup\n\nAttach to `chat0_chat0_txt` and show shortcuts.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('chat0_chat0_txt')\n\ndef open_shortcuts(e):\n    g.open_drawup(\n        image='https://via.placeholder.com/600x300/9C27B0/FFFFFF?text=Chat',\n        title='Chat Shortcuts',\n        details='New chat, attach, quick reply',\n        buttons=['New chat', 'Close'],\n        onimg_click=lambda: g.show_toast('Chat image clicked')\n    )\n\ntrigger.set_on_click(open_shortcuts)\n```"
+    },
+    {
+      "page": "form0",
+      "query": "show form help and quick actions",
+      "response": "## Form help drawup\n\nUse `txt_for` to display help and actions.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_for')\n\ndef open_help(e):\n    g.open_drawup(\n        title='Form Help',\n        details='You can auto-fill or clear the form.',\n        buttons=['Fill example', 'Clear form']\n    )\n\ntrigger.set_on_click(open_help)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "show profile quick actions with brand colors",
+      "response": "## Profile actions drawup\n\nAttach to `profile0_profile0_txt_1` with brand colors.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('profile0_profile0_txt_1')\n\ndef open_profile_actions(e):\n    g.open_drawup(\n        image='https://via.placeholder.com/600x300/3F51B5/FFFFFF?text=Profile',\n        title='Profile',\n        details='Quick actions for your account',\n        buttons=['Edit', 'Logout'],\n        back_color='#eef2ff',\n        text_color='#1e293b'\n    )\n\ntrigger.set_on_click(open_profile_actions)\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "show post options such as share or report",
+      "response": "## Post options panel\n\nAttach to `social-media0_social-media0_txt_1` to present post actions.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('social-media0_social-media0_txt_1')\n\ndef open_post_actions(e):\n    g.open_drawup(\n        image='https://via.placeholder.com/600x300/00BCD4/FFFFFF?text=Post',\n        title='Post Actions',\n        details='Choose an action for this post.',\n        buttons=['Share', 'Report', 'Cancel']\n    )\n\ntrigger.set_on_click(open_post_actions)\n```"
+    },
+    {
+      "page": "item-description0_1",
+      "query": "show purchase options and quick links",
+      "response": "## Purchase options\n\nUse `item-description0_Description_txt_1` to present purchase paths.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('item-description0_Description_txt_1')\n\ndef open_purchase(e):\n    g.open_drawup(\n        image='https://via.placeholder.com/600x300/8BC34A/FFFFFF?text=Buy',\n        title='Purchase Options',\n        details='Select a seller or learn more about the item.',\n        buttons=['Buy now', 'Compare sellers', 'Learn more']\n    )\n\ntrigger.set_on_click(open_purchase)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "show daily summary with actions",
+      "response": "## Daily summary\n\nAttach to `dashboard0_Dashboard_txt_1` to show a quick summary.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('dashboard0_Dashboard_txt_1')\n\ndef open_summary(e):\n    g.open_drawup(\n        image='https://via.placeholder.com/600x300/263238/FFFFFF?text=Summary',\n        title='Today’s Summary',\n        details='Markets mixed. Your P&L: +0.8% today.',\n        buttons=['View report', 'Dismiss']\n    )\n\ntrigger.set_on_click(open_summary)\n```"
+    },
+    {
+      "page": "search0",
+      "query": "show search tips and examples",
+      "response": "## Search tips\n\nUse `search0_Dashboa` to display helpful operators and examples.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('search0_Dashboa')\n\ndef open_tips(e):\n    g.open_drawup(\n        title='Search Tips',\n        details='Use quotes for exact match. Try: \"AAPL earnings\"',\n        buttons=['Examples', 'Close']\n    )\n\ntrigger.set_on_click(open_tips)\n```"
+    },
+    {
+      "page": "list0",
+      "query": "show selected items actions and info",
+      "response": "## Selected items panel\n\nAttach to `list0_List_txt` to present contextual actions.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('list0_List_txt')\n\ndef open_selected(e):\n    g.open_drawup(\n        title='Selected Items',\n        details='2 items selected. Choose an action to proceed.',\n        buttons=['Preview', 'Export', 'Clear']\n    )\n\ntrigger.set_on_click(open_selected)\n```"
+    },
+    {
+      "page": "notification0",
+      "query": "show notification details and actions",
+      "response": "## Notification details\n\nUse `notification0_Notifications_txt_1` for quick message details.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('notification0_Notifications_txt_1')\n\ndef open_note_details(e):\n    g.open_drawup(\n        title='Notification',\n        details='System update scheduled at 11pm tonight.',\n        buttons=['Snooze', 'Dismiss']\n    )\n\ntrigger.set_on_click(open_note_details)\n```"
+    },
+    {
+      "page": "chat0",
+      "query": "show contact card with quick actions",
+      "response": "## Contact card\n\nAttach to `chat0_chat0_txt` for quick contact actions.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('chat0_chat0_txt')\n\ndef open_contact(e):\n    g.open_drawup(\n        image='https://via.placeholder.com/600x300/607D8B/FFFFFF?text=User',\n        title='Contact',\n        details='Alice • Online now',\n        buttons=['Message', 'Block']\n    )\n\ntrigger.set_on_click(open_contact)\n```"
+    },
+    {
+      "page": "form0",
+      "query": "show validation help and actions",
+      "response": "## Validation help\n\nUse `txt_for` to present guidance and quick fixes.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_for')\n\ndef open_validation_help(e):\n    g.open_drawup(\n        title='Validation Help',\n        details='Name is required. Email must be valid.',\n        buttons=['Auto-fill sample', 'Close']\n    )\n\ntrigger.set_on_click(open_validation_help)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "show account info and shortcuts",
+      "response": "## Account info\n\nAttach to `profile0_profile0_txt_1` for quick account actions.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('profile0_profile0_txt_1')\n\ndef open_account_info(e):\n    g.open_drawup(\n        image='https://via.placeholder.com/600x300/1E88E5/FFFFFF?text=Account',\n        title='Account',\n        details='Subscription: Pro • Renewal: Jan 31',\n        buttons=['Manage', 'Logout']\n    )\n\ntrigger.set_on_click(open_account_info)\n```"
+    },
+    {
+      "page": "blog0",
+      "query": "show author bio and quick links",
+      "response": "## Author bio\n\nUse `txt_imt_4` to present author info with links.\n\n```python\nimport ginni as g\n\ntrigger = g.GinNode('txt_imt_4')\n\ndef open_author_bio(e):\n    g.open_drawup(\n        image='https://via.placeholder.com/600x300/FF9800/FFFFFF?text=Author',\n        title='About the author',\n        details='Jane Doe • Writing about design and data.',\n        buttons=['Follow', 'Articles']\n    )\n\ntrigger.set_on_click(open_author_bio)\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "create feed cards with adapter using create_widget_type",
+      "response": "## Build social feed items\n\nCreate card widgets inside adapter `social-media0_c` using template `indicard_190`.\n\n```python\nimport ginni as g\n\n# Sample data (replace with g.get_item or HTTP data)\ndatalist = [\n    {'title': 'Welcome to the feed'},\n    {'title': 'Market update'},\n    {'title': 'Community spotlight'}\n]\n\nmytemplate_id = 'indicard_190'\nadapter_id = 'social-media0_c'\nadapter_items = []\n\nasync def build_feed():\n    for data in datalist:\n        item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n        item.get_child('title_190').set_text_context(data['title'])\n        adapter_items.append(item)\n\nawait build_feed()\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "create connection list items with images and subtitles",
+      "response": "## Build connection list\n\nCreate card widgets inside adapter `social-media0_connections_1` using template `indicard_191`.\n\n```python\nimport ginni as g\n\ndatalist = [\n    {'img': 'https://placehold.co/600x400/FFAAFF/FFAAFF/png', 'title': 'Alice', 'subtitle': 'Investor'},\n    {'img': 'https://placehold.co/600x400/CCFFAA/CCFFAA/png', 'title': 'Bob', 'subtitle': 'Analyst'},\n    {'img': 'https://placehold.co/600x400/AACCFF/AACCFF/png', 'title': 'Carol', 'subtitle': 'Trader'}\n]\n\nmytemplate_id = 'indicard_191'\nadapter_id = 'social-media0_connections_1'\nadapter_items = []\n\nasync def build_connections():\n    for data in datalist:\n        item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n        item.get_child('title_191').set_text_context(data['title'])\n        item.get_child('subtitle_172').set_text_context(data['subtitle'])\n        item.get_child('img_160').set_img_src(data['img'])\n        adapter_items.append(item)\n\nawait build_connections()\n```"
+    },
+    {
+      "page": "search0",
+      "query": "populate search results using create_widget_type and filter",
+      "response": "## Search results list\n\nCreate result cards in adapter `search0_Top` with template `indicard_197`, and rebuild when filtering.\n\n```python\nimport ginni as g\n\ndatalist = [\n    {'img': 'https://placehold.co/600x400/AAAAFF/AAAAFF/png', 'title': 'Trading 101', 'subtitle': 'Basics of trading'},\n    {'img': 'https://placehold.co/600x400/AAFFAA/AAFFAA/png', 'title': 'Market News', 'subtitle': 'Latest updates'},\n]\n\nmytemplate_id = 'indicard_197'\nadapter_id = 'search0_Top'\nadapter_items = []\n\nasync def render_list(data_list):\n    # remove previous items\n    for w in adapter_items:\n        w.remove()\n    adapter_items.clear()\n    # create new items\n    for data in data_list:\n        item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n        item.get_child('title_197').set_text_context(data['title'])\n        item.get_child('subtitle_177').set_text_context(data['subtitle'])\n        item.get_child('img_164').set_img_src(data['img'])\n        item.set_on_click(lambda e, t=data['title']: g.show_toast(f'Clicked: {t}'))\n        adapter_items.append(item)\n\n# initial render\nawait render_list(datalist)\n\n# filter on search\ninput_box = g.GinNode('input_5')\nasync def do_search(e):\n    q = input_box.get_value().strip().lower()\n    filtered = [d for d in datalist if q in d['title'].lower() or q in d['subtitle'].lower()]\n    await render_list(filtered)\n\n# g.GinNode('send_5').set_on_click(do_search)\n```"
+    },
+    {
+      "page": "list0",
+      "query": "create list items with on-click handler",
+      "response": "## Generic list items\n\nCreate items in adapter `list0_Top` using template `indicard_198`.\n\n```python\nimport ginni as g\n\ndatalist = [\n    {'img': 'https://placehold.co/600x400/BBAAAA/BBAAAA/png', 'title': 'Alpha', 'subtitle': 'First item'},\n    {'img': 'https://placehold.co/600x400/AABBBB/AABBBB/png', 'title': 'Beta', 'subtitle': 'Second item'}\n]\n\nmytemplate_id = 'indicard_198'\nadapter_id = 'list0_Top'\nadapter_items = []\n\nasync def build_list():\n    for data in datalist:\n        item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n        item.get_child('title_198').set_text_context(data['title'])\n        item.get_child('subtitle_178').set_text_context(data['subtitle'])\n        item.get_child('img_165').set_img_src(data['img'])\n        item.set_on_click(lambda e, t=data['title']: g.show_toast(f'Open: {t}'))\n        adapter_items.append(item)\n\nawait build_list()\n```"
+    },
+    {
+      "page": "notification0",
+      "query": "create notification items (title + subtitle)",
+      "response": "## Notification list\n\nCreate notification rows in adapter `notification0_T` using template `indicard_199`.\n\n```python\nimport ginni as g\n\ndatalist = [\n    {'title': 'System update', 'subtitle': 'Tonight 11pm'},\n    {'title': 'New message', 'subtitle': 'From support'}\n]\n\nmytemplate_id = 'indicard_199'\nadapter_id = 'notification0_T'\nadapter_items = []\n\nasync def build_notifications():\n    for data in datalist:\n        item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n        item.get_child('title_199').set_text_context(data['title'])\n        item.get_child('subtitle_179').set_text_context(data['subtitle'])\n        adapter_items.append(item)\n\nawait build_notifications()\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "create trading cards for dashboard using create_widget_type",
+      "response": "## Dashboard trading cards\n\nCreate items inside `dashboard0_Trad` with template `indicard_196`.\n\n```python\nimport ginni as g\n\ndatalist = [\n    {'title': 'AAPL', 'subtitle': '+1.2%'},\n    {'title': 'ETH', 'subtitle': '-0.7%'}\n]\n\nmytemplate_id = 'indicard_196'\nadapter_id = 'dashboard0_Trad'\nadapter_items = []\n\nasync def build_trades():\n    for data in datalist:\n        item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n        item.get_child('title_196').set_text_context(data['title'])\n        item.get_child('subtitle_176').set_text_context(data['subtitle'])\n        adapter_items.append(item)\n\nawait build_trades()\n```"
+    },
+    {
+      "page": "item-description0_1",
+      "query": "create trending items (image + text) below description",
+      "response": "## Trending items\n\nCreate items in adapter `item-description0_Trending_1` using `indicard_201`.\n\n```python\nimport ginni as g\n\ndatalist = [\n    {'img': 'https://placehold.co/600x400/FFAAAA/FFAAAA/png', 'title': 'Lamp', 'subtitle': 'Modern style'},\n    {'img': 'https://placehold.co/600x400/AAFFAA/AAFFAA/png', 'title': 'Chair', 'subtitle': 'Ergonomic'}\n]\n\nmytemplate_id = 'indicard_201'\nadapter_id = 'item-description0_Trending_1'\nadapter_items = []\n\nasync def build_trending():\n    for data in datalist:\n        item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n        item.get_child('title_201').set_text_context(data['title'])\n        item.get_child('subtitle_181').set_text_context(data['subtitle'])\n        item.get_child('img_166').set_img_src(data['img'])\n        adapter_items.append(item)\n\nawait build_trending()\n```"
+    },
+    {
+      "page": "blog0",
+      "query": "create blog cards with image and subtitle",
+      "response": "## Blog list\n\nCreate items in adapter `blog0_blog` using template `indicard_213`.\n\n```python\nimport ginni as g\n\ndatalist = [\n    {'img': 'https://placehold.co/600x400/FFAAAA/FFAAAA/png', 'title': 'How we built the app', 'subtitle': 'Engineering notes'},\n    {'img': 'https://placehold.co/600x400/AAAFFF/AAAFFF/png', 'title': 'Design principles', 'subtitle': 'UI/UX tips'}\n]\n\nmytemplate_id = 'indicard_213'\nadapter_id = 'blog0_blog'\nadapter_items = []\n\nasync def build_blog():\n    for data in datalist:\n        item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n        item.get_child('title_213').set_text_context(data['title'])\n        item.get_child('subtitle_193').set_text_context(data['subtitle'])\n        item.get_child('img_172').set_img_src(data['img'])\n        item.set_on_click(lambda e, t=data['title']: g.show_toast(f'Read: {t}'))\n        adapter_items.append(item)\n\nawait build_blog()\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "load feed via HTTP and render items with create_widget_type",
+      "response": "## Load + render social feed\n\nFetch feed items and rebuild adapter `social-media0_c` with `indicard_190`.\n\n```python\nimport ginni as g\n\nmytemplate_id = 'indicard_190'\nadapter_id = 'social-media0_c'\nadapter_items = []\n\nasync def load_feed(e=None):\n    g.show_overlay()\n    try:\n        resp = await g.make_request('https://api.example.com/feed', header=None, body=None, method='GET')\n        data = resp.get('items', [{'title': 'Fallback'}])\n        for w in adapter_items:\n            w.remove()\n        adapter_items.clear()\n        for d in data:\n            item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n            item.get_child('title_190').set_text_context(d.get('title', ''))\n            adapter_items.append(item)\n    finally:\n        g.close_overlay()\n\nawait load_feed()\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "add message action on connection items",
+      "response": "## Connection item actions\n\nRender `social-media0_connections_1` (`indicard_191`) and attach a message action per item.\n\n```python\nimport ginni as g\n\ndatalist = [\n    {'img': 'https://placehold.co/600x400/FFAAFF/FFAAFF/png', 'title': 'Alice', 'subtitle': 'Investor'},\n    {'img': 'https://placehold.co/600x400/CCFFAA/CCFFAA/png', 'title': 'Bob', 'subtitle': 'Analyst'}\n]\n\nmytemplate_id = 'indicard_191'\nadapter_id = 'social-media0_connections_1'\nadapter_items = []\n\nasync def render_connections():\n    for d in datalist:\n        item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n        item.get_child('title_191').set_text_context(d['title'])\n        item.get_child('subtitle_172').set_text_context(d['subtitle'])\n        item.get_child('img_160').set_img_src(d['img'])\n        item.set_on_click(lambda e, name=d['title']: g.show_toast(f'Message {name}'))\n        adapter_items.append(item)\n\nawait render_connections()\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "refresh dashboard trading cards from API and rebuild",
+      "response": "## Refresh trading cards\n\nFetch updated instruments and rebuild `dashboard0_Trad` using `indicard_196`.\n\n```python\nimport ginni as g\n\nmytemplate_id = 'indicard_196'\nadapter_id = 'dashboard0_Trad'\nadapter_items = []\n\nasync def refresh_trades(e=None):\n    g.show_overlay()\n    try:\n        resp = await g.make_request('https://api.example.com/trades', header=None, body=None, method='GET')\n        rows = resp.get('rows', [{'title': 'AAPL', 'subtitle': '+0.1%'}])\n        for w in adapter_items:\n            w.remove()\n        adapter_items.clear()\n        for d in rows:\n            item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n            item.get_child('title_196').set_text_context(d.get('title', ''))\n            item.get_child('subtitle_176').set_text_context(d.get('subtitle', ''))\n            adapter_items.append(item)\n    finally:\n        g.close_overlay()\n\nawait refresh_trades()\n```"
+    },
+    {
+      "page": "search0",
+      "query": "append more search results without clearing existing ones",
+      "response": "## Append \"Load more\" results\n\nAppend items to `search0_Top` using `indicard_197` without removing previous widgets.\n\n```python\nimport ginni as g\n\nmytemplate_id = 'indicard_197'\nadapter_id = 'search0_Top'\nadapter_items = []\n\nmore_results = [\n    {'img': 'https://placehold.co/600x400/AAFFFF/AAFFFF/png', 'title': 'Signals', 'subtitle': 'Momentum picks'},\n    {'img': 'https://placehold.co/600x400/FFFFAA/FFFFAA/png', 'title': 'Earnings', 'subtitle': 'Upcoming reports'}\n]\n\nasync def load_more(e=None):\n    for d in more_results:\n        item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n        item.get_child('title_197').set_text_context(d['title'])\n        item.get_child('subtitle_177').set_text_context(d['subtitle'])\n        item.get_child('img_164').set_img_src(d['img'])\n        item.set_on_click(lambda e, t=d['title']: g.show_toast(f'Clicked: {t}'))\n        adapter_items.append(item)\n\nawait load_more()\n```"
+    },
+    {
+      "page": "list0",
+      "query": "rebuild list items using saved sort preference",
+      "response": "## Rebuild with sort\n\nSort datalist by saved key and rebuild `list0_Top` (`indicard_198`).\n\n```python\nimport ginni as g\n\nmytemplate_id = 'indicard_198'\nadapter_id = 'list0_Top'\nadapter_items = []\n\ndatalist = [\n    {'img': 'https://placehold.co/600x400/BBAAAA/BBAAAA/png', 'title': 'Alpha', 'subtitle': 'First item'},\n    {'img': 'https://placehold.co/600x400/AABBBB/AABBBB/png', 'title': 'Beta', 'subtitle': 'Second item'}\n]\n\nasync def rebuild_sorted(e=None):\n    key = g.get_item('list_sort') or 'title'\n    data_sorted = sorted(datalist, key=lambda x: x.get(key, ''))\n    for w in adapter_items:\n        w.remove()\n    adapter_items.clear()\n    for d in data_sorted:\n        item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n        item.get_child('title_198').set_text_context(d['title'])\n        item.get_child('subtitle_178').set_text_context(d['subtitle'])\n        item.get_child('img_165').set_img_src(d['img'])\n        item.set_on_click(lambda e, t=d['title']: g.show_toast(f'Open: {t}'))\n        adapter_items.append(item)\n\nawait rebuild_sorted()\n```"
+    },
+    {
+      "page": "notification0",
+      "query": "remove notification item on click to mark as read",
+      "response": "## Mark read by removing\n\nRender `notification0_T` (`indicard_199`) and remove clicked widget to mark read.\n\n```python\nimport ginni as g\n\nmytemplate_id = 'indicard_199'\nadapter_id = 'notification0_T'\nadapter_items = []\n\ndatalist = [\n    {'title': 'System update', 'subtitle': 'Tonight 11pm'},\n    {'title': 'New message', 'subtitle': 'From support'}\n]\n\nasync def render_notifications():\n    for d in datalist:\n        item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n        item.get_child('title_199').set_text_context(d['title'])\n        item.get_child('subtitle_179').set_text_context(d['subtitle'])\n        item.set_on_click(lambda e, w=item: (w.remove(), g.show_toast('Marked read')))\n        adapter_items.append(item)\n\nawait render_notifications()\n```"
+    },
+    {
+      "page": "item-description0_1",
+      "query": "filter trending items by category and rebuild",
+      "response": "## Filter trending items\n\nFilter categories and rebuild `item-description0_Trending_1` using `indicard_201`.\n\n```python\nimport ginni as g\n\nmytemplate_id = 'indicard_201'\nadapter_id = 'item-description0_Trending_1'\nadapter_items = []\n\ndatalist = [\n    {'img': 'https://placehold.co/600x400/FFAAAA/FFAAAA/png', 'title': 'Lamp', 'subtitle': 'Modern style', 'cat': 'home'},\n    {'img': 'https://placehold.co/600x400/AAFFAA/AAFFAA/png', 'title': 'Chair', 'subtitle': 'Ergonomic', 'cat': 'office'}\n]\n\nasync def rebuild_cat(cat='home'):\n    filtered = [d for d in datalist if d['cat'] == cat]\n    for w in adapter_items:\n        w.remove()\n    adapter_items.clear()\n    for d in filtered:\n        item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n        item.get_child('title_201').set_text_context(d['title'])\n        item.get_child('subtitle_181').set_text_context(d['subtitle'])\n        item.get_child('img_166').set_img_src(d['img'])\n        adapter_items.append(item)\n\nawait rebuild_cat('home')\n```"
+    },
+    {
+      "page": "blog0",
+      "query": "open article link from blog card on click",
+      "response": "## Blog card on-click\n\nRender `blog0_blog` (`indicard_213`) and open article link when clicked.\n\n```python\nimport ginni as g\n\nmytemplate_id = 'indicard_213'\nadapter_id = 'blog0_blog'\nadapter_items = []\n\ndatalist = [\n    {'img': 'https://placehold.co/600x400/FFAAAA/FFAAAA/png', 'title': 'How we built the app', 'subtitle': 'Engineering notes'},\n    {'img': 'https://placehold.co/600x400/AAAFFF/AAAFFF/png', 'title': 'Design principles', 'subtitle': 'UI/UX tips'}\n]\n\nasync def render_blog():\n    for d in datalist:\n        slug = d['title'].lower().replace(' ', '-')\n        item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n        item.get_child('title_213').set_text_context(d['title'])\n        item.get_child('subtitle_193').set_text_context(d['subtitle'])\n        item.get_child('img_172').set_img_src(d['img'])\n        item.set_on_click(lambda e, s=slug: g.open_link(f'https://example.com/blog/{s}'))\n        adapter_items.append(item)\n\nawait render_blog()\n```"
+    },
+    {
+      "page": "search0",
+      "query": "set search box to clicked result title",
+      "response": "## Click to fill search\n\nPopulate `input_5` with clicked `search0_Top` item title.\n\n```python\nimport ginni as g\n\nmytemplate_id = 'indicard_197'\nadapter_id = 'search0_Top'\nadapter_items = []\n\ndatalist = [\n    {'img': 'https://placehold.co/600x400/AAAAFF/AAAAFF/png', 'title': 'Trading 101', 'subtitle': 'Basics of trading'}\n]\n\ninput_box = g.GinNode('input_5')\n\nasync def render_one():\n    for d in datalist:\n        item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n        item.get_child('title_197').set_text_context(d['title'])\n        item.get_child('subtitle_177').set_text_context(d['subtitle'])\n        item.get_child('img_164').set_img_src(d['img'])\n        item.set_on_click(lambda e, t=d['title']: input_box.set_value(t))\n        adapter_items.append(item)\n\nawait render_one()\n```"
+    },
+    {
+      "page": "list0",
+      "query": "append a new list item dynamically",
+      "response": "## Add list item\n\nAdd an item to `list0_Top` (`indicard_198`) at runtime.\n\n```python\nimport ginni as g\n\nmytemplate_id = 'indicard_198'\nadapter_id = 'list0_Top'\nadapter_items = []\n\nasync def add_item(title, subtitle, img):\n    item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n    item.get_child('title_198').set_text_context(title)\n    item.get_child('subtitle_178').set_text_context(subtitle)\n    item.get_child('img_165').set_img_src(img)\n    adapter_items.append(item)\n\nawait add_item('Gamma', 'Third item', 'https://placehold.co/600x400/CCCCFF/CCCCFF/png')\n```"
+    },
+    {
+      "page": "notification0",
+      "query": "re-render notifications after filtering by keyword",
+      "response": "## Filter notifications\n\nFilter by keyword and rebuild `notification0_T` (`indicard_199`).\n\n```python\nimport ginni as g\n\nmytemplate_id = 'indicard_199'\nadapter_id = 'notification0_T'\nadapter_items = []\n\ndatalist = [\n    {'title': 'System update', 'subtitle': 'Tonight 11pm'},\n    {'title': 'New message', 'subtitle': 'From support'}\n]\n\nasync def filter_and_render(q='update'):\n    filtered = [d for d in datalist if q.lower() in d['title'].lower()]\n    for w in adapter_items:\n        w.remove()\n    adapter_items.clear()\n    for d in filtered:\n        item = await g.create_widget_type(template_id=mytemplate_id, parent_id=adapter_id)\n        item.get_child('title_199').set_text_context(d['title'])\n        item.get_child('subtitle_179').set_text_context(d['subtitle'])\n        adapter_items.append(item)\n\nawait filter_and_render('message')\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "how do I update the profile image when the user clicks the update icon?",
+      "response": "## Update profile image on click\n\nOn the `profile0` page, the image widget `set_profile0_Up` can be used as a clickable trigger to update the profile image.\n\n```python\nupdate_icon = g.GinNode('set_profile0_Up')\nprofile_img = g.GinNode('proimg__1')\n\nasync def on_update_click(event):\n    media = await g.select_media()\n    profile_img.set_img_src(media.url)\n\ng.update_icon = update_icon.set_on_click(on_update_click)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "how do I hide the profile image when the user clicks on it?",
+      "response": "## Hide profile image on click\n\nThe profile image `proimg__1` on the `profile0` page can respond to user interaction by hiding itself when clicked.\n\n```python\nprofile_img = g.GinNode('proimg__1')\n\nprofile_img.set_on_click(lambda e: profile_img.set_visibility(False))\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "how do I navigate to a connection detail screen when a social card is clicked?",
+      "response": "## Navigate on card click\n\nOn the `social-media0` page, each connection card can register a click event to navigate to another screen.\n\n```python\nitem = await g.create_widget_type('indicard_191', 'social-media0_connections_1')\n\nitem.set_on_click(lambda e: g.moveto('profile0'))\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "how do I toggle a social connection image when the card is clicked?",
+      "response": "## Toggle image visibility on click\n\nThe image widget inside a social connection card can change visibility when the card is clicked.\n\n```python\nimg = item.get_child('img_160')\nvisible = True\n\ndef toggle_image(e):\n    nonlocal visible\n    visible = not visible\n    img.set_visibility(visible)\n\nitem.set_on_click(toggle_image)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "how do I refresh dashboard data when the refresh button is clicked?",
+      "response": "## Refresh dashboard on click\n\nOn the `dashboard0` page, clicking the refresh button should trigger a data reload and UI update.\n\n```python\nrefresh_btn = g.GinNode('dashboard0_refresh')\n\nasync def refresh_dashboard(e):\n    g.show_overlay()\n    # fetch data\n    g.close_overlay()\n\nrefresh_btn.set_on_click(refresh_dashboard)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "how do I change dashboard images when a stat card is clicked?",
+      "response": "## Change image source on stat click\n\nClicking a stat card on the `dashboard0` page can update an associated image widget.\n\n```python\nstat_card = g.GinNode('dashboard0_Trad')\nimg = g.GinNode('img_162')\n\nstat_card.set_on_click(lambda e: img.set_img_src('https://example.com/updated.png'))\n```"
+    },
+    {
+      "page": "form0",
+      "query": "how do I submit a form when the submit button is clicked?",
+      "response": "## Submit form on click (no image widgets)\n\nThe `form0` page contains no image widgets. Click handling should focus on form controls like buttons.\n\n```python\nsubmit_btn = g.GinNode('btn_proceed')\n\nasync def submit_form(e):\n    g.show_overlay()\n    # validate and submit form\n    g.close_overlay()\n\nsubmit_btn.set_on_click(submit_form)\n```"
+    },
+    {
+      "page": "page",
+      "query": "how do I navigate to the code screen when a button is clicked on the page screen?",
+      "response": "## Navigate on button click (no image widgets)\n\nThe `page` screen has no image widgets. Navigation can be triggered via button click events.\n\n```python\nbtn = g.GinNode('btn_open_code')\n\nbtn.set_on_click(lambda e: g.moveto('code'))\n```"
+    },
+    {
+      "page": "code",
+      "query": "how do I run code execution when the run button is clicked?",
+      "response": "## Execute code on click (no image widgets)\n\nOn the `code` page, clicking the run button should trigger code execution logic.\n\n```python\nrun_btn = g.GinNode('run_btn')\n\nasync def run_code(e):\n    g.print('Running code...')\n    # execute code logic\n\nrun_btn.set_on_click(run_code)\n```"
+    },
+    {
+      "page": "code",
+      "query": "how do I clear the output panel when the clear button is clicked?",
+      "response": "## Clear output on click (no image widgets)\n\nThe `code` page does not use image widgets for this action. Output visibility and content can be updated on click.\n\n```python\nclear_btn = g.GinNode('clear_btn')\noutput = g.GinNode('output_panel')\n\nclear_btn.set_on_click(lambda e: output.set_text_context(''))\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "how do I update the profile image preview when the username input changes?",
+      "response": "## Update profile image preview on input\n\nOn the `profile0` page, text input changes can be used to update related UI elements. While the input itself is not an image, it can drive updates to the profile image widget `proimg__1`.\n\n```python\nusername_input = g.GinNode('username_input')\nprofile_img = g.GinNode('proimg__1')\n\ndef on_username_change(event):\n    value = username_input.get_value()\n    if value:\n        profile_img.set_img_src(f'https://example.com/avatar/{value}.png')\n\nusername_input.set_on_input(on_username_change)\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "how do I filter social connection cards as the search input changes?",
+      "response": "## Filter connections on input\n\nOn the `social-media0` page, user input can dynamically control the visibility of social connection cards. Image widgets exist on this page but are not directly modified by the input handler.\n\n```python\nsearch_input = g.GinNode('search_connections')\n\ndef on_search_input(event):\n    query = search_input.get_value().lower()\n    for item in connections:\n        item.set_visibility(query in item.name.lower())\n\nsearch_input.set_on_input(on_search_input)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "how do I update dashboard statistics when a date input changes?",
+      "response": "## Update dashboard stats on input\n\nThe `dashboard0` page contains image widgets, but this interaction focuses on reacting to date input changes to refresh dashboard data.\n\n```python\ndate_input = g.GinNode('date_filter')\n\nasync def on_date_change(event):\n    g.show_overlay()\n    # refetch stats based on date_input.get_value()\n    g.close_overlay()\n\ndate_input.set_on_input(on_date_change)\n```"
+    },
+    {
+      "page": "form0",
+      "query": "how do I validate form fields as the user types?",
+      "response": "## Live form validation\n\nThe `form0` page does not contain image widgets. Input events should be used to validate user entries in real time.\n\n```python\nemail_input = g.GinNode('email_input')\nerror_text = g.GinNode('email_error')\n\ndef on_email_input(event):\n    value = email_input.get_value()\n    if '@' not in value:\n        error_text.set_text_context('Invalid email')\n        error_text.set_visibility(True)\n    else:\n        error_text.set_visibility(False)\n\nemail_input.set_on_input(on_email_input)\n```"
+    },
+    {
+      "page": "form0",
+      "query": "how do I enable the submit button only after all inputs are filled?",
+      "response": "## Enable submit button based on input\n\nThere are no image widgets on the `form0` page. Input handlers can control button state instead.\n\n```python\nname_input = g.GinNode('name_input')\nsubmit_btn = g.GinNode('btn_proceed')\n\ndef on_input_change(event):\n    if name_input.get_value():\n        submit_btn.set_visibility(True)\n    else:\n        submit_btn.set_visibility(False)\n\nname_input.set_on_input(on_input_change)\n```"
+    },
+    {
+      "page": "page",
+      "query": "how do I update helper text when a search input changes on the page screen?",
+      "response": "## Update helper text on input\n\nThe `page` screen has no image widgets. Input events can be used to guide the user with dynamic text updates.\n\n```python\nsearch_input = g.GinNode('search_input')\nhelper_text = g.GinNode('helper_text')\n\ndef on_search_change(event):\n    helper_text.set_text_context(f'Searching for: {search_input.get_value()}')\n\nsearch_input.set_on_input(on_search_change)\n```"
+    },
+    {
+      "page": "code",
+      "query": "how do I clear error messages as the user edits code?",
+      "response": "## Clear errors on input\n\nThe `code` page does not contain image widgets. Input events from the code editor can reset error state dynamically.\n\n```python\neditor = g.GinNode('editor')\nerror_panel = g.GinNode('error_panel')\n\ndef on_code_input(event):\n    error_panel.set_visibility(False)\n\neditor.set_on_input(on_code_input)\n```"
+    },
+    {
+      "page": "code",
+      "query": "how do I auto-save code while the user is typing?",
+      "response": "## Auto-save code on input\n\nOn the `code` page, input events from the editor can trigger background save logic. No image widgets are involved.\n\n```python\neditor = g.GinNode('editor')\n\ndef on_editor_input(event):\n    g.save_item('draft_code', editor.get_value())\n\neditor.set_on_input(on_editor_input)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "how do I detect when a user taps the profile image to open the image picker?",
+      "response": "## `set_on_input` is not appropriate here\n\nOn the `profile0` page, the profile image `proimg__1` is **not an input field**. Image taps are discrete user actions, so `set_on_input` would never fire.\n\nThe correct approach is to use `set_on_click`.\n\n```python\nprofile_img = g.GinNode('proimg__1')\n\nasync def on_profile_click(event):\n    media = await g.select_media()\n    profile_img.set_img_src(media.url)\n\nprofile_img.set_on_click(on_profile_click)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "how do I refresh dashboard statistics when the refresh icon is pressed?",
+      "response": "## `set_on_input` is impractical for button actions\n\nThe refresh icon on the `dashboard0` page is a clickable widget, not an input. `set_on_input` would never trigger for this interaction.\n\nUse `set_on_click` instead.\n\n```python\nrefresh_btn = g.GinNode('dashboard0_refresh')\n\nasync def refresh_stats(event):\n    g.show_overlay()\n    # fetch updated stats\n    g.close_overlay()\n\nrefresh_btn.set_on_click(refresh_stats)\n```"
+    },
+    {
+      "page": "social-media0",
+      "query": "how do I open a user profile when a social connection card is selected?",
+      "response": "## Input listeners are not suitable for card selection\n\nOn the `social-media0` page, connection cards are **interactive containers**, not text inputs. `set_on_input` cannot detect card selection.\n\nA click handler should be used.\n\n```python\nitem = await g.create_widget_type('indicard_191', 'social-media0_connections_1')\n\nitem.set_on_click(lambda e: g.moveto('profile0'))\n```"
+    },
+    {
+      "page": "page",
+      "query": "how do I navigate to the code screen when a button is pressed?",
+      "response": "## Navigation is not driven by input events\n\nThe `page` screen uses buttons for navigation. Since buttons do not emit input-change events, `set_on_input` is ineffective here.\n\nUse a click handler instead.\n\n```python\nbtn = g.GinNode('btn_open_code')\n\nbtn.set_on_click(lambda e: g.moveto('code'))\n```"
+    },
+    {
+      "page": "code",
+      "query": "how do I run the code when the run button is pressed?",
+      "response": "## Code execution is a discrete action\n\nOn the `code` page, the run button triggers a single action. `set_on_input` is unsuitable because no input value changes occur.\n\nThe correct approach is `set_on_click`.\n\n```python\nrun_btn = g.GinNode('run_btn')\n\nasync def run_code(event):\n    g.print('Executing code...')\n\nrun_btn.set_on_click(run_code)\n```"
+    },
+    {
+      "page": "form0",
+      "query": "how do I submit the form when the user presses the submit button?",
+      "response": "## Form submission is not an input-change event\n\nOn the `form0` page, submitting a form is an explicit action. `set_on_input` only reacts to typing, not submission intent.\n\nUse a click handler on the submit button.\n\n```python\nsubmit_btn = g.GinNode('btn_proceed')\n\nasync def submit_form(event):\n    g.show_overlay()\n    # submit form logic\n    g.close_overlay()\n\nsubmit_btn.set_on_click(submit_form)\n```"
+    },
+    {
+      "page": "profile0",
+      "query": "how do I show a toast when the user opens the profile screen?",
+      "response": "## Screen entry is not tied to input events\n\nOn the `profile0` page, screen entry is a lifecycle event, not an input change. Using `set_on_input` here would have no effect.\n\nUse direct execution logic instead.\n\n```python\ng.show_toast('Welcome to your profile')\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "how do I block user interaction while dashboard data is loading?",
+      "response": "## Input listeners do not control global interaction state\n\nPreventing interaction on the `dashboard0` page is a UI state concern. `set_on_input` cannot manage this behavior.\n\nUse overlays and visibility control instead.\n\n```python\ng.show_overlay()\n\n# load dashboard data\n\ng.close_overlay()\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "how do I update a dashboard pie chart when the user selects a different date range?",
+      "response": "## Update chart from date input\n\nOn the `dashboard0` page, date inputs can be used to dynamically re-render a chart using `render_chart`.\n\n```python\ndate_input = g.GinNode('date_filter')\nchart = g.GinNode('stat')\n\nasync def on_date_change(event):\n    g.show_overlay()\n    # Example: fetch new data based on input\n    data = {\n        \"Completed\": 12,\n        \"Pending\": 5,\n        \"Failed\": 3\n    }\n    chart.render_chart(dataMap=data, chartType='pie', chartName='Tasks')\n    g.close_overlay()\n\ndate_input.set_on_input(on_date_change)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "how do I re-render a bar chart when the user types a search value?",
+      "response": "## Re-render bar chart on input\n\nText input on the `dashboard0` page can be used to filter data and update a bar chart.\n\n```python\nsearch_input = g.GinNode('search_stats')\nchart = g.GinNode('stat')\n\ndef on_search_input(event):\n    query = search_input.get_value()\n    data = {\n        \"A\": 10,\n        \"B\": 7,\n        \"C\": 4\n    }\n    chart.render_chart(dataMap=data, chartType='bar', chartName=f'Results for {query}')\n\nsearch_input.set_on_input(on_search_input)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "how do I change a line chart as the user adjusts a numeric input?",
+      "response": "## Update line chart from numeric input\n\nOn the `dashboard0` page, numeric inputs can drive line chart updates. Line charts require numeric keys.\n\n```python\nrange_input = g.GinNode('range_filter')\nchart = g.GinNode('stat')\n\ndef on_range_change(event):\n    value = int(range_input.get_value())\n    data = {\n        1: value,\n        2: value + 3,\n        3: value + 6\n    }\n    chart.render_chart(dataMap=data, chartType='line', chartName='Trend')\n\nrange_input.set_on_input(on_range_change)\n```"
+    },
+    {
+      "page": "dashboard0",
+      "query": "how do I refresh dashboard charts when the user edits a filter input?",
+      "response": "## Refresh charts from filter input\n\nFilter inputs on the `dashboard0` page can trigger a full chart refresh using `render_chart`.\n\n```python\nfilter_input = g.GinNode('filter_input')\nchart = g.GinNode('stat')\n\nasync def on_filter_change(event):\n    g.show_overlay()\n    data = {\n        \"North\": 8,\n        \"South\": 11,\n        \"East\": 6,\n        \"West\": 9\n    }\n    chart.render_chart(dataMap=data, chartType='bar', chartName='Regions')\n    g.close_overlay()\n\nfilter_input.set_on_input(on_filter_change)\n```"
+    },
+    {
+      "page": "code",
+      "query": "how do I visualize numeric output as a chart when the user edits code input?",
+      "response": "## Render chart from code input\n\nThe `code` page does not primarily focus on charts, but it can still render them based on editor input values.\n\n```python\neditor = g.GinNode('editor')\nchart = g.GinNode('stat')\n\ndef on_code_change(event):\n    # Example parsed output values\n    data = {\n        1: 2,\n        2: 5,\n        3: 8\n    }\n    chart.render_chart(dataMap=data, chartType='line', chartName='Execution Output')\n\neditor.set_on_input(on_code_change)\n```"
+    },
+    {
+      "page": "page",
+      "query": "how do I update a summary chart when the user changes a dropdown input?",
+      "response": "## Update chart from dropdown input\n\nThe `page` screen has limited visualization widgets, but if a chart node exists, it can be updated from dropdown input changes.\n\n```python\ndropdown = g.GinNode('summary_dropdown')\nchart = g.GinNode('stat')\n\ndef on_dropdown_change(event):\n    data = {\n        \"Yes\": 14,\n        \"No\": 6\n    }\n    chart.render_chart(dataMap=data, chartType='pie', chartName='Summary')\n\ndropdown.set_on_input(on_dropdown_change)\n```"
+    },
+    {
+      "page": "form0",
+      "query": "how do I explain that charts cannot be rendered from form input on this page?",
+      "response": "## Charts are not applicable on this page\n\nThe `form0` page does not define chart widgets. While inputs exist, calling `render_chart` here would have no effect.\n\nCharts should be rendered on pages like `dashboard0` where a chart node (e.g. `stat`) is available.\n\n```python\n# Navigate to dashboard where charts are supported\ng.moveto('dashboard0')\n```"
+    }
+  ];
+
+  List approvedData = [];
+
+  int trainIndex = 0;
+
+  var outline;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+
+  @override
+  void initState() {
+    loadData(trainIndex);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // This method is rerun every time setState is called, for instance as done
+    // by the _incrementCounter method above.
+    //
+    // The Flutter framework has been optimized to make rerunning build methods
+    // fast, so that you can just rebuild anything that needs updating rather
+    // than having to individually change instances of widgets.
+    return Scaffold(
+      appBar: AppBar(
+        // TRY THIS: Try changing the color here to a specific color (to
+        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
+        // change color while the other colors stay the same.
+        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text(widget.title  + ' Progress: ${trainIndex}/${trainData.length}'),
+        actions: [
+          IconButton(onPressed: downloadAccepted, icon: Icon(Icons.download_rounded))
+        ],
+      ),
+      body: Center(
+        // Center is a layout widget. It takes a single child and positions it
+        // in the middle of the parent.
+        child: Column(
+          children: [
+            Container(
+              height: 50,
+              width: 500,
+              child: MyBorderedInputField(hintText: '', labelText: '',
+                  inputTextController: TextEditingController(text: chat),
+                  onUpdateText: (text)=> chat=text),
+            ),
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Expanded(child: _getRawCode()),
+                  Expanded(child: _getOutline()),
+                  Expanded(child: _getMarkdown()),
+                ],
+              ),
+            ),
+            Container(
+              height: 50,
+              child: Row(
+                children: [
+                  Expanded(child: MyButton(buttonColor: Colors.blue,
+                      text: 'accept', textColor: Colors.white, onPressed: accept)),
+                  Expanded(child: MyButton(buttonColor: Colors.black,
+                      text: 'reject', textColor: Colors.white, onPressed: reject)),
+                ],
+              )
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: const Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+
+
+ Widget _getMarkdown() {
+    return Column(
+        children:[
+          Container(
+            height: 50,
+            child: Row(
+              children: [
+                IconButton(onPressed: (){
+                  setState(() {
+                    shouldEditResponse = !shouldEditResponse;
+                  });
+                }, icon: Icon(Icons.edit))
+              ],
+            ),
+          ),
+          Expanded(child: shouldEditResponse?
+          MyBorderedInputField(hintText: '', labelText: '',
+              inputTextController: TextEditingController(text: mdResponse),
+              onUpdateText: (text)=>mdResponse = text,lines: 20, width: 400,)
+          :MarkdownWidget(data: mdResponse, shrinkWrap: true,))
+        ]);
+ }
+
+
+  Widget _getRawCode() {
+    return Column(
+        children:[
+          Container(
+            height: 50,
+            child: Row(
+              children: [
+                IconButton(onPressed: (){
+                  setState(() {
+                    shouldEditCode = !shouldEditCode;
+                  });
+                }, icon: Icon(Icons.edit))
+              ],
+            ),
+          ),
+          Expanded(
+              child: shouldEditCode
+                ?MyBorderedInputField(hintText: '', labelText: '',
+              inputTextController: TextEditingController(text: mainCode),
+              onUpdateText: (text)=>mainCode = text, lines: 20, width: 400,)
+                :MarkdownWidget(data: '''```python
+                  ${mainCode}```''', shrinkWrap: true,))
+        ]);
+  }
+
+  void downloadAccepted() {
+    final String jsonString =
+    const JsonEncoder.withIndent('  ').convert(approvedData);
+    // 3. Convert to blob and create a download link
+    final blob = html.Blob([jsonString], 'application/json');
+    final url = html.Url.createObjectUrlFromBlob(blob);
+    final anchor = html.AnchorElement(href: url)
+      ..setAttribute("download", "approved_data.json")
+      ..click();
+    html.Url.revokeObjectUrl(url);
+  }
+
+  accept() {
+    approvedData.add({
+      "code": mainCode,
+      "outline": outline,
+      "query": chat,
+      "response": mdResponse
+    });
+    loadData(trainIndex+1);
+  }
+
+  reject() {
+    loadData(trainIndex+1);
+  }
+
+  loadData(int startDex){
+    trainIndex = startDex;
+    Map data = trainData[trainIndex];
+    mdResponse = data['response'];
+    chat = data['query'];
+    List lData = mainData.where((element)=>element['page']['name']==data['page']).toList();
+    if (lData.length>0){
+      mainCode = lData.first['code'];
+      outline = lData.first['page'];
+    } else{
+      mainCode = '';
+      outline = null;
+    }
+    setState(() {
+
+    });
+  }
+
+  String keycheckText = '';
+  bool keyExists = false;
+  Widget _getOutline() {
+    return Column(
+      children: [
+        Container(
+          height: 50,
+          color: keyExists?Colors.greenAccent: Colors.transparent,
+          child: MyBorderedInputField(hintText: '', labelText: '',
+              inputTextController: TextEditingController(text:keycheckText + (keyExists?'(Yes)': '(No)'))
+            , onUpdateText: (text)=>keycheckText=text,
+            trailngWidget: IconButton(onPressed: searchKeyCheck, icon: Icon(Icons.arrow_right)),
+          ),
+        ),
+        Expanded(child: SingleChildScrollView(child: Text(jsonEncode(outline)))),
+      ],
+    );
+  }
+
+  void searchKeyCheck() {
+    keycheckText = keycheckText.trim();
+    setState(() {
+      keyExists = jsonEncode(outline).contains('"name":"$keycheckText"');
+    });
+  }
+}
